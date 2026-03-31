@@ -1,0 +1,36 @@
+@model StockItemDeleteViewModel
+@{
+    ViewData["Title"] = "Supprimer article";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <p class="eyebrow mb-2">Confirmation</p>
+                <h1 class="h3">Supprimer cet article ?</h1>
+
+                <div class="mt-4 mb-4">
+                    <strong>@Model.Name</strong><br />
+                    <span class="text-muted">@Model.Reference - @Model.Department</span><br />
+                    <span class="text-muted">Stock actuel : @Model.CurrentQuantity</span>
+                </div>
+
+                @if (!Model.CanDelete)
+                {
+                    <div class="alert alert-warning mb-4">@Model.BlockingReason</div>
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Retour</a>
+                }
+                else
+                {
+                    <div class="alert alert-danger mb-4">Cette action est irreversible.</div>
+                    <form asp-action="ConfirmDelete" method="post" class="d-flex gap-2">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Annuler</a>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

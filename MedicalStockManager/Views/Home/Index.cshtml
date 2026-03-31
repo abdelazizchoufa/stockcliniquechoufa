@@ -1,0 +1,220 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Tableau de bord";
+}
+
+<section class="hero-panel mb-4">
+    <div>
+        <p class="eyebrow">Gestion de stock</p>
+        <h1 class="display-6 fw-bold">Suivi des consommables et dispositifs medicaux</h1>
+        <p class="lead mb-0">
+            Vue d'ensemble pour l'imagerie, le laboratoire d'analyses, les consultations et l'hopital du jour.
+        </p>
+    </div>
+</section>
+
+<section class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">Articles suivis</span>
+            <strong class="metric-value">@Model.TotalItems</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card warning">
+            <span class="metric-label">Stocks critiques</span>
+            <strong class="metric-value">@Model.LowStockItems</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card danger">
+            <span class="metric-label">Expiration proche</span>
+            <strong class="metric-value">@Model.ExpiringSoonItems</strong>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Synthese par service</h2>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Articles</th>
+                                <th>Stock bas</th>
+                                <th>Quantite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var summary in Model.DepartmentSummaries)
+                        {
+                            <tr>
+                                <td>@summary.Department</td>
+                                <td>@summary.ItemCount</td>
+                                <td>@summary.LowStockCount</td>
+                                <td>@summary.TotalQuantity</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Activite recente</h2>
+                @if (!Model.RecentMovements.Any())
+                {
+                    <p class="text-muted mb-0">Aucun mouvement recent.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var movement in Model.RecentMovements)
+                        {
+                            <a class="list-group-item list-group-item-action px-0" asp-controller="Stock" asp-action="Details" asp-route-id="@movement.StockItemId">
+                                <div class="d-flex justify-content-between gap-3">
+                                    <div>
+                                        <strong>@movement.ItemName</strong> <span class="text-muted small">@movement.Reference</span><br />
+                                        <span class="small">@movement.Department</span>
+                                        @if (!string.IsNullOrWhiteSpace(movement.Notes))
+                                        {
+                                            <span class="text-muted small"> - @movement.Notes</span>
+                                        }
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge @(movement.MovementType == MovementType.Sortie ? "text-bg-danger" : movement.MovementType == MovementType.Entree ? "text-bg-success" : "text-bg-secondary")">
+                                            @movement.MovementType
+                                        </span><br />
+                                        <span class="small fw-semibold">@movement.Quantity</span><br />
+                                        <span class="text-muted small">@movement.Date.ToString("dd/MM HH:mm")</span>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Alertes stock bas</h2>
+                @if (!Model.LowStockAlerts.Any())
+                {
+                    <p class="text-muted mb-0">Aucune alerte de stock bas.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var alert in Model.LowStockAlerts)
+                        {
+                            <a class="list-group-item list-group-item-action px-0" asp-controller="Stock" asp-action="Details" asp-route-id="@alert.StockItemId">
+                                <strong>@alert.ItemName</strong> <span class="text-muted small">@alert.Reference</span><br />
+                                <span class="small">@alert.Department</span><br />
+                                <span class="text-warning small">@alert.Message</span>
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Alertes expiration</h2>
+                @if (!Model.ExpirationAlerts.Any())
+                {
+                    <p class="text-muted mb-0">Aucune expiration proche.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var alert in Model.ExpirationAlerts)
+                        {
+                            <a class="list-group-item list-group-item-action px-0" asp-controller="Stock" asp-action="Details" asp-route-id="@alert.StockItemId">
+                                <strong>@alert.ItemName</strong> <span class="text-muted small">@alert.Reference</span><br />
+                                <span class="small">@alert.Department</span><br />
+                                <span class="text-danger small">@alert.Message</span>
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4 mb-0">Priorites du jour</h2>
+            @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+            {
+                <a class="btn btn-primary" asp-controller="Stock" asp-action="Create">Ajouter un article</a>
+            }
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Service</th>
+                        <th>Stock</th>
+                        <th>Seuil</th>
+                        <th>Expiration</th>
+                        <th>Etat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.ItemsByPriority)
+                {
+                    var expiringSoon = item.ExpirationDate is not null && item.ExpirationDate <= DateTime.Today.AddMonths(3);
+                    <tr>
+                        <td>
+                            <strong>@item.Name</strong><br />
+                            <span class="text-muted small">@item.Reference</span>
+                        </td>
+                        <td>@item.Department</td>
+                        <td>@item.CurrentQuantity @item.Unit</td>
+                        <td>@item.AlertThreshold @item.Unit</td>
+                        <td>@(item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                        <td>
+                            @if (item.IsLowStock)
+                            {
+                                <span class="badge text-bg-warning">A reapprovisionner</span>
+                            }
+                            else if (expiringSoon)
+                            {
+                                <span class="badge text-bg-danger">A surveiller</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-success">Correct</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Mouvements</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

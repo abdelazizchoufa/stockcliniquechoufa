@@ -1,0 +1,163 @@
+@model PurchaseOrdersIndexViewModel
+@{
+    ViewData["Title"] = "Approvisionnement";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Approvisionnement</p>
+        <h1 class="h2 mb-0">Fournisseurs et commandes</h1>
+    </div>
+    <div class="d-flex gap-2">
+        @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+        {
+            <a class="btn btn-outline-primary" asp-action="CreateSupplier">Nouveau fournisseur</a>
+            <a class="btn btn-primary" asp-action="Create">Nouvelle commande</a>
+        }
+    </div>
+</div>
+
+<section class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="metric-card">
+                    <span class="metric-label">Montant commande</span>
+                    <strong class="metric-value fs-3">@Model.FinanceSummary.TotalOrderedAmount.ToString("N2")</strong>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card">
+                    <span class="metric-label">Montant recu</span>
+                    <strong class="metric-value fs-3">@Model.FinanceSummary.TotalReceivedAmount.ToString("N2")</strong>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card warning">
+                    <span class="metric-label">Encours</span>
+                    <strong class="metric-value fs-3">@Model.FinanceSummary.PendingAmount.ToString("N2")</strong>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card">
+                    <span class="metric-label">Commandes du mois</span>
+                    <strong class="metric-value fs-3">@Model.FinanceSummary.OrdersThisMonth</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">Fournisseurs</h2>
+                @if (!Model.Suppliers.Any())
+                {
+                    <p class="text-muted mb-0">Aucun fournisseur enregistre.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var supplier in Model.Suppliers)
+                        {
+                            <div class="list-group-item px-0">
+                                <strong>@supplier.Name</strong><br />
+                                <span class="text-muted small">@supplier.ContactName</span><br />
+                                <span class="text-muted small">@supplier.Phone</span><br />
+                                <span class="text-muted small">@supplier.Email</span><br />
+                                <span class="small">Commandes: @supplier.OrderCount</span>
+                                @if (supplier.LastOrderDate.HasValue)
+                                {
+                                    <span class="text-muted small"> - Derniere: @supplier.LastOrderDate.Value.ToString("dd/MM/yyyy")</span>
+                                }
+                                @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+                                {
+                                    <div class="mt-2 d-flex gap-2">
+                                        <a class="btn btn-sm btn-outline-secondary" asp-action="EditSupplier" asp-route-id="@supplier.Id">Modifier</a>
+                                        <a class="btn btn-sm btn-outline-danger" asp-action="DeleteSupplier" asp-route-id="@supplier.Id">Supprimer</a>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">Commandes</h2>
+                @if (Model.TopSuppliers.Any())
+                {
+                    <div class="mini-grid mb-4">
+                        @foreach (var supplier in Model.TopSuppliers)
+                        {
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">@supplier.SupplierName</span>
+                                <strong class="mini-stat-value">@supplier.TotalAmount.ToString("N2")</strong>
+                                <span class="mini-stat-meta">@supplier.OrderCount commande(s)</span>
+                            </div>
+                        }
+                    </div>
+                }
+                @if (!Model.Orders.Any())
+                {
+                    <p class="text-muted mb-0">Aucune commande fournisseur pour le moment.</p>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Fournisseur</th>
+                                    <th>Date</th>
+                                    <th>Livraison</th>
+                                    <th>Statut</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var order in Model.Orders)
+                            {
+                                <tr>
+                                    <td>@order.OrderNumber</td>
+                                    <td>@order.SupplierName</td>
+                                    <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@(order.ExpectedDeliveryDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                    <td>
+                                        @if (order.Status == PurchaseOrderStatus.Commandee)
+                                        {
+                                            <span class="badge text-bg-primary">Commandee</span>
+                                        }
+                                        else if (order.Status == PurchaseOrderStatus.Recue)
+                                        {
+                                            <span class="badge text-bg-success">Recue</span>
+                                        }
+                                        else if (order.Status == PurchaseOrderStatus.Annulee)
+                                        {
+                                            <span class="badge text-bg-danger">Annulee</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge text-bg-secondary">Brouillon</span>
+                                        }
+                                    </td>
+                                    <td>@order.TotalAmount.ToString("N2")</td>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@order.Id">Voir</a>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

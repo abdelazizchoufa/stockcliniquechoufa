@@ -1,0 +1,96 @@
+@model PurchaseOrderDetailsViewModel
+@{
+    ViewData["Title"] = "Detail commande";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Commande</p>
+        <h1 class="h2 mb-0">@Model.Order.OrderNumber</h1>
+        <p class="text-muted mb-0">@Model.Order.Supplier?.Name</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="Print" asp-route-id="@Model.Order.Id">Imprimer / PDF</a>
+        <a class="btn btn-outline-secondary" asp-action="Index">Retour</a>
+    </div>
+</div>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-3">
+        <div class="metric-card">
+            <span class="metric-label">Date commande</span>
+            <strong class="metric-value fs-3">@Model.Order.OrderDate.ToString("dd/MM/yyyy")</strong>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="metric-card">
+            <span class="metric-label">Livraison prevue</span>
+            <strong class="metric-value fs-3">@(Model.Order.ExpectedDeliveryDate?.ToString("dd/MM/yyyy") ?? "-")</strong>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="metric-card">
+            <span class="metric-label">Statut</span>
+            <strong class="metric-value fs-3">@Model.Order.Status</strong>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="metric-card">
+            <span class="metric-label">Total</span>
+            <strong class="metric-value fs-3">@Model.TotalAmount.ToString("N2")</strong>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="metric-card">
+            <span class="metric-label">Quantite totale</span>
+            <strong class="metric-value fs-3">@Model.TotalQuantity</strong>
+        </div>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4 mb-0">Lignes de commande</h2>
+            @if (Model.Order.Status == PurchaseOrderStatus.Commandee)
+            {
+                <form asp-action="Receive" method="post">
+                    <input type="hidden" name="id" value="@Model.Order.Id" />
+                    <button type="submit" class="btn btn-success">Receptionner la commande</button>
+                </form>
+            }
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Quantite</th>
+                        <th>Prix unitaire</th>
+                        <th>Sous-total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var line in Model.Order.Lines)
+                {
+                    <tr>
+                        <td>@line.StockItem?.Name</td>
+                        <td>@line.QuantityOrdered</td>
+                        <td>@line.UnitPrice.ToString("N2")</td>
+                        <td>@((line.QuantityOrdered * line.UnitPrice).ToString("N2"))</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Order.Notes))
+        {
+            <div class="mt-3">
+                <strong>Observation :</strong>
+                <p class="mb-0">@Model.Order.Notes</p>
+            </div>
+        }
+    </div>
+</section>

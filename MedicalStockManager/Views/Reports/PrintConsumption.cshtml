@@ -1,0 +1,71 @@
+@model ConsumptionReportViewModel
+@{
+    Layout = "_PrintLayout";
+    ViewData["Title"] = "Impression rapport consommation";
+}
+
+<div class="print-header mb-4">
+    <h1 class="h2 mb-1">Rapport de consommation</h1>
+    <p class="mb-0">Periode du @Model.Filter.StartDate.ToString("dd/MM/yyyy") au @Model.Filter.EndDate.ToString("dd/MM/yyyy")</p>
+</div>
+
+<section class="row g-3 mb-4">
+    <div class="col-6">
+        <div class="metric-card">
+            <span class="metric-label">Quantite totale sortie</span>
+            <strong class="metric-value">@Model.TotalQuantityOut</strong>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="metric-card">
+            <span class="metric-label">Nombre de mouvements</span>
+            <strong class="metric-value">@Model.TotalMovements</strong>
+        </div>
+    </div>
+</section>
+
+<h2 class="h4">Synthese par service</h2>
+<table class="table table-sm mb-4">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Sorties</th>
+            <th>Articles</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var summary in Model.DepartmentSummaries)
+    {
+        <tr>
+            <td>@summary.Department</td>
+            <td>@summary.TotalQuantityOut</td>
+            <td>@summary.DistinctItems</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h2 class="h4">Detail par article</h2>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Article</th>
+            <th>Reference</th>
+            <th>Service</th>
+            <th>Quantite</th>
+            <th>Mouvements</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.TopItems)
+    {
+        <tr>
+            <td>@item.ItemName</td>
+            <td>@item.Reference</td>
+            <td>@item.Department</td>
+            <td>@item.TotalQuantityOut</td>
+            <td>@item.MovementCount</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,149 @@
+@model StockItemDetailsViewModel
+@{
+    ViewData["Title"] = "Detail article";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Suivi article</p>
+        <h1 class="h2 mb-0">@Model.Item.Name</h1>
+        <p class="text-muted mb-0">@Model.Item.Reference - @Model.Item.Department</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="Print" asp-route-id="@Model.Item.Id">Imprimer / PDF</a>
+        @if (Model.CanEdit)
+        {
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Item.Id">Modifier</a>
+            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Item.Id">Supprimer</a>
+        }
+        <a class="btn btn-outline-secondary" asp-action="Index">Retour au stock</a>
+    </div>
+</div>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-4">
+        <div class="metric-card">
+            <span class="metric-label">Stock actuel</span>
+            <strong class="metric-value">@Model.Item.CurrentQuantity</strong>
+            <span>@Model.Item.Unit</span>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="metric-card @(Model.Item.IsLowStock ? "warning" : string.Empty)">
+            <span class="metric-label">Seuil d'alerte</span>
+            <strong class="metric-value">@Model.Item.AlertThreshold</strong>
+            <span>@Model.Item.Unit</span>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="metric-card">
+            <span class="metric-label">Expiration</span>
+            <strong class="metric-value fs-3">@(Model.Item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</strong>
+            <span>@(Model.Item.IsLowStock ? "Reapprovisionnement conseille" : "Niveau correct")</span>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Nouveau mouvement</h2>
+
+                @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+                {
+                    <form asp-action="AddMovement" method="post">
+                        <input asp-for="NewMovement.StockItemId" type="hidden" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewMovement.MovementType" class="form-label"></label>
+                            <select asp-for="NewMovement.MovementType" asp-items="Html.GetEnumSelectList<MovementType>()" class="form-select"></select>
+                            <span asp-validation-for="NewMovement.MovementType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewMovement.Quantity" class="form-label"></label>
+                            <input asp-for="NewMovement.Quantity" class="form-control" />
+                            <span asp-validation-for="NewMovement.Quantity" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewMovement.Date" class="form-label"></label>
+                            <input asp-for="NewMovement.Date" class="form-control" />
+                            <span asp-validation-for="NewMovement.Date" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewMovement.Notes" class="form-label"></label>
+                            <textarea asp-for="NewMovement.Notes" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="NewMovement.Notes" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enregistrer le mouvement</button>
+                    </form>
+                }
+                else
+                {
+                    <p class="text-muted mb-0">Ton role permet la consultation de l'historique, mais pas l'ajout de mouvements.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Historique des mouvements</h2>
+
+                @if (!Model.Movements.Any())
+                {
+                    <p class="text-muted mb-0">Aucun mouvement enregistre pour cet article.</p>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Quantite</th>
+                                    <th>Observation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var movement in Model.Movements)
+                            {
+                                <tr>
+                                    <td>@movement.Date.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @if (movement.MovementType == MovementType.Entree)
+                                        {
+                                            <span class="badge text-bg-success">Entree</span>
+                                        }
+                                        else if (movement.MovementType == MovementType.Sortie)
+                                        {
+                                            <span class="badge text-bg-danger">Sortie</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge text-bg-secondary">Ajustement</span>
+                                        }
+                                    </td>
+                                    <td>@movement.Quantity</td>
+                                    <td>@(string.IsNullOrWhiteSpace(movement.Notes) ? "-" : movement.Notes)</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

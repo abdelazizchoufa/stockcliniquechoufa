@@ -1,0 +1,129 @@
+@model ConsumptionReportViewModel
+@{
+    ViewData["Title"] = "Rapport de consommation";
+    var startDateRoute = Model.Filter.StartDate.ToString("yyyy-MM-dd");
+    var endDateRoute = Model.Filter.EndDate.ToString("yyyy-MM-dd");
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Rapports</p>
+        <h1 class="h2 mb-0">Consommation par service</h1>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="PrintConsumption" asp-route-startDate="@startDateRoute" asp-route-endDate="@endDateRoute">Imprimer / PDF</a>
+        <a class="btn btn-outline-primary" asp-action="ExportConsumption" asp-route-startDate="@startDateRoute" asp-route-endDate="@endDateRoute">Exporter CSV</a>
+    </div>
+</div>
+
+<section class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label asp-for="Filter.StartDate" class="form-label"></label>
+                <input asp-for="Filter.StartDate" name="startDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Filter.EndDate" class="form-label"></label>
+                <input asp-for="Filter.EndDate" name="endDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Actualiser</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="metric-card">
+            <span class="metric-label">Quantite totale sortie</span>
+            <strong class="metric-value">@Model.TotalQuantityOut</strong>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="metric-card">
+            <span class="metric-label">Nombre de mouvements</span>
+            <strong class="metric-value">@Model.TotalMovements</strong>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Synthese par service</h2>
+                @if (!Model.DepartmentSummaries.Any())
+                {
+                    <p class="text-muted mb-0">Aucune sortie de stock sur cette periode.</p>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Sorties</th>
+                                    <th>Articles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var summary in Model.DepartmentSummaries)
+                            {
+                                <tr>
+                                    <td>@summary.Department</td>
+                                    <td>@summary.TotalQuantityOut</td>
+                                    <td>@summary.DistinctItems</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Articles les plus consommes</h2>
+                @if (!Model.TopItems.Any())
+                {
+                    <p class="text-muted mb-0">Aucune consommation enregistree sur cette periode.</p>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Article</th>
+                                    <th>Service</th>
+                                    <th>Quantite</th>
+                                    <th>Mouvements</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model.TopItems)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>@item.ItemName</strong><br />
+                                        <span class="text-muted small">@item.Reference</span>
+                                    </td>
+                                    <td>@item.Department</td>
+                                    <td>@item.TotalQuantityOut</td>
+                                    <td>@item.MovementCount</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,67 @@
+@model PurchaseOrderDetailsViewModel
+@{
+    Layout = "_PrintLayout";
+    ViewData["Title"] = "Impression commande";
+}
+
+<div class="print-header mb-4">
+    <h1 class="h2 mb-1">Commande fournisseur @Model.Order.OrderNumber</h1>
+    <p class="mb-0">@Model.Order.Supplier?.Name</p>
+</div>
+
+<section class="row g-3 mb-4">
+    <div class="col-3">
+        <div class="metric-card">
+            <span class="metric-label">Date commande</span>
+            <strong class="metric-value fs-3">@Model.Order.OrderDate.ToString("dd/MM/yyyy")</strong>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="metric-card">
+            <span class="metric-label">Livraison prevue</span>
+            <strong class="metric-value fs-3">@(Model.Order.ExpectedDeliveryDate?.ToString("dd/MM/yyyy") ?? "-")</strong>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="metric-card">
+            <span class="metric-label">Quantite totale</span>
+            <strong class="metric-value fs-3">@Model.TotalQuantity</strong>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="metric-card">
+            <span class="metric-label">Montant total</span>
+            <strong class="metric-value fs-3">@Model.TotalAmount.ToString("N2")</strong>
+        </div>
+    </div>
+</section>
+
+<table class="table table-sm mb-4">
+    <thead>
+        <tr>
+            <th>Article</th>
+            <th>Quantite</th>
+            <th>Prix unitaire</th>
+            <th>Sous-total</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var line in Model.Order.Lines)
+    {
+        <tr>
+            <td>@line.StockItem?.Name</td>
+            <td>@line.QuantityOrdered</td>
+            <td>@line.UnitPrice.ToString("N2")</td>
+            <td>@((line.QuantityOrdered * line.UnitPrice).ToString("N2"))</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (!string.IsNullOrWhiteSpace(Model.Order.Notes))
+{
+    <div>
+        <strong>Observation :</strong>
+        <p class="mb-0">@Model.Order.Notes</p>
+    </div>
+}

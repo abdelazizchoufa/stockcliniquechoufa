@@ -1,0 +1,106 @@
+@model StockIndexViewModel
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Inventaire</p>
+        <h1 class="h2 mb-0">Articles en stock</h1>
+    </div>
+    @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+    {
+        <a class="btn btn-primary" asp-action="Create">Nouvel article</a>
+    }
+</div>
+
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-lg-4">
+                <label asp-for="Filter.SearchTerm" class="form-label"></label>
+                <input asp-for="Filter.SearchTerm" name="SearchTerm" class="form-control" />
+            </div>
+            <div class="col-lg-3">
+                <label asp-for="Filter.Department" class="form-label"></label>
+                <select asp-for="Filter.Department" name="Department" asp-items="Html.GetEnumSelectList<Department>()" class="form-select">
+                    <option value="">Tous</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-check mt-4">
+                    <input asp-for="Filter.LowStockOnly" name="LowStockOnly" class="form-check-input" />
+                    <label asp-for="Filter.LowStockOnly" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-check mt-4">
+                    <input asp-for="Filter.ExpiringSoonOnly" name="ExpiringSoonOnly" class="form-check-input" />
+                    <label asp-for="Filter.ExpiringSoonOnly" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Article</th>
+                        <th>Service</th>
+                        <th>Quantite</th>
+                        <th>Seuil</th>
+                        <th>Expiration</th>
+                        <th>Statut</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr class="@(item.IsLowStock ? "table-warning" : string.Empty)">
+                        <td>@item.Reference</td>
+                        <td>@item.Name</td>
+                        <td>@item.Department</td>
+                        <td>@item.CurrentQuantity @item.Unit</td>
+                        <td>@item.AlertThreshold @item.Unit</td>
+                        <td>@(item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                        <td>
+                            @if (item.IsLowStock)
+                            {
+                                <span class="badge text-bg-warning">Stock bas</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-success">Disponible</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Voir</a>
+                        </td>
+                        <td class="text-end">
+                            @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+                            {
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        @if (!Model.Items.Any())
+        {
+            <p class="text-muted mb-0">Aucun article ne correspond aux filtres selectionnes.</p>
+        }
+    </div>
+</div>
