@@ -3,40 +3,64 @@
     ViewData["Title"] = "Connexion";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-        <div class="card border-0 shadow-sm mt-4">
-            <div class="card-body p-4 p-lg-5">
-                <p class="eyebrow mb-2">Securite</p>
-                <h1 class="h3 mb-3">Connexion a l'application</h1>
-                <p class="text-muted">Utilise un compte autorise pour acceder a la gestion de stock.</p>
+<section class="login-shell">
+    <div class="login-showcase">
+        <p class="eyebrow mb-2">Centre diagnostique</p>
+        <h1 class="display-6 fw-bold mb-3">Une interface plus claire pour piloter le stock medical</h1>
+        <p class="login-copy mb-4">
+            Suivi des consommables, alertes critiques, commandes fournisseurs et rapports de consommation depuis un meme espace.
+        </p>
 
-                <form asp-action="Login" method="post">
-                    <input asp-for="ReturnUrl" type="hidden" />
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-                    <div class="mb-3">
-                        <label asp-for="Username" class="form-label"></label>
-                        <input asp-for="Username" class="form-control" autocomplete="username" />
-                        <span asp-validation-for="Username" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4">
-                        <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" class="form-control" autocomplete="current-password" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
-                </form>
-
-                <div class="small text-muted mt-4">
-                    Comptes de demonstration initialises via les donnees de depart.
-                </div>
+        <div class="login-highlights">
+            <div class="login-highlight">
+                <span class="login-highlight-label">Services suivis</span>
+                <strong>Imagerie, laboratoire, consultations, hopital du jour</strong>
+            </div>
+            <div class="login-highlight">
+                <span class="login-highlight-label">Acces securise</span>
+                <strong>Roles distincts pour administration, stock et lecture</strong>
+            </div>
+            <div class="login-highlight">
+                <span class="login-highlight-label">Priorites du jour</span>
+                <strong>Visualisation rapide des alertes et mouvements recents</strong>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="card border-0 shadow-sm dashboard-card login-card">
+        <div class="card-body p-4 p-lg-5">
+            <p class="section-kicker mb-2">Securite</p>
+            <h2 class="h3 mb-3">Connexion a l'application</h2>
+            <p class="text-muted">Utilise un compte autorise pour acceder a la gestion de stock.</p>
+
+            <form asp-action="Login" method="post">
+                <input asp-for="ReturnUrl" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" autocomplete="username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 btn-lg">Se connecter</button>
+            </form>
+
+            <div class="demo-accounts mt-4">
+                <span class="demo-accounts-label">Comptes de demonstration</span>
+                <div class="demo-account-line">admin / Admin123!</div>
+                <div class="demo-account-line">stock / Stock123!</div>
+                <div class="demo-account-line">lecture / Lecture123!</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

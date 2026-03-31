@@ -4,12 +4,33 @@
 }
 
 <section class="hero-panel mb-4">
-    <div>
-        <p class="eyebrow">Gestion de stock</p>
-        <h1 class="display-6 fw-bold">Suivi des consommables et dispositifs medicaux</h1>
-        <p class="lead mb-0">
-            Vue d'ensemble pour l'imagerie, le laboratoire d'analyses, les consultations et l'hopital du jour.
-        </p>
+    <div class="hero-grid">
+        <div>
+            <p class="eyebrow">Gestion de stock</p>
+            <h1 class="display-6 fw-bold">Suivi des consommables et dispositifs medicaux</h1>
+            <p class="lead mb-4">
+                Vue d'ensemble pour l'imagerie, le laboratoire d'analyses, les consultations et l'hopital du jour.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-light btn-lg rounded-pill px-4" asp-controller="Stock" asp-action="Index">Explorer le stock</a>
+                <a class="btn btn-ghost-light btn-lg rounded-pill px-4" asp-controller="Reports" asp-action="Consumption">Voir les rapports</a>
+            </div>
+        </div>
+
+        <div class="hero-side">
+            <div class="hero-chip">
+                <span class="hero-chip-label">Services actifs</span>
+                <strong>4 unites</strong>
+            </div>
+            <div class="hero-chip">
+                <span class="hero-chip-label">Risque stock</span>
+                <strong>@Model.LowStockItems article(s)</strong>
+            </div>
+            <div class="hero-chip">
+                <span class="hero-chip-label">Expiration proche</span>
+                <strong>@Model.ExpiringSoonItems article(s)</strong>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -36,9 +57,14 @@
 
 <section class="row g-4 mb-4">
     <div class="col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Synthese par service</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Capacite</p>
+                        <h2 class="h4 mb-0">Synthese par service</h2>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table align-middle mb-0">
                         <thead>
@@ -67,9 +93,14 @@
     </div>
 
     <div class="col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Activite recente</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Flux</p>
+                        <h2 class="h4 mb-0">Activite recente</h2>
+                    </div>
+                </div>
                 @if (!Model.RecentMovements.Any())
                 {
                     <p class="text-muted mb-0">Aucun mouvement recent.</p>
@@ -108,9 +139,14 @@
 
 <section class="row g-4 mb-4">
     <div class="col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Alertes stock bas</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Surveillance</p>
+                        <h2 class="h4 mb-0">Alertes stock bas</h2>
+                    </div>
+                </div>
                 @if (!Model.LowStockAlerts.Any())
                 {
                     <p class="text-muted mb-0">Aucune alerte de stock bas.</p>
@@ -133,9 +169,14 @@
     </div>
 
     <div class="col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Alertes expiration</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Peremption</p>
+                        <h2 class="h4 mb-0">Alertes expiration</h2>
+                    </div>
+                </div>
                 @if (!Model.ExpirationAlerts.Any())
                 {
                     <p class="text-muted mb-0">Aucune expiration proche.</p>
@@ -158,10 +199,13 @@
     </div>
 </section>
 
-<section class="card border-0 shadow-sm">
+<section class="card border-0 shadow-sm dashboard-card">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="h4 mb-0">Priorites du jour</h2>
+            <div>
+                <p class="section-kicker mb-1">Pilotage</p>
+                <h2 class="h4 mb-0">Priorites du jour</h2>
+            </div>
             @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
             {
                 <a class="btn btn-primary" asp-controller="Stock" asp-action="Create">Ajouter un article</a>

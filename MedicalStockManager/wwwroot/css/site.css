@@ -2,6 +2,7 @@
     --bg: #eef5f4;
     --surface: #ffffff;
     --surface-soft: rgba(255, 255, 255, 0.8);
+    --surface-strong: rgba(255, 255, 255, 0.92);
     --ink: #13313a;
     --muted: #5d7277;
     --brand: #0f766e;
@@ -24,6 +25,25 @@ body {
         linear-gradient(180deg, #f9fcfc 0%, var(--bg) 100%);
     color: var(--ink);
     min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.app-shell {
+    position: relative;
+}
+
+.app-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(192, 132, 87, 0.12), transparent 68%);
+    pointer-events: none;
+    filter: blur(12px);
 }
 
 .main-header {
@@ -62,6 +82,121 @@ body {
     box-shadow: 0 20px 50px rgba(19, 78, 74, 0.22);
 }
 
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(240px, 0.9fr);
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.hero-side {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.hero-chip {
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(10px);
+}
+
+.hero-chip strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.hero-chip-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+}
+
+.login-shell {
+    min-height: calc(100vh - 180px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(340px, 460px);
+    gap: 2rem;
+    align-items: center;
+}
+
+.login-showcase {
+    padding: 1rem 0.5rem 1rem 0;
+}
+
+.login-copy {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 56ch;
+}
+
+.login-highlights {
+    display: grid;
+    gap: 0.95rem;
+}
+
+.login-highlight {
+    padding: 1rem 1.1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(19, 49, 58, 0.06);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.05);
+}
+
+.login-highlight strong,
+.login-highlight-label {
+    display: block;
+}
+
+.login-highlight-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+}
+
+.login-card {
+    max-width: 100%;
+}
+
+.demo-accounts {
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.07), rgba(192, 132, 87, 0.08));
+}
+
+.demo-accounts-label {
+    display: block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    margin-bottom: 0.45rem;
+}
+
+.demo-account-line + .demo-account-line {
+    margin-top: 0.3rem;
+}
+
+.btn-ghost-light {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-ghost-light:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.34);
+}
+
 .eyebrow {
     color: #bfe6de;
     font-size: 0.8rem;
@@ -74,10 +209,51 @@ body {
     border-radius: 24px;
     background: var(--surface-soft);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(19, 49, 58, 0.05);
+}
+
+.dashboard-card {
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(15, 118, 110, 0.9), rgba(192, 132, 87, 0.7));
+}
+
+.page-header-block h1 {
+    font-family: "Fraunces", serif;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.section-kicker {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.pill-note {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    background: rgba(15, 118, 110, 0.08);
+    color: var(--brand-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
 }
 
 .metric-card {
-    background: var(--surface);
+    background: linear-gradient(180deg, var(--surface) 0%, #fbfdfd 100%);
     border-radius: 22px;
     padding: 1.5rem;
     min-height: 150px;
@@ -94,6 +270,22 @@ body {
 
 .metric-card.danger {
     border-top: 6px solid var(--danger);
+}
+
+.finance-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.finance-card::after {
+    content: "";
+    position: absolute;
+    right: -14px;
+    top: -18px;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15, 118, 110, 0.12), transparent 70%);
 }
 
 .metric-label {
@@ -124,9 +316,18 @@ body {
     background-color: rgba(15, 118, 110, 0.04);
 }
 
+.table thead th {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+}
+
 .list-group-item {
     background: transparent;
     border-color: rgba(19, 49, 58, 0.08);
+    padding-block: 0.95rem;
 }
 
 .btn-primary {
@@ -161,6 +362,10 @@ body {
     border-color: rgba(220, 38, 38, 0.22);
 }
 
+.btn-success {
+    box-shadow: 0 10px 24px rgba(22, 163, 74, 0.18);
+}
+
 .form-control,
 .form-select {
     border-radius: 14px;
@@ -188,6 +393,17 @@ body {
     border: 1px solid rgba(19, 49, 58, 0.06);
 }
 
+.department-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    background: rgba(19, 78, 74, 0.08);
+    color: var(--brand-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
 .mini-stat-label,
 .mini-stat-meta {
     display: block;
@@ -199,6 +415,13 @@ body {
     font-family: "Fraunces", serif;
     font-size: 1.35rem;
     margin-block: 0.2rem;
+}
+
+.note-panel {
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(180deg, rgba(15, 118, 110, 0.05), rgba(255, 255, 255, 0.75));
+    border: 1px solid rgba(19, 49, 58, 0.08);
 }
 
 .print-page {
@@ -226,7 +449,35 @@ body {
         padding: 1.5rem;
     }
 
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
     .navbar .nav-link {
         padding-inline: 0.5rem;
+    }
+
+    .section-heading {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .login-shell {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .login-showcase {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .metric-card {
+        min-height: 130px;
+    }
+
+    .metric-value {
+        font-size: 1.85rem;
     }
 }

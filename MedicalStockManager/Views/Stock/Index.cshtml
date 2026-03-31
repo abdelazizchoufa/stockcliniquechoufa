@@ -4,9 +4,10 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
+    <div class="page-header-block">
         <p class="eyebrow mb-1">Inventaire</p>
-        <h1 class="h2 mb-0">Articles en stock</h1>
+        <h1 class="h2 mb-1">Articles en stock</h1>
+        <p class="text-muted mb-0">Recherche, filtrage et action rapide sur l'ensemble des consommables.</p>
     </div>
     @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
     {
@@ -14,8 +15,14 @@
     }
 </div>
 
-<div class="card border-0 shadow-sm mb-4">
+<div class="card border-0 shadow-sm mb-4 dashboard-card">
     <div class="card-body">
+        <div class="section-heading mb-3">
+            <div>
+                <p class="section-kicker">Recherche</p>
+                <h2 class="h5 mb-0">Filtrer l'inventaire</h2>
+            </div>
+        </div>
         <form method="get" class="row g-3 align-items-end">
             <div class="col-lg-4">
                 <label asp-for="Filter.SearchTerm" class="form-label"></label>
@@ -46,8 +53,15 @@
     </div>
 </div>
 
-<div class="card border-0 shadow-sm">
+<div class="card border-0 shadow-sm dashboard-card">
     <div class="card-body">
+        <div class="section-heading mb-3">
+            <div>
+                <p class="section-kicker">Resultats</p>
+                <h2 class="h5 mb-0">Liste des articles</h2>
+            </div>
+            <span class="pill-note">@Model.Items.Count article(s)</span>
+        </div>
         <div class="table-responsive">
             <table class="table align-middle">
                 <thead>
@@ -68,8 +82,11 @@
                 {
                     <tr class="@(item.IsLowStock ? "table-warning" : string.Empty)">
                         <td>@item.Reference</td>
-                        <td>@item.Name</td>
-                        <td>@item.Department</td>
+                        <td>
+                            <strong>@item.Name</strong><br />
+                            <span class="text-muted small">@item.Unit</span>
+                        </td>
+                        <td><span class="department-badge">@item.Department</span></td>
                         <td>@item.CurrentQuantity @item.Unit</td>
                         <td>@item.AlertThreshold @item.Unit</td>
                         <td>@(item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</td>

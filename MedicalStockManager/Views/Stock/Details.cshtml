@@ -4,10 +4,21 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
+    <div class="page-header-block">
         <p class="eyebrow mb-1">Suivi article</p>
-        <h1 class="h2 mb-0">@Model.Item.Name</h1>
-        <p class="text-muted mb-0">@Model.Item.Reference - @Model.Item.Department</p>
+        <h1 class="h2 mb-1">@Model.Item.Name</h1>
+        <p class="text-muted mb-0">@Model.Item.Reference</p>
+        <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="department-badge">@Model.Item.Department</span>
+            @if (Model.Item.IsLowStock)
+            {
+                <span class="badge text-bg-warning">Stock bas</span>
+            }
+            @if (Model.Item.ExpirationDate is not null && Model.Item.ExpirationDate <= DateTime.Today.AddMonths(3))
+            {
+                <span class="badge text-bg-danger">Expiration proche</span>
+            }
+        </div>
     </div>
     <div class="d-flex gap-2">
         <a class="btn btn-outline-secondary" asp-action="Print" asp-route-id="@Model.Item.Id">Imprimer / PDF</a>
@@ -46,9 +57,14 @@
 
 <section class="row g-4">
     <div class="col-lg-5">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Nouveau mouvement</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Operation</p>
+                        <h2 class="h4 mb-0">Nouveau mouvement</h2>
+                    </div>
+                </div>
 
                 @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
                 {
@@ -92,9 +108,15 @@
     </div>
 
     <div class="col-lg-7">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow-sm h-100 dashboard-card">
             <div class="card-body p-4">
-                <h2 class="h4 mb-3">Historique des mouvements</h2>
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Traçabilite</p>
+                        <h2 class="h4 mb-0">Historique des mouvements</h2>
+                    </div>
+                    <span class="pill-note">@Model.Movements.Count mouvement(s)</span>
+                </div>
 
                 @if (!Model.Movements.Any())
                 {
