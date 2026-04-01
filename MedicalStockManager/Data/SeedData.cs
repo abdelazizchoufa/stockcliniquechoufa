@@ -42,6 +42,17 @@ public static class SeedData
             context.SaveChanges();
         }
 
+        if (!context.Services.Any())
+        {
+            context.Services.AddRange(
+                new Service { Name = "Imagerie" },
+                new Service { Name = "Laboratoire Analyses" },
+                new Service { Name = "Consultations" },
+                new Service { Name = "Hopital du Jour" }
+            );
+            context.SaveChanges();
+        }
+
         if (!context.Suppliers.Any())
         {
             context.Suppliers.AddRange(
@@ -62,18 +73,19 @@ public static class SeedData
             context.SaveChanges();
         }
 
-        if (context.StockItems.Any())
-        {
-            return;
-        }
+        if (context.StockItems.Any()) return;
 
-        var items = new[]
-        {
+        var imagerie = context.Services.First(s => s.Name == "Imagerie");
+        var labo = context.Services.First(s => s.Name == "Laboratoire Analyses");
+        var consult = context.Services.First(s => s.Name == "Consultations");
+        var hdj = context.Services.First(s => s.Name == "Hopital du Jour");
+
+        context.StockItems.AddRange(
             new StockItem
             {
                 Name = "Films radiologiques",
                 Reference = "IMG-001",
-                Department = Department.Imagerie,
+                ServiceId = imagerie.Id,
                 CurrentQuantity = 14,
                 AlertThreshold = 10,
                 Unit = "boites",
@@ -83,7 +95,7 @@ public static class SeedData
             {
                 Name = "Tubes EDTA",
                 Reference = "LAB-014",
-                Department = Department.LaboratoireAnalyses,
+                ServiceId = labo.Id,
                 CurrentQuantity = 9,
                 AlertThreshold = 15,
                 Unit = "paquets",
@@ -93,7 +105,7 @@ public static class SeedData
             {
                 Name = "Gants d'examen",
                 Reference = "CON-003",
-                Department = Department.Consultations,
+                ServiceId = consult.Id,
                 CurrentQuantity = 22,
                 AlertThreshold = 20,
                 Unit = "cartons",
@@ -103,15 +115,13 @@ public static class SeedData
             {
                 Name = "Perfuseurs",
                 Reference = "HDJ-022",
-                Department = Department.HopitalDuJour,
+                ServiceId = hdj.Id,
                 CurrentQuantity = 5,
                 AlertThreshold = 12,
                 Unit = "boites",
                 ExpirationDate = DateTime.Today.AddMonths(2)
             }
-        };
-
-        context.StockItems.AddRange(items);
+        );
         context.SaveChanges();
     }
 }

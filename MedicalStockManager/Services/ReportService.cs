@@ -19,6 +19,7 @@ public class ReportService(ApplicationDbContext dbContext) : IReportService
         var movements = dbContext.StockMovements
             .AsNoTracking()
             .Include(movement => movement.StockItem)
+            .ThenInclude(stockItem => stockItem!.Service)
             .Where(movement =>
                 movement.MovementType == MovementType.Sortie &&
                 movement.Date.Date >= effectiveStartDate &&
@@ -30,10 +31,10 @@ public class ReportService(ApplicationDbContext dbContext) : IReportService
             .ToList();
 
         var departmentSummaries = validMovements
-            .GroupBy(movement => movement.StockItem!.Department)
+            .GroupBy(movement => movement.StockItem!.Service?.Name ?? "Inconnu")
             .Select(group => new DepartmentConsumptionSummaryViewModel
             {
-                Department = group.Key,
+                ServiceName = group.Key,
                 TotalQuantityOut = group.Sum(movement => movement.Quantity),
                 DistinctItems = group.Select(movement => movement.StockItemId).Distinct().Count()
             })
@@ -46,13 +47,13 @@ public class ReportService(ApplicationDbContext dbContext) : IReportService
                 movement.StockItemId,
                 movement.StockItem!.Name,
                 movement.StockItem.Reference,
-                movement.StockItem.Department
+                ServiceName = movement.StockItem.Service != null ? movement.StockItem.Service.Name : "Inconnu"
             })
             .Select(group => new ItemConsumptionSummaryViewModel
             {
                 ItemName = group.Key.Name,
                 Reference = group.Key.Reference,
-                Department = group.Key.Department,
+                ServiceName = group.Key.ServiceName,
                 TotalQuantityOut = group.Sum(movement => movement.Quantity),
                 MovementCount = group.Count()
             })
@@ -71,6 +72,81 @@ public class ReportService(ApplicationDbContext dbContext) : IReportService
             TotalMovements = validMovements.Count,
             DepartmentSummaries = departmentSummaries,
             TopItems = topItems
+        };
+    }
+
+    public AnalyticsViewModel GetAnalytics()
+    {
+        var today = DateTime.Today;
+        var allMovements = dbContext.StockMovements
+            .AsNoTracking()
+            .Include(m => m.StockItem)
+            .ThenInclude(stockItem => stockItem!.Service)
+            .ToList();
+
+        var last6Months = Enumerable.Range(0, 6)
+            .Select(i => today.AddMonths(-i))
+            .OrderBy(d => d)
+            .Select(d => new MonthlyConsumptionViewModel
+            {
+                Month = d.ToString("MMM yyyy"),
+                TotalOut = allMovements
+                    .Where(m => m.MovementType == MovementType.Sortie && m.Date.Year == d.Year && m.Date.Month == d.Month)
+                    .Sum(m => m.Quantity),
+                TotalIn = allMovements
+                    .Where(m => m.MovementType == MovementType.Entree && m.Date.Year == d.Year && m.Date.Month == d.Month)
+                    .Sum(m => m.Quantity)
+            })
+            .ToList();
+
+        var topConsumers = allMovements
+            .Where(m => m.MovementType == MovementType.Sortie && m.StockItem is not null)
+            .GroupBy(m => new
+            {
+                m.StockItemId,
+                m.StockItem!.Name,
+                m.StockItem.Reference,
+                ServiceName = m.StockItem.Service != null ? m.StockItem.Service.Name : "Inconnu"
+            })
+            .Select(g => new TopConsumerViewModel
+            {
+                ItemName = g.Key.Name,
+                Reference = g.Key.Reference,
+                ServiceName = g.Key.ServiceName,
+                TotalConsumed = g.Sum(m => m.Quantity)
+            })
+            .OrderByDescending(x => x.TotalConsumed)
+            .Take(10)
+            .ToList();
+
+        var movedItemIds = allMovements.Select(m => m.StockItemId).Distinct().ToHashSet();
+        var neverMoved = dbContext.StockItems.AsNoTracking()
+            .Include(i => i.Service)
+            .Where(i => !movedItemIds.Contains(i.Id))
+            .Select(i => new NeverMovedItemViewModel
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Reference = i.Reference,
+                ServiceName = i.Service != null ? i.Service.Name : "Inconnu",
+                CurrentQuantity = i.CurrentQuantity,
+                Unit = i.Unit
+            })
+            .ToList();
+
+        var thisMonthOut = allMovements
+            .Where(m => m.MovementType == MovementType.Sortie && m.Date.Year == today.Year && m.Date.Month == today.Month)
+            .Sum(m => m.Quantity);
+
+        var daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+
+        return new AnalyticsViewModel
+        {
+            Last6Months = last6Months,
+            TopConsumers = topConsumers,
+            NeverMovedItems = neverMoved,
+            TotalMovementsThisMonth = allMovements.Count(m => m.Date.Year == today.Year && m.Date.Month == today.Month),
+            AverageDailyConsumption = daysInMonth == 0 ? 0 : Math.Round((decimal)thisMonthOut / daysInMonth, 1)
         };
     }
 }

@@ -29,8 +29,8 @@
                 <input asp-for="Filter.SearchTerm" name="SearchTerm" class="form-control" />
             </div>
             <div class="col-lg-3">
-                <label asp-for="Filter.Department" class="form-label"></label>
-                <select asp-for="Filter.Department" name="Department" asp-items="Html.GetEnumSelectList<Department>()" class="form-select">
+                <label asp-for="Filter.ServiceId" class="form-label"></label>
+                <select asp-for="Filter.ServiceId" name="ServiceId" asp-items="Model.Filter.Services" class="form-select">
                     <option value="">Tous</option>
                 </select>
             </div>
@@ -86,7 +86,7 @@
                             <strong>@item.Name</strong><br />
                             <span class="text-muted small">@item.Unit</span>
                         </td>
-                        <td><span class="department-badge">@item.Department</span></td>
+                        <td><span class="department-badge">@(item.Service?.Name ?? "-")</span></td>
                         <td>@item.CurrentQuantity @item.Unit</td>
                         <td>@item.AlertThreshold @item.Unit</td>
                         <td>@(item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</td>

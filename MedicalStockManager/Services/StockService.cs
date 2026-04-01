@@ -1,5 +1,6 @@
 using MedicalStockManager.Data;
 using MedicalStockManager.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicalStockManager.Services;
@@ -8,7 +9,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
 {
     public StockIndexViewModel GetStockIndex(StockFilterViewModel filter)
     {
-        var query = dbContext.StockItems.AsNoTracking().AsQueryable();
+        var query = dbContext.StockItems.AsNoTracking().Include(i => i.Service).AsQueryable();
         var expiringLimit = DateTime.Today.AddMonths(3);
 
         if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
@@ -19,9 +20,9 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                 item.Reference.ToLower().Contains(search));
         }
 
-        if (filter.Department.HasValue)
+        if (filter.ServiceId.HasValue)
         {
-            query = query.Where(item => item.Department == filter.Department.Value);
+            query = query.Where(item => item.ServiceId == filter.ServiceId.Value);
         }
 
         if (filter.LowStockOnly)
@@ -35,9 +36,11 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
         }
 
         var items = query
-            .OrderBy(item => item.Department)
+            .OrderBy(item => item.Service != null ? item.Service.Name : "")
             .ThenBy(item => item.Name)
             .ToList();
+
+        filter.Services = GetServiceSelectList();
 
         return new StockIndexViewModel
         {
@@ -50,6 +53,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
     {
         return dbContext.StockItems
             .AsNoTracking()
+            .Include(i => i.Service)
             .FirstOrDefault(item => item.Id == id);
     }
 
@@ -57,12 +61,10 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
     {
         var item = dbContext.StockItems
             .AsNoTracking()
+            .Include(i => i.Service)
             .FirstOrDefault(stockItem => stockItem.Id == id);
 
-        if (item is null)
-        {
-            return null;
-        }
+        if (item is null) return null;
 
         var movements = dbContext.StockMovements
             .AsNoTracking()
@@ -85,7 +87,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
 
     public StockItemFormViewModel GetCreateModel()
     {
-        return new StockItemFormViewModel();
+        return new StockItemFormViewModel { Services = GetServiceSelectList() };
     }
 
     public StockItemFormViewModel? GetEditModel(int id)
@@ -98,11 +100,12 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                 Id = item.Id,
                 Name = item.Name,
                 Reference = item.Reference,
-                Department = item.Department,
+                ServiceId = item.ServiceId,
                 CurrentQuantity = item.CurrentQuantity,
                 AlertThreshold = item.AlertThreshold,
                 Unit = item.Unit,
-                ExpirationDate = item.ExpirationDate
+                ExpirationDate = item.ExpirationDate,
+                Services = GetServiceSelectList()
             })
             .FirstOrDefault();
     }
@@ -119,7 +122,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
         {
             Name = item.Name,
             Reference = item.Reference,
-            Department = item.Department,
+            ServiceId = item.ServiceId,
             CurrentQuantity = item.CurrentQuantity,
             AlertThreshold = item.AlertThreshold,
             Unit = item.Unit,
@@ -148,7 +151,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
 
         existingItem.Name = item.Name;
         existingItem.Reference = item.Reference;
-        existingItem.Department = item.Department;
+        existingItem.ServiceId = item.ServiceId;
         existingItem.CurrentQuantity = item.CurrentQuantity;
         existingItem.AlertThreshold = item.AlertThreshold;
         existingItem.Unit = item.Unit;
@@ -163,12 +166,10 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
     {
         var item = dbContext.StockItems
             .AsNoTracking()
+            .Include(i => i.Service)
             .FirstOrDefault(stockItem => stockItem.Id == id);
 
-        if (item is null)
-        {
-            return null;
-        }
+        if (item is null) return null;
 
         var hasMovements = dbContext.StockMovements.Any(movement => movement.StockItemId == id);
         var hasOrderLines = dbContext.PurchaseOrderLines.Any(line => line.StockItemId == id);
@@ -179,7 +180,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             Id = item.Id,
             Name = item.Name,
             Reference = item.Reference,
-            Department = item.Department,
+            ServiceName = item.Service?.Name ?? "",
             CurrentQuantity = item.CurrentQuantity,
             CanDelete = canDelete,
             BlockingReason = canDelete
@@ -249,7 +250,8 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             MovementType = input.MovementType,
             Quantity = input.Quantity,
             Date = input.Date,
-            Notes = input.Notes
+            Notes = input.Notes,
+            BatchNumber = input.BatchNumber
         };
 
         dbContext.StockMovements.Add(movement);
@@ -263,10 +265,12 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
     {
         var items = dbContext.StockItems
             .AsNoTracking()
+            .Include(i => i.Service)
             .ToList();
         var recentMovements = dbContext.StockMovements
             .AsNoTracking()
             .Include(movement => movement.StockItem)
+            .ThenInclude(si => si!.Service)
             .OrderByDescending(movement => movement.Date)
             .ThenByDescending(movement => movement.Id)
             .Take(8)
@@ -295,7 +299,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                     StockItemId = item.Id,
                     ItemName = item.Name,
                     Reference = item.Reference,
-                    Department = item.Department,
+                    ServiceName = item.Service?.Name ?? "",
                     Message = $"Stock actuel {item.CurrentQuantity} {item.Unit} pour un seuil de {item.AlertThreshold}",
                     Severity = "warning"
                 })
@@ -310,21 +314,21 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                     StockItemId = item.Id,
                     ItemName = item.Name,
                     Reference = item.Reference,
-                    Department = item.Department,
+                    ServiceName = item.Service?.Name ?? "",
                     Message = $"Expiration le {item.ExpirationDate:dd/MM/yyyy}",
                     Severity = "danger"
                 })
                 .ToList(),
             DepartmentSummaries = items
-                .GroupBy(item => item.Department)
+                .GroupBy(item => item.Service?.Name ?? "Inconnu")
                 .Select(group => new DepartmentDashboardSummaryViewModel
                 {
-                    Department = group.Key,
+                    ServiceName = group.Key,
                     ItemCount = group.Count(),
                     LowStockCount = group.Count(item => item.IsLowStock),
                     TotalQuantity = group.Sum(item => item.CurrentQuantity)
                 })
-                .OrderBy(summary => summary.Department)
+                .OrderBy(summary => summary.ServiceName)
                 .ToList(),
             RecentMovements = recentMovements
                 .Where(movement => movement.StockItem is not null)
@@ -333,7 +337,7 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                     StockItemId = movement.StockItemId,
                     ItemName = movement.StockItem!.Name,
                     Reference = movement.StockItem.Reference,
-                    Department = movement.StockItem.Department,
+                    ServiceName = movement.StockItem.Service?.Name ?? "",
                     MovementType = movement.MovementType,
                     Quantity = movement.Quantity,
                     Date = movement.Date,
@@ -341,5 +345,153 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
                 })
                 .ToList()
         };
+    }
+
+    public StockItemDetailsViewModel? GetItemDetailsFiltered(int id, MovementFilterViewModel filter)
+    {
+        var item = dbContext.StockItems.AsNoTracking().Include(i => i.Service).FirstOrDefault(i => i.Id == id);
+        if (item is null) return null;
+
+        var query = dbContext.StockMovements.AsNoTracking().Where(m => m.StockItemId == id);
+
+        if (filter.DateFrom.HasValue)
+            query = query.Where(m => m.Date >= filter.DateFrom.Value);
+        if (filter.DateTo.HasValue)
+            query = query.Where(m => m.Date <= filter.DateTo.Value.AddDays(1));
+        if (filter.MovementType.HasValue)
+            query = query.Where(m => m.MovementType == filter.MovementType.Value);
+
+        var movements = query
+            .OrderByDescending(m => m.Date)
+            .ThenByDescending(m => m.Id)
+            .ToList();
+
+        return new StockItemDetailsViewModel
+        {
+            Item = item,
+            Movements = movements,
+            NewMovement = new StockMovementInputModel { StockItemId = id, Date = DateTime.Today },
+            Filter = filter
+        };
+    }
+
+    public ExpirationReportViewModel GetExpirationReport()
+    {
+        var today = DateTime.Today;
+        var items = dbContext.StockItems.AsNoTracking()
+            .Include(i => i.Service)
+            .Where(i => i.ExpirationDate.HasValue)
+            .OrderBy(i => i.ExpirationDate)
+            .ToList();
+
+        return new ExpirationReportViewModel
+        {
+            ExpiredItems = items
+                .Where(i => i.ExpirationDate!.Value < today)
+                .Select(i => ToExpirationItem(i, today))
+                .ToList(),
+            ExpiringIn7Days = items
+                .Where(i => i.ExpirationDate!.Value >= today && i.ExpirationDate.Value <= today.AddDays(7))
+                .Select(i => ToExpirationItem(i, today))
+                .ToList(),
+            ExpiringIn30Days = items
+                .Where(i => i.ExpirationDate!.Value > today.AddDays(7) && i.ExpirationDate.Value <= today.AddDays(30))
+                .Select(i => ToExpirationItem(i, today))
+                .ToList(),
+            ExpiringIn90Days = items
+                .Where(i => i.ExpirationDate!.Value > today.AddDays(30) && i.ExpirationDate.Value <= today.AddDays(90))
+                .Select(i => ToExpirationItem(i, today))
+                .ToList()
+        };
+    }
+
+    public ServiceDirectoryViewModel GetServiceDirectory()
+    {
+        var services = dbContext.Services
+            .AsNoTracking()
+            .Select(s => new ServiceListItemViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                ItemCount = dbContext.StockItems.Count(i => i.ServiceId == s.Id)
+            })
+            .OrderBy(s => s.Name)
+            .ToList();
+
+        return new ServiceDirectoryViewModel
+        {
+            Services = services
+        };
+    }
+
+    public bool AddService(ServiceCreateInputViewModel input, out string? errorMessage)
+    {
+        var normalizedName = input.Name.Trim();
+
+        if (string.IsNullOrWhiteSpace(normalizedName))
+        {
+            errorMessage = "Le nom du service est obligatoire.";
+            return false;
+        }
+
+        var exists = dbContext.Services.Any(s => s.Name.ToLower() == normalizedName.ToLower());
+        if (exists)
+        {
+            errorMessage = "Ce service existe deja.";
+            return false;
+        }
+
+        dbContext.Services.Add(new Service { Name = normalizedName });
+        dbContext.SaveChanges();
+        errorMessage = null;
+        return true;
+    }
+
+    public bool DeleteService(int id, out string? errorMessage)
+    {
+        var service = dbContext.Services.FirstOrDefault(s => s.Id == id);
+        if (service is null)
+        {
+            errorMessage = "Service introuvable.";
+            return false;
+        }
+
+        var hasItems = dbContext.StockItems.Any(i => i.ServiceId == id);
+        if (hasItems)
+        {
+            errorMessage = "Ce service est utilise par des articles et ne peut pas etre supprime.";
+            return false;
+        }
+
+        dbContext.Services.Remove(service);
+        dbContext.SaveChanges();
+        errorMessage = null;
+        return true;
+    }
+
+    private static ExpirationItemViewModel ToExpirationItem(StockItem i, DateTime today)
+    {
+        var days = (i.ExpirationDate!.Value - today).Days;
+        return new ExpirationItemViewModel
+        {
+            Id = i.Id,
+            Name = i.Name,
+            Reference = i.Reference,
+            ServiceName = i.Service?.Name ?? "",
+            CurrentQuantity = i.CurrentQuantity,
+            Unit = i.Unit,
+            ExpirationDate = i.ExpirationDate.Value,
+            DaysRemaining = days,
+            Severity = days < 0 ? "danger" : days <= 7 ? "danger" : days <= 30 ? "warning" : "info"
+        };
+    }
+
+    private IReadOnlyList<SelectListItem> GetServiceSelectList()
+    {
+        return dbContext.Services
+            .AsNoTracking()
+            .OrderBy(s => s.Name)
+            .Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name })
+            .ToList();
     }
 }

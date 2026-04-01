@@ -366,6 +366,71 @@ public class PurchasingService(ApplicationDbContext dbContext) : IPurchasingServ
         return true;
     }
 
+    public SupplierDetailsViewModel? GetSupplierDetails(int id)
+    {
+        var supplier = dbContext.Suppliers
+            .AsNoTracking()
+            .FirstOrDefault(s => s.Id == id);
+
+        if (supplier is null) return null;
+
+        var orders = dbContext.PurchaseOrders
+            .AsNoTracking()
+            .Include(o => o.Lines)
+            .Where(o => o.SupplierId == id)
+            .OrderByDescending(o => o.OrderDate)
+            .ToList();
+
+        var orderViewModels = orders.Select(o => new PurchaseOrderListItemViewModel
+        {
+            Id = o.Id,
+            OrderNumber = o.OrderNumber,
+            SupplierName = supplier.Name,
+            OrderDate = o.OrderDate,
+            ExpectedDeliveryDate = o.ExpectedDeliveryDate,
+            Status = o.Status,
+            LineCount = o.Lines.Count,
+            TotalAmount = o.Lines.Sum(l => l.QuantityOrdered * l.UnitPrice)
+        }).ToList();
+
+        var totalSpend = orderViewModels.Sum(o => o.TotalAmount);
+
+        var deliveryDays = orders
+            .Where(o => o.Status == PurchaseOrderStatus.Recue && o.ExpectedDeliveryDate.HasValue)
+            .Select(o => (int)(o.ExpectedDeliveryDate!.Value - o.OrderDate).TotalDays)
+            .Where(d => d >= 0)
+            .ToList();
+
+        return new SupplierDetailsViewModel
+        {
+            Supplier = supplier,
+            Orders = orderViewModels,
+            TotalSpend = totalSpend,
+            AverageOrderAmount = orders.Count == 0 ? 0 : totalSpend / orders.Count,
+            AverageDeliveryDays = deliveryDays.Count == 0 ? null : (int)deliveryDays.Average(),
+            LastOrder = orderViewModels.FirstOrDefault()
+        };
+    }
+
+    public IReadOnlyList<SupplierSummaryViewModel> GetSupplierList()
+    {
+        return dbContext.Suppliers
+            .AsNoTracking()
+            .Include(s => s.PurchaseOrders)
+            .OrderBy(s => s.Name)
+            .Select(s => new SupplierSummaryViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                ContactName = s.ContactName,
+                Phone = s.Phone,
+                Email = s.Email,
+                OrderCount = s.PurchaseOrders.Count,
+                LastOrderDate = s.PurchaseOrders.OrderByDescending(o => o.OrderDate).Select(o => (DateTime?)o.OrderDate).FirstOrDefault()
+            })
+            .ToList();
+    }
+
     private IReadOnlyList<SelectListItem> GetSupplierSelectList()
     {
         return dbContext.Suppliers

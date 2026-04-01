@@ -1,0 +1,97 @@
+@model IReadOnlyList<MedicalStockManager.Models.SupplierSummaryViewModel>
+@using MedicalStockManager.Models
+@{
+    ViewData["Title"] = "Fournisseurs";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Referentiel</p>
+        <h1 class="h2 mb-0">Fournisseurs</h1>
+    </div>
+    @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+    {
+        <a class="btn btn-primary" asp-action="CreateSupplier">
+            <i class="bi bi-plus-lg me-1"></i> Nouveau fournisseur
+        </a>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5 text-muted">
+        <i class="bi bi-building fs-1 d-block mb-3 opacity-25"></i>
+        <p class="mb-0">Aucun fournisseur enregistre.</p>
+        @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+        {
+            <a class="btn btn-outline-primary mt-3" asp-action="CreateSupplier">Ajouter un fournisseur</a>
+        }
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+        @foreach (var s in Model)
+        {
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center flex-shrink-0"
+                                 style="width:44px;height:44px;font-size:1.1rem;font-weight:700;">
+                                @s.Name.Substring(0, 1).ToUpper()
+                            </div>
+                            <div class="overflow-hidden">
+                                <h6 class="mb-0 fw-semibold text-truncate">@s.Name</h6>
+                                @if (!string.IsNullOrWhiteSpace(s.ContactName))
+                                {
+                                    <small class="text-muted">@s.ContactName</small>
+                                }
+                            </div>
+                        </div>
+
+                        <ul class="list-unstyled mb-3 small text-muted">
+                            @if (!string.IsNullOrWhiteSpace(s.Phone))
+                            {
+                                <li><i class="bi bi-telephone me-2"></i>@s.Phone</li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(s.Email))
+                            {
+                                <li><i class="bi bi-envelope me-2"></i>@s.Email</li>
+                            }
+                        </ul>
+
+                        <div class="d-flex gap-3 mb-3">
+                            <div class="text-center">
+                                <div class="fw-bold">@s.OrderCount</div>
+                                <div class="text-muted" style="font-size:.75rem;">commandes</div>
+                            </div>
+                            @if (s.LastOrderDate.HasValue)
+                            {
+                                <div>
+                                    <div class="fw-bold">@s.LastOrderDate.Value.ToString("dd/MM/yyyy")</div>
+                                    <div class="text-muted" style="font-size:.75rem;">derniere commande</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0 d-flex gap-2">
+                        <a asp-action="SupplierDetails" asp-route-id="@s.Id"
+                           class="btn btn-sm btn-outline-primary flex-grow-1">
+                            <i class="bi bi-eye me-1"></i> Historique
+                        </a>
+                        @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+                        {
+                            <a asp-action="EditSupplier" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a asp-action="DeleteSupplier" asp-route-id="@s.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

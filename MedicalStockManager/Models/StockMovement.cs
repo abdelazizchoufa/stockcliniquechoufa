@@ -22,5 +22,9 @@ public class StockMovement
     [Display(Name = "Observation")]
     public string? Notes { get; set; }
 
+    [Display(Name = "Numero de lot")]
+    [MaxLength(80)]
+    public string? BatchNumber { get; set; }
+
     public StockItem? StockItem { get; set; }
 }

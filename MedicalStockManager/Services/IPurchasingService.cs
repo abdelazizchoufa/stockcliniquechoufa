@@ -17,4 +17,6 @@ public interface IPurchasingService
     bool DeleteSupplier(int id, out string? errorMessage);
     bool CreateOrder(PurchaseOrderCreateViewModel input, out string? errorMessage);
     bool ReceiveOrder(int id, out string? errorMessage);
+    SupplierDetailsViewModel? GetSupplierDetails(int id);
+    IReadOnlyList<SupplierSummaryViewModel> GetSupplierList();
 }

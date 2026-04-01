@@ -16,7 +16,9 @@ public class StockItem
 
     [Required]
     [Display(Name = "Service")]
-    public Department Department { get; set; }
+    public int ServiceId { get; set; }
+
+    public Service? Service { get; set; }
 
     [Range(0, int.MaxValue)]
     [Display(Name = "Quantite en stock")]

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MedicalStockManager.Controllers;
 
 [Authorize]
-public class PurchasingController(IPurchasingService purchasingService, IAuditService auditService) : Controller
+public class PurchasingController(IPurchasingService purchasingService, IAuditService auditService, IOcrService ocrService) : Controller
 {
     [HttpGet]
     public IActionResult Index()
@@ -144,6 +144,57 @@ public class PurchasingController(IPurchasingService purchasingService, IAuditSe
         TempData["SuccessMessage"] = "La commande fournisseur a ete enregistree.";
         auditService.Log("Creation", "PurchaseOrder", input.OrderNumber, "Commande fournisseur creee");
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult Suppliers()
+    {
+        var model = purchasingService.GetSupplierList();
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult Ocr()
+    {
+        return View(new OcrDocumentPageViewModel());
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Ocr(OcrDocumentPageViewModel model)
+    {
+        if (!ModelState.IsValid || model.Input.File is null)
+        {
+            return View(model);
+        }
+
+        try
+        {
+            model.Result = await ocrService.ExtractFromDocumentAsync(model.Input.File);
+            auditService.Log("OCR", "Document", model.Input.File.FileName, "Extraction OCR facture/BL");
+            if (string.IsNullOrWhiteSpace(model.Result.RawText))
+            {
+                TempData["ErrorMessage"] = "Aucun texte exploitable detecte sur ce document.";
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Extraction OCR terminee.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
+        }
+
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult SupplierDetails(int id)
+    {
+        var model = purchasingService.GetSupplierDetails(id);
+        if (model is null) return NotFound();
+        return View(model);
     }
 
     [HttpGet]

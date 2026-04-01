@@ -28,9 +28,11 @@
                             <span asp-validation-for="Reference" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
-                            <label asp-for="Department" class="form-label"></label>
-                            <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()" class="form-select"></select>
-                            <span asp-validation-for="Department" class="text-danger"></span>
+                            <label asp-for="ServiceId" class="form-label"></label>
+                            <select asp-for="ServiceId" asp-items="Model.Services" class="form-select">
+                                <option value="">Selectionner un service</option>
+                            </select>
+                            <span asp-validation-for="ServiceId" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
                             <label asp-for="Unit" class="form-label"></label>

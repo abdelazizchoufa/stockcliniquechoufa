@@ -1,0 +1,144 @@
+@model PurchaseRequestIndexViewModel
+@{
+    ViewData["Title"] = "Demandes d'achat";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Workflow</p>
+        <h1 class="h2 mb-0">Demandes d'achat</h1>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-lg me-1"></i> Nouvelle demande
+    </a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">En attente</span>
+            <strong class="metric-value @(Model.TotalPending > 0 ? "text-warning" : "")">@Model.TotalPending</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">Approuvees</span>
+            <strong class="metric-value text-success">@Model.TotalApproved</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">Rejetees</span>
+            <strong class="metric-value text-danger">@Model.TotalRejected</strong>
+        </div>
+    </div>
+</div>
+
+@if (Model.Pending.Any())
+{
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header d-flex align-items-center gap-2 fw-semibold">
+            <i class="bi bi-hourglass-split text-warning"></i>
+            Demandes en attente (@Model.Pending.Count)
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>N° Demande</th>
+                        <th>Demandeur</th>
+                        <th>Date</th>
+                        <th>Lignes</th>
+                        <th>Montant estime</th>
+                        <th>Statut</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var req in Model.Pending)
+                {
+                    <tr>
+                        <td><strong>@req.RequestNumber</strong></td>
+                        <td>@req.RequestedBy</td>
+                        <td>@req.RequestDate.ToString("dd/MM/yyyy")</td>
+                        <td>@req.LineCount article(s)</td>
+                        <td>@req.TotalEstimated.ToString("N0") DA</td>
+                        <td><span class="badge text-bg-warning">En attente</span></td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@req.Id">
+                                <i class="bi bi-eye"></i> Voir
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-success mb-4">
+        <i class="bi bi-check-circle me-1"></i> Aucune demande en attente.
+    </div>
+}
+
+@if (Model.Processed.Any())
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-header fw-semibold">Historique des demandes (@Model.Processed.Count)</div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>N° Demande</th>
+                        <th>Demandeur</th>
+                        <th>Date</th>
+                        <th>Montant estime</th>
+                        <th>Traite par</th>
+                        <th>Statut</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var req in Model.Processed)
+                {
+                    <tr>
+                        <td><strong>@req.RequestNumber</strong></td>
+                        <td>@req.RequestedBy</td>
+                        <td>@req.RequestDate.ToString("dd/MM/yyyy")</td>
+                        <td>@req.TotalEstimated.ToString("N0") DA</td>
+                        <td>
+                            @if (req.ProcessedBy is not null)
+                            {
+                                <span>@req.ProcessedBy</span>
+                                <br/><span class="text-muted small">@req.ProcessedAt?.ToString("dd/MM/yyyy HH:mm")</span>
+                            }
+                            else { <span class="text-muted">-</span> }
+                        </td>
+                        <td>
+                            @switch (req.Status)
+                            {
+                                case PurchaseRequestStatus.Approuvee:
+                                    <span class="badge text-bg-success">Approuvee</span>
+                                    break;
+                                case PurchaseRequestStatus.ConvertieEnCommande:
+                                    <span class="badge text-bg-primary">Commande creee</span>
+                                    break;
+                                case PurchaseRequestStatus.Rejetee:
+                                    <span class="badge text-bg-danger">Rejetee</span>
+                                    break;
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@req.Id">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,101 @@
+@using MedicalStockManager.Services
+@model InventoryCreateViewModel
+@{
+    ViewData["Title"] = "Nouvel inventaire physique";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Controle</p>
+        <h1 class="h2 mb-0">Nouvel inventaire physique</h1>
+    </div>
+    <a class="btn btn-outline-secondary" asp-action="Index">Annuler</a>
+</div>
+
+<form asp-action="Create" method="post">
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <label asp-for="Title" class="form-label">Intitule de l'inventaire</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Notes" class="form-label">Observation</label>
+                    <input asp-for="Notes" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header fw-semibold">Articles a compter (@Model.Lines.Count articles)</div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Service</th>
+                        <th>Stock theorique</th>
+                        <th>Stock compte</th>
+                        <th>Ecart</th>
+                        <th>Observation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for (int i = 0; i < Model.Lines.Count; i++)
+                {
+                    <tr>
+                        <input type="hidden" name="Lines[@i].StockItemId" value="@Model.Lines[i].StockItemId" />
+                        <input type="hidden" name="Lines[@i].ItemName" value="@Model.Lines[i].ItemName" />
+                        <input type="hidden" name="Lines[@i].Reference" value="@Model.Lines[i].Reference" />
+                        <input type="hidden" name="Lines[@i].ServiceName" value="@Model.Lines[i].ServiceName" />
+                        <input type="hidden" name="Lines[@i].TheoreticalQuantity" value="@Model.Lines[i].TheoreticalQuantity" />
+                        <input type="hidden" name="Lines[@i].Unit" value="@Model.Lines[i].Unit" />
+                        <td>
+                            <strong>@Model.Lines[i].ItemName</strong><br/>
+                            <span class="text-muted small">@Model.Lines[i].Reference</span>
+                        </td>
+                        <td>@Model.Lines[i].ServiceName</td>
+                        <td><strong>@Model.Lines[i].TheoreticalQuantity</strong> @Model.Lines[i].Unit</td>
+                        <td>
+                            <input type="number" name="Lines[@i].CountedQuantity" value="@Model.Lines[i].CountedQuantity"
+                                   min="0" class="form-control form-control-sm counted-input" data-theoretical="@Model.Lines[i].TheoreticalQuantity" style="width:90px" />
+                        </td>
+                        <td class="variance-cell fw-semibold">0</td>
+                        <td><input type="text" name="Lines[@i].Notes" class="form-control form-control-sm" style="width:140px" placeholder="Optionnel" /></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="d-flex gap-3 align-items-center">
+        <button type="submit" name="applyAdjustments" value="false" class="btn btn-outline-primary">
+            Enregistrer sans ajuster le stock
+        </button>
+        <button type="submit" name="applyAdjustments" value="true" class="btn btn-danger">
+            Enregistrer et ajuster le stock
+        </button>
+        <span class="text-muted small">L'ajustement creera des mouvements de stock pour combler les ecarts.</span>
+    </div>
+</form>
+
+@section Scripts {
+<script>
+document.querySelectorAll('.counted-input').forEach(input => {
+    function update() {
+        const theoretical = parseInt(input.dataset.theoretical) || 0;
+        const counted = parseInt(input.value) || 0;
+        const variance = counted - theoretical;
+        const cell = input.closest('tr').querySelector('.variance-cell');
+        cell.textContent = (variance >= 0 ? '+' : '') + variance;
+        cell.className = 'variance-cell fw-semibold ' + (variance === 0 ? 'text-success' : variance > 0 ? 'text-primary' : 'text-danger');
+    }
+    input.addEventListener('input', update);
+    update();
+});
+</script>
+}

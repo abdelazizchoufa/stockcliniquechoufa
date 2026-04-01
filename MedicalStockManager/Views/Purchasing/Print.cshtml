@@ -4,10 +4,30 @@
     ViewData["Title"] = "Impression commande";
 }
 
-<div class="print-header mb-4">
-    <h1 class="h2 mb-1">Commande fournisseur @Model.Order.OrderNumber</h1>
-    <p class="mb-0">@Model.Order.Supplier?.Name</p>
+<div class="print-header mb-4 d-flex justify-content-between align-items-start">
+    <div>
+        <h1 class="h2 mb-1">Commande fournisseur @Model.Order.OrderNumber</h1>
+        <p class="mb-0">@Model.Order.Supplier?.Name</p>
+    </div>
+    <div class="no-print d-flex gap-2">
+        <button onclick="window.print()" class="btn btn-outline-secondary btn-sm">Imprimer</button>
+        <button id="btnPdf" class="btn btn-primary btn-sm">Telecharger PDF</button>
+    </div>
 </div>
+
+@section Scripts {
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.getElementById('btnPdf')?.addEventListener('click', () => {
+    html2pdf().set({
+        margin: 10,
+        filename: '@("commande-" + Model.Order.OrderNumber.Replace("/","-") + ".pdf")',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4' }
+    }).from(document.querySelector('body')).save();
+});
+</script>
+}
 
 <section class="row g-3 mb-4">
     <div class="col-3">

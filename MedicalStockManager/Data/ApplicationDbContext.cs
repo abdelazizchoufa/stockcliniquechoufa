@@ -5,6 +5,7 @@ namespace MedicalStockManager.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
+    public DbSet<Service> Services => Set<Service>();
     public DbSet<AppUser> AppUsers => Set<AppUser>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
     public DbSet<StockItem> StockItems => Set<StockItem>();
@@ -12,10 +13,22 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Supplier> Suppliers => Set<Supplier>();
     public DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
     public DbSet<PurchaseOrderLine> PurchaseOrderLines => Set<PurchaseOrderLine>();
+    public DbSet<InventorySession> InventorySessions => Set<InventorySession>();
+    public DbSet<InventoryLine> InventoryLines => Set<InventoryLine>();
+    public DbSet<PurchaseRequest> PurchaseRequests => Set<PurchaseRequest>();
+    public DbSet<PurchaseRequestLine> PurchaseRequestLines => Set<PurchaseRequestLine>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Service>(entity =>
+        {
+            entity.ToTable("Services");
+            entity.HasKey(s => s.Id);
+            entity.Property(s => s.Name).HasMaxLength(100).IsRequired();
+            entity.HasIndex(s => s.Name).IsUnique();
+        });
 
         modelBuilder.Entity<StockItem>(entity =>
         {
@@ -25,6 +38,11 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.Property(item => item.Reference).HasMaxLength(50).IsRequired();
             entity.Property(item => item.Unit).HasMaxLength(30).IsRequired();
             entity.HasIndex(item => item.Reference).IsUnique();
+
+            entity.HasOne(item => item.Service)
+                .WithMany(s => s.StockItems)
+                .HasForeignKey(item => item.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<AppUser>(entity =>
@@ -55,6 +73,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.ToTable("StockMovements");
             entity.HasKey(movement => movement.Id);
             entity.Property(movement => movement.Notes).HasMaxLength(300);
+            entity.Property(movement => movement.BatchNumber).HasMaxLength(80);
 
             entity.HasOne(movement => movement.StockItem)
                 .WithMany(item => item.Movements)
@@ -101,6 +120,69 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.HasOne(line => line.StockItem)
                 .WithMany(item => item.PurchaseOrderLines)
                 .HasForeignKey(line => line.StockItemId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<PurchaseRequest>(entity =>
+        {
+            entity.ToTable("PurchaseRequests");
+            entity.HasKey(r => r.Id);
+            entity.Property(r => r.RequestNumber).HasMaxLength(60).IsRequired();
+            entity.Property(r => r.RequestedBy).HasMaxLength(80).IsRequired();
+            entity.Property(r => r.Justification).HasMaxLength(300);
+            entity.Property(r => r.ProcessedBy).HasMaxLength(80);
+            entity.Property(r => r.RejectionReason).HasMaxLength(300);
+            entity.HasIndex(r => r.RequestNumber).IsUnique();
+
+            entity.HasOne(r => r.LinkedOrder)
+                .WithMany()
+                .HasForeignKey(r => r.LinkedOrderId)
+                .OnDelete(DeleteBehavior.SetNull);
+        });
+
+        modelBuilder.Entity<PurchaseRequestLine>(entity =>
+        {
+            entity.ToTable("PurchaseRequestLines");
+            entity.HasKey(l => l.Id);
+            entity.Property(l => l.ItemLabel).HasMaxLength(150).IsRequired();
+            entity.Property(l => l.Unit).HasMaxLength(30);
+            entity.Property(l => l.Notes).HasMaxLength(200);
+            entity.Property(l => l.EstimatedUnitPrice).HasColumnType("decimal(18,2)");
+
+            entity.HasOne(l => l.PurchaseRequest)
+                .WithMany(r => r.Lines)
+                .HasForeignKey(l => l.PurchaseRequestId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(l => l.StockItem)
+                .WithMany()
+                .HasForeignKey(l => l.StockItemId)
+                .OnDelete(DeleteBehavior.SetNull);
+        });
+
+        modelBuilder.Entity<InventorySession>(entity =>
+        {
+            entity.ToTable("InventorySessions");
+            entity.HasKey(s => s.Id);
+            entity.Property(s => s.Title).HasMaxLength(100).IsRequired();
+            entity.Property(s => s.Notes).HasMaxLength(300);
+            entity.Property(s => s.CreatedBy).HasMaxLength(80);
+        });
+
+        modelBuilder.Entity<InventoryLine>(entity =>
+        {
+            entity.ToTable("InventoryLines");
+            entity.HasKey(l => l.Id);
+            entity.Property(l => l.Notes).HasMaxLength(200);
+
+            entity.HasOne(l => l.InventorySession)
+                .WithMany(s => s.Lines)
+                .HasForeignKey(l => l.InventorySessionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(l => l.StockItem)
+                .WithMany()
+                .HasForeignKey(l => l.StockItemId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
     }

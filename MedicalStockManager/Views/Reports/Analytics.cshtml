@@ -1,0 +1,139 @@
+@model AnalyticsViewModel
+@{
+    ViewData["Title"] = "Tableau de bord analytique";
+}
+
+<div class="mb-4">
+    <p class="eyebrow mb-1">Analyse</p>
+    <h1 class="h2 mb-0">Tableau de bord analytique</h1>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">Mouvements ce mois</span>
+            <strong class="metric-value">@Model.TotalMovementsThisMonth</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card">
+            <span class="metric-label">Consommation journaliere moy.</span>
+            <strong class="metric-value">@Model.AverageDailyConsumption</strong>
+            <span>unites/jour</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="metric-card @(Model.NeverMovedItems.Any() ? "warning" : "")">
+            <span class="metric-label">Articles sans mouvement</span>
+            <strong class="metric-value">@Model.NeverMovedItems.Count</strong>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <p class="section-kicker mb-1">Tendance</p>
+                <h2 class="h4 mb-3">Entrees / Sorties sur 6 mois</h2>
+                <canvas id="chartTrend" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <p class="section-kicker mb-1">Classement</p>
+                <h2 class="h4 mb-3">Top 10 articles consommes</h2>
+                <canvas id="chartTop" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.NeverMovedItems.Any())
+{
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header fw-semibold text-warning bg-warning bg-opacity-10">
+            Articles sans aucun mouvement (@Model.NeverMovedItems.Count)
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead><tr><th>Article</th><th>Service</th><th>Stock</th><th></th></tr></thead>
+                <tbody>
+                @foreach (var item in Model.NeverMovedItems)
+                {
+                    <tr>
+                        <td><strong>@item.Name</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                        <td>@item.ServiceName</td>
+                        <td>@item.CurrentQuantity @item.Unit</td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Detail</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@if (Model.TopConsumers.Any())
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-header fw-semibold">Top consommateurs (tous temps)</div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead><tr><th>#</th><th>Article</th><th>Service</th><th>Total consomme</th></tr></thead>
+                <tbody>
+                @for (int i = 0; i < Model.TopConsumers.Count; i++)
+                {
+                    var item = Model.TopConsumers[i];
+                    <tr>
+                        <td><span class="badge text-bg-secondary">@(i + 1)</span></td>
+                        <td><strong>@item.ItemName</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                        <td>@item.ServiceName</td>
+                        <td><strong>@item.TotalConsumed</strong></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+const months = [@Html.Raw(string.Join(",", Model.Last6Months.Select(m => $"\"{m.Month}\"")))];
+const outs   = [@Html.Raw(string.Join(",", Model.Last6Months.Select(m => m.TotalOut)))];
+const ins    = [@Html.Raw(string.Join(",", Model.Last6Months.Select(m => m.TotalIn)))];
+
+new Chart(document.getElementById('chartTrend'), {
+    type: 'line',
+    data: {
+        labels: months,
+        datasets: [
+            { label: 'Sorties', data: outs, borderColor: 'rgba(239,68,68,0.9)', backgroundColor: 'rgba(239,68,68,0.1)', tension: 0.3, fill: true },
+            { label: 'Entrees', data: ins,  borderColor: 'rgba(34,197,94,0.9)',  backgroundColor: 'rgba(34,197,94,0.1)',  tension: 0.3, fill: true }
+        ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } }
+});
+
+const topLabels = [@Html.Raw(string.Join(",", Model.TopConsumers.Take(8).Select(t => "\"" + (t.ItemName.Length > 15 ? t.ItemName[..15] + "..." : t.ItemName) + "\"")))];
+const topData   = [@Html.Raw(string.Join(",", Model.TopConsumers.Take(8).Select(t => t.TotalConsumed)))];
+
+new Chart(document.getElementById('chartTop'), {
+    type: 'bar',
+    data: {
+        labels: topLabels,
+        datasets: [{ label: 'Quantite', data: topData, backgroundColor: 'rgba(99,102,241,0.7)', borderRadius: 4 }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true } }
+    }
+});
+</script>
+}

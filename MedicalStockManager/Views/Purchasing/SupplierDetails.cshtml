@@ -1,0 +1,103 @@
+@model SupplierDetailsViewModel
+@{
+    ViewData["Title"] = "Fiche fournisseur";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Fournisseur</p>
+        <h1 class="h2 mb-0">@Model.Supplier.Name</h1>
+        <p class="text-muted mb-0">
+            @if (!string.IsNullOrWhiteSpace(Model.Supplier.ContactName)) { <span>@Model.Supplier.ContactName</span> }
+            @if (!string.IsNullOrWhiteSpace(Model.Supplier.Phone)) { <span> · @Model.Supplier.Phone</span> }
+            @if (!string.IsNullOrWhiteSpace(Model.Supplier.Email)) { <span> · @Model.Supplier.Email</span> }
+        </p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="EditSupplier" asp-route-id="@Model.Supplier.Id">Modifier</a>
+        <a class="btn btn-outline-secondary" asp-action="Index">Retour</a>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <span class="metric-label">Commandes totales</span>
+            <strong class="metric-value">@Model.Orders.Count</strong>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card">
+            <span class="metric-label">Montant total</span>
+            <strong class="metric-value">@Model.TotalSpend.ToString("N0") DA</strong>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card">
+            <span class="metric-label">Montant moyen / commande</span>
+            <strong class="metric-value">@Model.AverageOrderAmount.ToString("N0") DA</strong>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card">
+            <span class="metric-label">Delai moyen livraison</span>
+            <strong class="metric-value">@(Model.AverageDeliveryDays.HasValue ? $"{Model.AverageDeliveryDays} j" : "-")</strong>
+        </div>
+    </div>
+</div>
+
+@if (Model.Orders.Any())
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-header fw-semibold">Historique des commandes</div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>N° Commande</th>
+                        <th>Date</th>
+                        <th>Livraison prevue</th>
+                        <th>Statut</th>
+                        <th>Lignes</th>
+                        <th>Montant</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td><strong>@order.OrderNumber</strong></td>
+                        <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                        <td>@(order.ExpectedDeliveryDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                        <td>
+                            @switch (order.Status)
+                            {
+                                case PurchaseOrderStatus.Commandee:
+                                    <span class="badge text-bg-primary">Commandee</span>
+                                    break;
+                                case PurchaseOrderStatus.Recue:
+                                    <span class="badge text-bg-success">Recue</span>
+                                    break;
+                                case PurchaseOrderStatus.Annulee:
+                                    <span class="badge text-bg-danger">Annulee</span>
+                                    break;
+                                default:
+                                    <span class="badge text-bg-secondary">Brouillon</span>
+                                    break;
+                            }
+                        </td>
+                        <td>@order.LineCount</td>
+                        <td>@order.TotalAmount.ToString("N0") DA</td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@order.Id">Voir</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">Aucune commande enregistree pour ce fournisseur.</div>
+}

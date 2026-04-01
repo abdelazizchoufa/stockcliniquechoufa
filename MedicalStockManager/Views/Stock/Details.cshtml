@@ -9,7 +9,7 @@
         <h1 class="h2 mb-1">@Model.Item.Name</h1>
         <p class="text-muted mb-0">@Model.Item.Reference</p>
         <div class="mt-2 d-flex flex-wrap gap-2">
-            <span class="department-badge">@Model.Item.Department</span>
+            <span class="department-badge">@(Model.Item.Service?.Name ?? "-")</span>
             @if (Model.Item.IsLowStock)
             {
                 <span class="badge text-bg-warning">Stock bas</span>
@@ -91,12 +91,18 @@
                         </div>
 
                         <div class="mb-3">
+                            <label asp-for="NewMovement.BatchNumber" class="form-label"></label>
+                            <input asp-for="NewMovement.BatchNumber" class="form-control" placeholder="Ex: LOT-2025-001" />
+                            <span asp-validation-for="NewMovement.BatchNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
                             <label asp-for="NewMovement.Notes" class="form-label"></label>
-                            <textarea asp-for="NewMovement.Notes" class="form-control" rows="3"></textarea>
+                            <textarea asp-for="NewMovement.Notes" class="form-control" rows="2"></textarea>
                             <span asp-validation-for="NewMovement.Notes" class="text-danger"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Enregistrer le mouvement</button>
+                        <button type="submit" class="btn btn-primary w-100">Enregistrer le mouvement</button>
                     </form>
                 }
                 else
@@ -112,15 +118,42 @@
             <div class="card-body p-4">
                 <div class="section-heading mb-3">
                     <div>
-                        <p class="section-kicker">Traçabilite</p>
+                        <p class="section-kicker">Tracabilite</p>
                         <h2 class="h4 mb-0">Historique des mouvements</h2>
                     </div>
                     <span class="pill-note">@Model.Movements.Count mouvement(s)</span>
                 </div>
 
+                <form method="get" class="row g-2 mb-3">
+                    <input type="hidden" name="id" value="@Model.Item.Id" />
+                    <div class="col-sm-4">
+                        <input type="date" name="filter.DateFrom" value="@Model.Filter.DateFrom?.ToString("yyyy-MM-dd")" class="form-control form-control-sm" placeholder="Du" />
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="date" name="filter.DateTo" value="@Model.Filter.DateTo?.ToString("yyyy-MM-dd")" class="form-control form-control-sm" placeholder="Au" />
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="filter.MovementType" class="form-select form-select-sm">
+                            <option value="">Tous les types</option>
+                            @foreach (MovementType t in Enum.GetValues(typeof(MovementType)))
+                            {
+                                <option value="@((int)t)" selected="@(Model.Filter.MovementType == t ? "selected" : null)">@t</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-sm btn-primary w-100">OK</button>
+                    </div>
+                </form>
+
+                @if (Model.Filter.DateFrom.HasValue || Model.Filter.DateTo.HasValue || Model.Filter.MovementType.HasValue)
+                {
+                    <a asp-action="Details" asp-route-id="@Model.Item.Id" class="btn btn-sm btn-outline-secondary mb-2">Reinitialiser les filtres</a>
+                }
+
                 @if (!Model.Movements.Any())
                 {
-                    <p class="text-muted mb-0">Aucun mouvement enregistre pour cet article.</p>
+                    <p class="text-muted mb-0">Aucun mouvement pour ces criteres.</p>
                 }
                 else
                 {
@@ -130,7 +163,8 @@
                                 <tr>
                                     <th>Date</th>
                                     <th>Type</th>
-                                    <th>Quantite</th>
+                                    <th>Qte</th>
+                                    <th>N° Lot</th>
                                     <th>Observation</th>
                                 </tr>
                             </thead>
@@ -154,6 +188,7 @@
                                         }
                                     </td>
                                     <td>@movement.Quantity</td>
+                                    <td>@(string.IsNullOrWhiteSpace(movement.BatchNumber) ? "-" : movement.BatchNumber)</td>
                                     <td>@(string.IsNullOrWhiteSpace(movement.Notes) ? "-" : movement.Notes)</td>
                                 </tr>
                             }

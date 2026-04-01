@@ -1,0 +1,65 @@
+@using MedicalStockManager.Services
+@model InventorySessionListViewModel
+@{
+    ViewData["Title"] = "Inventaires physiques";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Controle</p>
+        <h1 class="h2 mb-0">Inventaires physiques</h1>
+    </div>
+    @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+    {
+        <a class="btn btn-primary" asp-action="Create">Nouvel inventaire</a>
+    }
+</div>
+
+@if (!Model.Sessions.Any())
+{
+    <div class="alert alert-info">Aucun inventaire enregistre pour le moment.</div>
+}
+else
+{
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Intitule</th>
+                        <th>Date</th>
+                        <th>Articles</th>
+                        <th>Ecarts</th>
+                        <th>Realise par</th>
+                        <th>Statut</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var session in Model.Sessions)
+                {
+                    var variances = session.Lines.Count(l => l.Variance != 0);
+                    <tr>
+                        <td><strong>@session.Title</strong><br/><span class="text-muted small">@(session.Notes ?? "")</span></td>
+                        <td>@session.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@session.Lines.Count</td>
+                        <td>
+                            @if (variances == 0)
+                            {
+                                <span class="badge text-bg-success">Aucun ecart</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-warning">@variances ecart(s)</span>
+                            }
+                        </td>
+                        <td>@session.CreatedBy</td>
+                        <td><span class="badge text-bg-secondary">Termine</span></td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@session.Id">Voir</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
