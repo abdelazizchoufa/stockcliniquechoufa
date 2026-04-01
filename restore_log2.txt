@@ -1,0 +1,1373 @@
+﻿La g├®n├®ration a d├®marr├® 01/04/2026 22:59:13.
+     0>Processus = "C:\Program Files\dotnet\dotnet.exe"
+       Chemin de l'ex├®cutable MSBuild = "C:\Program Files\dotnet\sdk\8.0.419\MSBuild.dll"
+       Arguments de ligne de commande = "C:\Program Files\dotnet\sdk\8.0.419\MSBuild.dll -maxcpucount -verbosity:m -nologo -target:Restore -verbosity:detailed MedicalStockManager/MedicalStockManager.csproj -distributedlogger:Microsoft.DotNet.Tools.MSBuild.MSBuildLogger,C:\Program Files\dotnet\sdk\8.0.419\dotnet.dll*Microsoft.DotNet.Tools.MSBuild.MSBuildForwardingLogger,C:\Program Files\dotnet\sdk\8.0.419\dotnet.dll"
+       R├®pertoire actif = "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa"
+       Version de MSBuild = "17.11.48+02bf66295"
+       DÔÇÖapr├¿s la cl├® de Registre Windows LongPathsEnabled, la fonctionnalit├® LongPaths est activ├®.
+       Le ┬½┬áMicrosoft.NET.Sdk.Web┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       Assembly charg├® pendant Evaluation┬á: Microsoft.NET.StringTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.StringTools.dll, MVID : a6df08db-4589-427d-8720-dbb53fdf37b0, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: NuGet.Frameworks, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Frameworks.dll, MVID : 36fa17a1-abb6-4cce-b85c-dd32a6dcc45f, AssemblyLoadContext : Assembly.LoadFile(C:\Program Files\dotnet\sdk\8.0.419\NuGet.Frameworks.dll))
+       Le ┬½┬áMicrosoft.NET.Sdk┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       Propri├®t├® 'MSBuildExtensionsPath' avec la valeur 'C:\Program Files\dotnet\sdk\8.0.419\' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(MSBuildProjectExtensionsPath)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\" (valeur pr├®c├®dente┬á: "obj\") ├á C:\Program Files\dotnet\sdk\8.0.419\Current\Microsoft.Common.props (60,5)
+       Propri├®t├® 'MSBuildUserExtensionsPath' avec la valeur 'C:\Users\Chouf\AppData\Local\Microsoft\MSBuild' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (91,5)
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles};{HintPathFromItem}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (92,5)
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{RawFileName}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (93,5)
+       Le programme de r├®solution ┬½┬áDefaultSdkResolver┬á┬╗ a tent├® de r├®soudre le SDK ┬½┬áMicrosoft.NET.SDK.WorkloadAutoImportPropsLocator┬á┬╗.
+       Avertissements┬á: null
+       Erreurs┬á: MSB4276: Le programme de r├®solution du SDK par d├®faut nÔÇÖa pas pu r├®soudre le SDK ┬½Microsoft.NET.SDK.WorkloadAutoImportPropsLocator┬╗, car le r├®pertoire ┬½C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.SDK.WorkloadAutoImportPropsLocator\Sdk┬╗ nÔÇÖexistait pas.
+       Assembly charg├® pendant Evaluation┬á: Microsoft.Build.NuGetSdkResolver, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Build.NuGetSdkResolver.dll, MVID : ae254ffe-3ea7-4bba-8a74-0bd55e8cfe87, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Build.NuGetSdkResolver.dll)
+       Assembly charg├® pendant Evaluation┬á: Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver, Version=8.0.419.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver.dll, MVID : fa56586f-4205-4611-b778-a0f2880deeab, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver.dll)
+       Assembly charg├® pendant Evaluation┬á: System.Reflection.Metadata, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Reflection.Metadata.dll, MVID : 6eaa5e01-50ae-47b3-b340-8e414a33a11d, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: Microsoft.DotNet.Cli.Utils, Version=8.0.419.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.DotNet.Cli.Utils.dll, MVID : 80c9c3c1-6a74-4def-ab59-cb501443a137, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver.dll)
+       Assembly charg├® pendant Evaluation┬á: Microsoft.NET.Sdk.WorkloadManifestReader, Version=8.0.419.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadManifestReader.dll, MVID : ccc37049-a7ea-433a-87cd-83ccd7a599bd, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver.dll)
+       Assembly charg├® pendant Evaluation┬á: Microsoft.Deployment.DotNet.Releases, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Deployment.DotNet.Releases.dll, MVID : 34f9f9be-a352-437d-b864-e54aac6740dd, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\Microsoft.NET.Sdk.WorkloadMSBuildSdkResolver.dll)
+       Assembly charg├® pendant Evaluation┬á: System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51 (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Text.Json.dll, MVID : 76f0b0cc-4305-40dd-87fb-e213493221aa, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: System.Net.Sockets, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Net.Sockets.dll, MVID : 6667a615-98a5-4e91-bbf8-59e78129835f, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: System.Threading.Overlapped, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Threading.Overlapped.dll, MVID : 60c3c31e-e2e3-485c-8f62-b23b4cb09f56, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: System.Threading.ThreadPool, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Threading.ThreadPool.dll, MVID : 40013c47-ff7b-4302-83de-5ba7ac722b2e, AssemblyLoadContext : Default)
+       Le ┬½┬áMicrosoft.NET.SDK.WorkloadAutoImportPropsLocator┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áMicrosoft.DotNet.MSBuildWorkloadSdkResolver┬á┬╗ en ┬½┬ánull┬á┬╗ dÔÇÖemplacement et en version ┬½┬ánull┬á┬╗.
+       R├®assignation de propri├®t├®┬á: $(TargetsForTfmSpecificContentInPackage)=";PackTool;_PackProjectToolValidation" (valeur pr├®c├®dente┬á: ";PackTool") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackProjectTool.props (15,5)
+       Le ┬½┬áMicrosoft.NET.Sdk.Razor┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       Le ┬½┬áMicrosoft.NET.Sdk.StaticWebAssets┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\Sdk\Sdk.StaticWebAssets.StaticAssets.ProjectSystem.props (23,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\Sdk\Sdk.StaticWebAssets.StaticAssets.ProjectSystem.props (24,5)
+       Le ┬½┬áMicrosoft.NET.Sdk.Web.ProjectSystem┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web.ProjectSystem\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       R├®assignation de propri├®t├®┬á: $(OutputType)="Exe" (valeur pr├®c├®dente┬á: "Library") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web.ProjectSystem\targets\Microsoft.NET.Sdk.Web.ProjectSystem.props (16,5)
+       Le ┬½┬áMicrosoft.NET.Sdk.Publish┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áDefaultSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\Sdk┬á┬╗ dÔÇÖemplacement et en version ┬½┬á┬á┬╗.
+       R├®assignation de propri├®t├®┬á: $(PublishProfileImported)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportPublishProfile.targets (28,5)
+       R├®assignation de propri├®t├®┬á: $(TargetPlatformVersion)="" (valeur pr├®c├®dente┬á: "0.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets (69,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (121,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (122,5)
+       R├®assignation de propri├®t├®┬á: $(OutputPath)="bin\Debug\net8.0\" (valeur pr├®c├®dente┬á: "bin\Debug\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (137,5)
+       R├®assignation de propri├®t├®┬á: $(IntermediateOutputPath)="obj\Debug\net8.0\" (valeur pr├®c├®dente┬á: "obj\Debug\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (142,5)
+       Le programme de r├®solution ┬½┬áDefaultSdkResolver┬á┬╗ a tent├® de r├®soudre le SDK ┬½┬áMicrosoft.NET.SDK.WorkloadManifestTargetsLocator┬á┬╗.
+       Avertissements┬á: null
+       Erreurs┬á: MSB4276: Le programme de r├®solution du SDK par d├®faut nÔÇÖa pas pu r├®soudre le SDK ┬½Microsoft.NET.SDK.WorkloadManifestTargetsLocator┬╗, car le r├®pertoire ┬½C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.SDK.WorkloadManifestTargetsLocator\Sdk┬╗ nÔÇÖexistait pas.
+       Le ┬½┬áMicrosoft.NET.SDK.WorkloadManifestTargetsLocator┬á┬╗ SDK a ├®t├® r├®solu par le programme de r├®solution de ┬½┬áMicrosoft.DotNet.MSBuildWorkloadSdkResolver┬á┬╗ en ┬½┬áC:\Program Files\dotnet\sdk-manifests\8.0.100\microsoft.net.sdk.android\34.0.43┬á┬╗ dÔÇÖemplacement et en version ┬½┬ánull┬á┬╗.
+       R├®assignation de propri├®t├®┬á: $(_FrameworkIdentifierForImplicitDefine)="NET" (valeur pr├®c├®dente┬á: "NETCOREAPP") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets (187,5)
+       R├®assignation de propri├®t├®┬á: $(_FrameworkVersionForImplicitDefine)="8_0" (valeur pr├®c├®dente┬á: "8.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets (192,5)
+       R├®assignation de propri├®t├®┬á: $(CommandLineArgsForDesignTimeEvaluation)="-langversion:12.0 -define:TRACE" (valeur pr├®c├®dente┬á: "-langversion:12.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Roslyn\Microsoft.CSharp.Core.targets (200,5)
+       Assembly charg├® pendant Evaluation┬á: Microsoft.Build.Utilities.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Build.Utilities.Core.dll, MVID : 3ef2c93a-1391-4e37-a4e3-a5d04b06a824, AssemblyLoadContext : Default)
+       R├®assignation de propri├®t├®┬á: $(_DebugSymbolsProduced)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (175,5)
+       R├®assignation de propri├®t├®┬á: $(_DocumentationFileProduced)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (185,5)
+       R├®assignation de propri├®t├®┬á: $(MSBuildCopyMarkerName)="MedicalS.2451CE65" (valeur pr├®c├®dente┬á: "MedicalStockManager.csproj") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (392,5)
+       R├®assignation de propri├®t├®┬á: $(MSBuildCopyMarkerName)="MedicalS.2451CE65.Up2Date" (valeur pr├®c├®dente┬á: "MedicalS.2451CE65") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (393,5)
+       R├®assignation de propri├®t├®┬á: $(ProcessorArchitecture)="msil" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (541,5)
+       R├®assignation de propri├®t├®┬á: $(DelaySign)="" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (580,5)
+       Propri├®t├® 'LOCALAPPDATA' avec la valeur 'C:\Users\Chouf\AppData\Local' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(_SGenGenerateSerializationAssembliesConfig)="Auto" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (3896,5)
+       R├®assignation de propri├®t├®┬á: $(_SGenGenerateSerializationAssembliesConfig)="Off" (valeur pr├®c├®dente┬á: "Auto") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (3897,5)
+       R├®assignation de propri├®t├®┬á: $(_TargetsThatPrepareProjectReferences)="
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           " (valeur pr├®c├®dente┬á: "_SplitProjectReferencesByFileExistence") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (5099,5)
+       Propri├®t├® 'MSBuildExtensionsPath32' avec la valeur 'C:\Program Files\dotnet\sdk\8.0.419' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       Assembly charg├® pendant Evaluation┬á: System.Threading.Tasks.Parallel, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Threading.Tasks.Parallel.dll, MVID : fc449f48-e481-49f5-9405-cb8700248eac, AssemblyLoadContext : Default)
+       R├®assignation de propri├®t├®┬á: $(ProjectAssetsFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\project.assets.json" (valeur pr├®c├®dente┬á: "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\/project.assets.json") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (24,5)
+       R├®assignation de propri├®t├®┬á: $(ProjectAssetsCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.assets.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.assets.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (29,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveAssemblyReferencesDependsOn)="
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (80,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareResourcesDependsOn)="
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+             
+             ;
+             PrepareResourceNames;
+             ResGen;
+             CompileLicxFiles
+           
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             PrepareResourceNames;
+             ResGen;
+             CompileLicxFiles
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (86,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (27,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (29,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (32,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (33,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (35,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc;**/.DS_Store" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveAssemblyReferencesDependsOn)="
+             
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           ;
+             ResolveTargetingPackAssets;
+           " (valeur pr├®c├®dente┬á: "
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets (14,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateRuntimeConfigurationPropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genruntimeconfig.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genruntimeconfig.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (44,5)
+       R├®assignation de propri├®t├®┬á: $(_GeneratePublishDependencyFilePropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genpublishdeps.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genpublishdeps.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (46,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateSingleFileBundlePropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genbundle.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genbundle.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (48,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateRuntimeConfigDevFile)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (81,5)
+       Propri├®t├® 'USERPROFILE' avec la valeur 'C:\Users\Chouf' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(_DefaultUserProfileRuntimeStorePath)="C:\Users\Chouf" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (97,5)
+       R├®assignation de propri├®t├®┬á: $(_DefaultUserProfileRuntimeStorePath)="C:\Users\Chouf\.dotnet\store" (valeur pr├®c├®dente┬á: "C:\Users\Chouf") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (98,5)
+       R├®assignation de propri├®t├®┬á: $(AvailablePlatforms)="Any CPU,x86,x64,ARM32" (valeur pr├®c├®dente┬á: "Any CPU,x86,x64") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (136,5)
+       R├®assignation de propri├®t├®┬á: $(AvailablePlatforms)="Any CPU,x86,x64,ARM32,ARM64" (valeur pr├®c├®dente┬á: "Any CPU,x86,x64,ARM32") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (140,5)
+       R├®assignation de propri├®t├®┬á: $(CoreBuildDependsOn)="
+             _CheckForBuildWithNoBuild;
+             
+             BuildOnlySettings;
+             PrepareForBuild;
+             PreBuildEvent;
+             ResolveReferences;
+             PrepareResources;
+             ResolveKeySource;
+             Compile;
+             ExportWindowsMDFile;
+             UnmanagedUnregistration;
+             GenerateSerializationAssemblies;
+             CreateSatelliteAssemblies;
+             GenerateManifests;
+             GetTargetPath;
+             PrepareForRun;
+             UnmanagedRegistration;
+             IncrementalClean;
+             PostBuildEvent
+           ;
+             GenerateBuildDependencyFile;
+             GenerateBuildRuntimeConfigurationFiles
+           " (valeur pr├®c├®dente┬á: "
+             BuildOnlySettings;
+             PrepareForBuild;
+             PreBuildEvent;
+             ResolveReferences;
+             PrepareResources;
+             ResolveKeySource;
+             Compile;
+             ExportWindowsMDFile;
+             UnmanagedUnregistration;
+             GenerateSerializationAssemblies;
+             CreateSatelliteAssemblies;
+             GenerateManifests;
+             GetTargetPath;
+             PrepareForRun;
+             UnmanagedRegistration;
+             IncrementalClean;
+             PostBuildEvent
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (197,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCleanDependsOn)="
+             _SdkBeforeClean;
+             
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (206,5)
+       R├®assignation de propri├®t├®┬á: $(RebuildDependsOn)="
+             _SdkBeforeRebuild;
+             
+             BeforeRebuild;
+             Clean;
+             Build;
+             AfterRebuild;
+           
+           " (valeur pr├®c├®dente┬á: "
+             BeforeRebuild;
+             Clean;
+             Build;
+             AfterRebuild;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (213,5)
+       R├®assignation de propri├®t├®┬á: $(CompileDependsOn)="
+             
+             ResolveReferences;
+             ResolveKeySource;
+             SetWin32ManifestProperties;
+             _SetPreferNativeArm64Win32ManifestProperties;
+             FindReferenceAssembliesForReferences;
+             _GenerateCompileInputs;
+             BeforeCompile;
+             _TimeStampBeforeCompile;
+             _GenerateCompileDependencyCache;
+             CoreCompile;
+             _TimeStampAfterCompile;
+             AfterCompile;
+           ;
+             _CreateAppHost;
+             _CreateComHost;
+             _GetIjwHostPaths;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveReferences;
+             ResolveKeySource;
+             SetWin32ManifestProperties;
+             _SetPreferNativeArm64Win32ManifestProperties;
+             FindReferenceAssembliesForReferences;
+             _GenerateCompileInputs;
+             BeforeCompile;
+             _TimeStampBeforeCompile;
+             _GenerateCompileDependencyCache;
+             CoreCompile;
+             _TimeStampAfterCompile;
+             AfterCompile;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (679,5)
+       R├®assignation de propri├®t├®┬á: $(CreateSatelliteAssembliesDependsOn)="
+             
+             ;
+             _GenerateSatelliteAssemblyInputs;
+             ComputeIntermediateSatelliteAssemblies;
+             GenerateSatelliteAssemblies
+           ;
+             CoreGenerateSatelliteAssemblies
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             _GenerateSatelliteAssemblyInputs;
+             ComputeIntermediateSatelliteAssemblies;
+             GenerateSatelliteAssemblies
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (1065,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.GitLab\build\Microsoft.SourceLink.GitLab.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.GitLab\build\Microsoft.SourceLink.GitLab.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.AzureRepos.Git\build\Microsoft.SourceLink.AzureRepos.Git.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.AzureRepos.Git\build\Microsoft.SourceLink.AzureRepos.Git.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl;_InitializeBitbucketGitSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.Bitbucket.Git\build\Microsoft.SourceLink.Bitbucket.Git.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation;TranslateBitbucketGitUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.Bitbucket.Git\build\Microsoft.SourceLink.Bitbucket.Git.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(DesignerRuntimeImplementationProjectOutputGroupDependsOn)="
+             
+             ;
+             
+             ;
+             BuildOnlySettings;
+             PrepareForBuild;
+             AssignTargetPaths;
+             ResolveReferences
+           
+           ;
+             _GenerateDesignerDepsFile;
+             _GenerateDesignerRuntimeConfigFile;
+             GetCopyToOutputDirectoryItems;
+             _GatherDesignerShadowCopyFiles;
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             
+             ;
+             BuildOnlySettings;
+             PrepareForBuild;
+             AssignTargetPaths;
+             ResolveReferences
+           
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DesignerSupport.targets (21,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateToolsSettingsFileCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.toolssettingsinput.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.toolssettingsinput.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (68,5)
+       R├®assignation de propri├®t├®┬á: $(_ShimInputCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.shiminput.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.shiminput.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (137,5)
+       R├®assignation de propri├®t├®┬á: $(_ShimCreatedSentinelFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.shimcreated.sentinel" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.shimcreated.sentinel") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (139,5)
+       R├®assignation de propri├®t├®┬á: $(DefineConstants)="TRACE;DEBUG" (valeur pr├®c├®dente┬á: "TRACE") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (31,5)
+       R├®assignation de propri├®t├®┬á: $(DefineConstants)="TRACE;DEBUG;NET;NET8_0;NETCOREAPP" (valeur pr├®c├®dente┬á: "TRACE;DEBUG") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(WarningsAsErrors)=";NU1605;SYSLIB0011" (valeur pr├®c├®dente┬á: ";NU1605") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (48,5)
+       R├®assignation de propri├®t├®┬á: $(PackageDescription)="Package Description" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; " (valeur pr├®c├®dente┬á: "_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(_IsNotSetContainersTargetsDir)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\Sdk\Sdk.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(_IsSDKContainerAllowedVersion)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Containers\build\Microsoft.NET.Build.Containers.targets (5,5)
+       R├®assignation de propri├®t├®┬á: $(_ContainerIsTargetingNet8TFM)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Containers\build\Microsoft.NET.Build.Containers.targets (15,5)
+       Propri├®t├® 'DOTNET_HOST_PATH' avec la valeur 'C:\Program Files\dotnet\dotnet.exe' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(PrepareForRunDependsOn)="StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           " (valeur pr├®c├®dente┬á: "
+             CopyFilesToOutputDirectory
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.targets (255,5)
+       R├®assignation de propri├®t├®┬á: $(GetCopyToOutputDirectoryItemsDependsOn)="
+             AssignTargetPaths;
+             
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           ;
+             _GetProjectReferenceTargetFrameworkProperties;
+             _PopulateCommonStateForGetCopyToOutputDirectoryItems
+           ;AddStaticWebAssetsManifest" (valeur pr├®c├®dente┬á: "
+             AssignTargetPaths;
+             
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           ;
+             _GetProjectReferenceTargetFrameworkProperties;
+             _PopulateCommonStateForGetCopyToOutputDirectoryItems
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.targets (266,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           " (valeur pr├®c├®dente┬á: "Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Pack.targets (41,5)
+       R├®assignation de propri├®t├®┬á: $(IncludeStaticWebAssetsPackItemsDependsOn)="
+             Build;
+             ResolveStaticWebAssetsConfiguration;LoadStaticWebAssetsBuildManifest
+           ;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveStaticWebAssetsConfiguration;LoadStaticWebAssetsBuildManifest
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Pack.targets (50,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         " (valeur pr├®c├®dente┬á: "UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (55,3)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedBuildStaticWebAssetsDependsOn)="
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (61,3)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           " (valeur pr├®c├®dente┬á: "
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForRunDependsOn)="
+             ;GenerateStaticWebAssetsManifest;GenerateComputedBuildStaticWebAssets;CopyStaticWebAssetsToOutputDirectory;
+             _GenerateBuildJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: ";GenerateStaticWebAssetsManifest;GenerateComputedBuildStaticWebAssets;CopyStaticWebAssetsToOutputDirectory") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (44,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForPublishDependsOn)="
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: ";ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (49,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: "
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (54,5)
+       R├®assignation de propri├®t├®┬á: $(ResolvePublishStaticWebAssetsDependsOn)="
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           " (valeur pr├®c├®dente┬á: "LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedBuildStaticWebAssetsDependsOn)="
+             
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         ;
+             _CompressFiles;
+           " (valeur pr├®c├®dente┬á: "
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (35,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedPublishStaticWebAssetsDependsOn)="
+             ;
+             _CompressFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (39,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForPublishDependsOn)="
+             
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           ;
+             _CompressFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (43,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           ;
+             _ResolveCompressedFiles;
+           " (valeur pr├®c├®dente┬á: "
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (47,5)
+       R├®assignation de propri├®t├®┬á: $(ResolvePublishStaticWebAssetsDependsOn)="
+             
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           ;
+             _ResolveCompressedFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (51,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveScopedCssOutputsDependsOn)="
+             
+           ;
+         ;
+             ResolveCssScopes;
+           " (valeur pr├®c├®dente┬á: "
+           ;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (188,5)
+       R├®assignation de propri├®t├®┬á: $(DebugSymbolsProjectOutputGroupDependsOn)="
+             ;
+             _RazorAddDebugSymbolsProjectOutputGroupOutput
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (193,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareForBuildDependsOn)="
+             ;GetFrameworkPaths;GetReferenceAssemblyPaths;AssignLinkMetadata;
+             ResolveRazorGenerateInputs
+           " (valeur pr├®c├®dente┬á: ";GetFrameworkPaths;GetReferenceAssemblyPaths;AssignLinkMetadata") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (198,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="
+             ResolveRazorGenerateInputs;
+             
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           
+           " (valeur pr├®c├®dente┬á: "
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (203,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareForRunDependsOn)="
+             _RazorPrepareForRun;
+             StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           
+           " (valeur pr├®c├®dente┬á: "StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (208,5)
+       R├®assignation de propri├®t├®┬á: $(UseRazorBuildServer)="true" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (299,5)
+       R├®assignation de propri├®t├®┬á: $(_RazorDebugSymbolsProduced)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (305,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateRazorTargetAssemblyInfoDependsOn)="
+             _ResolveMvcAssemblyAttributes;
+             
+             GetRazorTargetAssemblyAttributes;
+             _CreateRazorTargetAssemblyInfoInputsCacheFile;
+             CoreGenerateRazorTargetAssemblyInfo
+           
+           " (valeur pr├®c├®dente┬á: "
+             GetRazorTargetAssemblyAttributes;
+             _CreateRazorTargetAssemblyInfoInputsCacheFile;
+             CoreGenerateRazorTargetAssemblyInfo
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCompileDependsOn)="
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           " (valeur pr├®c├®dente┬á: ";_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (181,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateRazorAssemblyInfoDependsOn)="
+             _ResolveMvcAssemblyAttributes;
+             RazorGetAssemblyAttributes;PrepareForBuild;_CoreGenerateRazorAssemblyInfo;
+           " (valeur pr├®c├®dente┬á: "RazorGetAssemblyAttributes;PrepareForBuild;_CoreGenerateRazorAssemblyInfo") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (189,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCompileDependsOn)="
+             _DiscoverMvcApplicationParts;
+             
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           ;
+           " (valeur pr├®c├®dente┬á: "
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.MvcApplicationPartsDiscovery.targets (22,5)
+       R├®assignation de propri├®t├®┬á: $(RazorDesignTimeTargets)="C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.DesignTime.targets" (valeur pr├®c├®dente┬á: "C:\Program Files\dotnet\sdk\8.0.419\\Microsoft\VisualStudio\Razor\Microsoft.NET.Sdk.Razor.DesignTime.targets") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (779,5)
+       R├®assignation de propri├®t├®┬á: $(RunWorkingDirectory)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web.ProjectSystem\targets\Microsoft.NET.Sdk.Web.ProjectSystem.targets (21,5)
+       R├®assignation de propri├®t├®┬á: $(PublishProfileImported)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (60,5)
+       R├®assignation de propri├®t├®┬á: $(PublishConfiguration)="Debug" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (81,5)
+       R├®assignation de propri├®t├®┬á: $(BaseIntermediateOutputPath)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\" (valeur pr├®c├®dente┬á: "obj\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (87,5)
+       Assembly charg├® pendant Evaluation┬á: System.Reflection.Emit.Lightweight, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Reflection.Emit.Lightweight.dll, MVID : 8cb69745-c699-490b-af20-efb951f9ab20, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: System.Reflection.Emit.ILGeneration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Reflection.Emit.ILGeneration.dll, MVID : 93b28bd4-15fd-436f-a9eb-e4ba8dadc38e, AssemblyLoadContext : Default)
+       Assembly charg├® pendant Evaluation┬á: System.Reflection.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Reflection.Primitives.dll, MVID : 8db18b5f-c6d0-45a5-a5fc-da0ed6fd33c8, AssemblyLoadContext : Default)
+       Remplacement de la cible "ResolveFrameworkReferences" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "ResolveFrameworkReferences" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets".
+       Remplacement de la cible "Run" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "Run" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets".
+       Remplacement de la cible "GenerateSupportedTargetFrameworkAlias" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GenerateSupportedTargetFrameworkAlias" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets".
+       Remplacement de la cible "GetReferenceAssemblyPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetReferenceAssemblyPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DisableStandardFrameworkResolution.targets".
+       Remplacement de la cible "GetFrameworkPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetFrameworkPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DisableStandardFrameworkResolution.targets".
+       Remplacement de la cible "DesignerRuntimeImplementationProjectOutputGroup" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "DesignerRuntimeImplementationProjectOutputGroup" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DesignerSupport.targets".
+       Remplacement de la cible "Publish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "Publish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "ResolveReadyToRunCompilers" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.CrossGen.targets" par la cible "ResolveReadyToRunCompilers" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "GetCopyToPublishDirectoryItems" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetCopyToPublishDirectoryItems" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "BeforePublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "BeforePublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets".
+       Remplacement de la cible "AfterPublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "AfterPublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets".
+       La cible "CollectUpToDateCheckInputDesignTime" r├®pertori├®e dans un attribut BeforeTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (156,5)" n'existe pas dans le projet et sera ignor├®e.
+       La cible "CollectUpToDateCheckBuiltDesignTime" r├®pertori├®e dans un attribut BeforeTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (156,5)" n'existe pas dans le projet et sera ignor├®e.
+       La cible "RazorGenerateComponentDeclaration" r├®pertori├®e dans un attribut AfterTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.DesignTime.targets (55,53)" n'existe pas dans le projet et sera ignor├®e.
+     1>Projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" sur le n┼ôud 1 (Restore cible(s)).
+     1>Cible "_LoadRestoreGraphEntryPoints" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_FilterRestoreGraphProjectInputItems" en d├®pend)┬á:
+     1>T├óche "GetRestoreSolutionProjectsTask" ignor├®e en raison d'une fausse condition┬á; ( $(MSBuildProjectFullPath.EndsWith('.metaproj')) == 'true' AND @(RestoreGraphProjectInputItems) == '' ) a ├®t├® ├®valu├®e comme ( False == 'true' AND C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj == '' ).
+     1>G├®n├®ration de la cible "_LoadRestoreGraphEntryPoints" termin├®e dans le projet "MedicalStockManager.csproj".
+     1>Cible "_FilterRestoreGraphProjectInputItems" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreGraph" en d├®pend)┬á:
+       Utilisation de la t├óche "RemoveDuplicates" ├á partir de l'assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       T├óche "RemoveDuplicates"
+       Ex├®cution de la t├óche "RemoveDuplicates" termin├®e.
+       Utilisation de la t├óche "MSBuild" ├á partir de l'assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       T├óche "MSBuild"
+         Propri├®t├®s globales┬á:
+           ExcludeRestorePackageImports=true
+     0>Propri├®t├® 'MSBuildExtensionsPath' avec la valeur 'C:\Program Files\dotnet\sdk\8.0.419\' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(MSBuildProjectExtensionsPath)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\" (valeur pr├®c├®dente┬á: "obj\") ├á C:\Program Files\dotnet\sdk\8.0.419\Current\Microsoft.Common.props (60,5)
+       Propri├®t├® 'MSBuildUserExtensionsPath' avec la valeur 'C:\Users\Chouf\AppData\Local\Microsoft\MSBuild' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (91,5)
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles};{HintPathFromItem}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (92,5)
+       R├®assignation de propri├®t├®┬á: $(AssemblySearchPaths)="{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{RawFileName}" (valeur pr├®c├®dente┬á: "{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory}") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props (93,5)
+       R├®assignation de propri├®t├®┬á: $(TargetsForTfmSpecificContentInPackage)=";PackTool;_PackProjectToolValidation" (valeur pr├®c├®dente┬á: ";PackTool") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackProjectTool.props (15,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\Sdk\Sdk.StaticWebAssets.StaticAssets.ProjectSystem.props (23,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\Sdk\Sdk.StaticWebAssets.StaticAssets.ProjectSystem.props (24,5)
+       R├®assignation de propri├®t├®┬á: $(OutputType)="Exe" (valeur pr├®c├®dente┬á: "Library") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web.ProjectSystem\targets\Microsoft.NET.Sdk.Web.ProjectSystem.props (16,5)
+       R├®assignation de propri├®t├®┬á: $(PublishProfileImported)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportPublishProfile.targets (28,5)
+       R├®assignation de propri├®t├®┬á: $(TargetPlatformVersion)="" (valeur pr├®c├®dente┬á: "0.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets (69,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (121,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (122,5)
+       R├®assignation de propri├®t├®┬á: $(OutputPath)="bin\Debug\net8.0\" (valeur pr├®c├®dente┬á: "bin\Debug\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (137,5)
+       R├®assignation de propri├®t├®┬á: $(IntermediateOutputPath)="obj\Debug\net8.0\" (valeur pr├®c├®dente┬á: "obj\Debug\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets (142,5)
+       R├®assignation de propri├®t├®┬á: $(_FrameworkIdentifierForImplicitDefine)="NET" (valeur pr├®c├®dente┬á: "NETCOREAPP") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets (187,5)
+       R├®assignation de propri├®t├®┬á: $(_FrameworkVersionForImplicitDefine)="8_0" (valeur pr├®c├®dente┬á: "8.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.BeforeCommon.targets (192,5)
+       R├®assignation de propri├®t├®┬á: $(CommandLineArgsForDesignTimeEvaluation)="-langversion:12.0 -define:TRACE" (valeur pr├®c├®dente┬á: "-langversion:12.0") ├á C:\Program Files\dotnet\sdk\8.0.419\Roslyn\Microsoft.CSharp.Core.targets (200,5)
+       R├®assignation de propri├®t├®┬á: $(_DebugSymbolsProduced)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (175,5)
+       R├®assignation de propri├®t├®┬á: $(_DocumentationFileProduced)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (185,5)
+       R├®assignation de propri├®t├®┬á: $(MSBuildCopyMarkerName)="MedicalS.2451CE65" (valeur pr├®c├®dente┬á: "MedicalStockManager.csproj") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (392,5)
+       R├®assignation de propri├®t├®┬á: $(MSBuildCopyMarkerName)="MedicalS.2451CE65.Up2Date" (valeur pr├®c├®dente┬á: "MedicalS.2451CE65") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (393,5)
+       R├®assignation de propri├®t├®┬á: $(ProcessorArchitecture)="msil" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (541,5)
+       R├®assignation de propri├®t├®┬á: $(DelaySign)="" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (580,5)
+       Propri├®t├® 'LOCALAPPDATA' avec la valeur 'C:\Users\Chouf\AppData\Local' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(_SGenGenerateSerializationAssembliesConfig)="Auto" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (3896,5)
+       R├®assignation de propri├®t├®┬á: $(_SGenGenerateSerializationAssembliesConfig)="Off" (valeur pr├®c├®dente┬á: "Auto") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (3897,5)
+       R├®assignation de propri├®t├®┬á: $(_TargetsThatPrepareProjectReferences)="
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           " (valeur pr├®c├®dente┬á: "_SplitProjectReferencesByFileExistence") ├á C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets (5099,5)
+       Propri├®t├® 'MSBuildExtensionsPath32' avec la valeur 'C:\Program Files\dotnet\sdk\8.0.419' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(ProjectAssetsFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\project.assets.json" (valeur pr├®c├®dente┬á: "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\/project.assets.json") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (24,5)
+       R├®assignation de propri├®t├®┬á: $(ProjectAssetsCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.assets.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.assets.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (29,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveAssemblyReferencesDependsOn)="
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (80,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareResourcesDependsOn)="
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+             
+             ;
+             PrepareResourceNames;
+             ResGen;
+             CompileLicxFiles
+           
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             PrepareResourceNames;
+             ResGen;
+             CompileLicxFiles
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets (86,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (27,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (29,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (32,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (33,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (35,5)
+       R├®assignation de propri├®t├®┬á: $(DefaultItemExcludes)=";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc;**/.DS_Store" (valeur pr├®c├®dente┬á: ";**\node_modules\**;node_modules\**;**\jspm_packages\**;jspm_packages\**;**\bower_components\**;bower_components\**;bin\Debug\/**;obj\Debug\/**;bin\/**;obj\/**;**/*.user;**/*.*proj;**/*.sln;**/*.vssscc") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveAssemblyReferencesDependsOn)="
+             
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           ;
+             ResolveTargetingPackAssets;
+           " (valeur pr├®c├®dente┬á: "
+             
+             ResolveProjectReferences;
+             FindInvalidProjectReferences;
+             GetFrameworkPaths;
+             GetReferenceAssemblyPaths;
+             PrepareForBuild;
+             ResolveSDKReferences;
+             ExpandSDKReferences;
+           ;
+             ResolvePackageDependenciesForBuild;
+             _HandlePackageFileConflicts;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets (14,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateRuntimeConfigurationPropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genruntimeconfig.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genruntimeconfig.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (44,5)
+       R├®assignation de propri├®t├®┬á: $(_GeneratePublishDependencyFilePropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genpublishdeps.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genpublishdeps.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (46,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateSingleFileBundlePropertyInputsCache)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.genbundle.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.genbundle.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (48,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateRuntimeConfigDevFile)="false" (valeur pr├®c├®dente┬á: "true") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (81,5)
+       Propri├®t├® 'USERPROFILE' avec la valeur 'C:\Users\Chouf' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(_DefaultUserProfileRuntimeStorePath)="C:\Users\Chouf" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (97,5)
+       R├®assignation de propri├®t├®┬á: $(_DefaultUserProfileRuntimeStorePath)="C:\Users\Chouf\.dotnet\store" (valeur pr├®c├®dente┬á: "C:\Users\Chouf") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (98,5)
+       R├®assignation de propri├®t├®┬á: $(AvailablePlatforms)="Any CPU,x86,x64,ARM32" (valeur pr├®c├®dente┬á: "Any CPU,x86,x64") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (136,5)
+       R├®assignation de propri├®t├®┬á: $(AvailablePlatforms)="Any CPU,x86,x64,ARM32,ARM64" (valeur pr├®c├®dente┬á: "Any CPU,x86,x64,ARM32") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (140,5)
+       R├®assignation de propri├®t├®┬á: $(CoreBuildDependsOn)="
+             _CheckForBuildWithNoBuild;
+             
+             BuildOnlySettings;
+             PrepareForBuild;
+             PreBuildEvent;
+             ResolveReferences;
+             PrepareResources;
+             ResolveKeySource;
+             Compile;
+             ExportWindowsMDFile;
+             UnmanagedUnregistration;
+             GenerateSerializationAssemblies;
+             CreateSatelliteAssemblies;
+             GenerateManifests;
+             GetTargetPath;
+             PrepareForRun;
+             UnmanagedRegistration;
+             IncrementalClean;
+             PostBuildEvent
+           ;
+             GenerateBuildDependencyFile;
+             GenerateBuildRuntimeConfigurationFiles
+           " (valeur pr├®c├®dente┬á: "
+             BuildOnlySettings;
+             PrepareForBuild;
+             PreBuildEvent;
+             ResolveReferences;
+             PrepareResources;
+             ResolveKeySource;
+             Compile;
+             ExportWindowsMDFile;
+             UnmanagedUnregistration;
+             GenerateSerializationAssemblies;
+             CreateSatelliteAssemblies;
+             GenerateManifests;
+             GetTargetPath;
+             PrepareForRun;
+             UnmanagedRegistration;
+             IncrementalClean;
+             PostBuildEvent
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (197,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCleanDependsOn)="
+             _SdkBeforeClean;
+             
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (206,5)
+       R├®assignation de propri├®t├®┬á: $(RebuildDependsOn)="
+             _SdkBeforeRebuild;
+             
+             BeforeRebuild;
+             Clean;
+             Build;
+             AfterRebuild;
+           
+           " (valeur pr├®c├®dente┬á: "
+             BeforeRebuild;
+             Clean;
+             Build;
+             AfterRebuild;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (213,5)
+       R├®assignation de propri├®t├®┬á: $(CompileDependsOn)="
+             
+             ResolveReferences;
+             ResolveKeySource;
+             SetWin32ManifestProperties;
+             _SetPreferNativeArm64Win32ManifestProperties;
+             FindReferenceAssembliesForReferences;
+             _GenerateCompileInputs;
+             BeforeCompile;
+             _TimeStampBeforeCompile;
+             _GenerateCompileDependencyCache;
+             CoreCompile;
+             _TimeStampAfterCompile;
+             AfterCompile;
+           ;
+             _CreateAppHost;
+             _CreateComHost;
+             _GetIjwHostPaths;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveReferences;
+             ResolveKeySource;
+             SetWin32ManifestProperties;
+             _SetPreferNativeArm64Win32ManifestProperties;
+             FindReferenceAssembliesForReferences;
+             _GenerateCompileInputs;
+             BeforeCompile;
+             _TimeStampBeforeCompile;
+             _GenerateCompileDependencyCache;
+             CoreCompile;
+             _TimeStampAfterCompile;
+             AfterCompile;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (679,5)
+       R├®assignation de propri├®t├®┬á: $(CreateSatelliteAssembliesDependsOn)="
+             
+             ;
+             _GenerateSatelliteAssemblyInputs;
+             ComputeIntermediateSatelliteAssemblies;
+             GenerateSatelliteAssemblies
+           ;
+             CoreGenerateSatelliteAssemblies
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             _GenerateSatelliteAssemblyInputs;
+             ComputeIntermediateSatelliteAssemblies;
+             GenerateSatelliteAssemblies
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets (1065,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.GitLab\build\Microsoft.SourceLink.GitLab.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.GitLab\build\Microsoft.SourceLink.GitLab.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.AzureRepos.Git\build\Microsoft.SourceLink.AzureRepos.Git.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.AzureRepos.Git\build\Microsoft.SourceLink.AzureRepos.Git.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(SourceLinkUrlInitializerTargets)=";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl;_InitializeBitbucketGitSourceLinkUrl" (valeur pr├®c├®dente┬á: ";_InitializeGitHubSourceLinkUrl;_InitializeGitLabSourceLinkUrl;_InitializeAzureReposGitSourceLinkUrl") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.Bitbucket.Git\build\Microsoft.SourceLink.Bitbucket.Git.targets (12,5)
+       R├®assignation de propri├®t├®┬á: $(SourceControlManagerUrlTranslationTargets)=";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation;TranslateBitbucketGitUrlsInSourceControlInformation" (valeur pr├®c├®dente┬á: ";TranslateGitHubUrlsInSourceControlInformation;TranslateGitLabUrlsInSourceControlInformation;TranslateAzureReposGitUrlsInSourceControlInformation") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.SourceLink.Bitbucket.Git\build\Microsoft.SourceLink.Bitbucket.Git.targets (13,5)
+       R├®assignation de propri├®t├®┬á: $(DesignerRuntimeImplementationProjectOutputGroupDependsOn)="
+             
+             ;
+             
+             ;
+             BuildOnlySettings;
+             PrepareForBuild;
+             AssignTargetPaths;
+             ResolveReferences
+           
+           ;
+             _GenerateDesignerDepsFile;
+             _GenerateDesignerRuntimeConfigFile;
+             GetCopyToOutputDirectoryItems;
+             _GatherDesignerShadowCopyFiles;
+           " (valeur pr├®c├®dente┬á: "
+             ;
+             
+             ;
+             BuildOnlySettings;
+             PrepareForBuild;
+             AssignTargetPaths;
+             ResolveReferences
+           
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DesignerSupport.targets (21,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateToolsSettingsFileCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.toolssettingsinput.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.toolssettingsinput.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (68,5)
+       R├®assignation de propri├®t├®┬á: $(_ShimInputCacheFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.shiminput.cache" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.shiminput.cache") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (137,5)
+       R├®assignation de propri├®t├®┬á: $(_ShimCreatedSentinelFile)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\Debug\net8.0\MedicalStockManager.shimcreated.sentinel" (valeur pr├®c├®dente┬á: "obj\Debug\net8.0\MedicalStockManager.shimcreated.sentinel") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.PackTool.targets (139,5)
+       R├®assignation de propri├®t├®┬á: $(DefineConstants)="TRACE;DEBUG" (valeur pr├®c├®dente┬á: "TRACE") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (31,5)
+       R├®assignation de propri├®t├®┬á: $(DefineConstants)="TRACE;DEBUG;NET;NET8_0;NETCOREAPP" (valeur pr├®c├®dente┬á: "TRACE;DEBUG") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(WarningsAsErrors)=";NU1605;SYSLIB0011" (valeur pr├®c├®dente┬á: ";NU1605") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.CSharp.targets (48,5)
+       R├®assignation de propri├®t├®┬á: $(PackageDescription)="Package Description" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets (34,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; " (valeur pr├®c├®dente┬á: "_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(_IsNotSetContainersTargetsDir)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\Sdk\Sdk.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(_IsSDKContainerAllowedVersion)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Containers\build\Microsoft.NET.Build.Containers.targets (5,5)
+       R├®assignation de propri├®t├®┬á: $(_ContainerIsTargetingNet8TFM)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Containers\build\Microsoft.NET.Build.Containers.targets (15,5)
+       Propri├®t├® 'DOTNET_HOST_PATH' avec la valeur 'C:\Program Files\dotnet\dotnet.exe' d├®velopp├®e ├á partir de lÔÇÖenvironnement.
+       R├®assignation de propri├®t├®┬á: $(PrepareForRunDependsOn)="StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           " (valeur pr├®c├®dente┬á: "
+             CopyFilesToOutputDirectory
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.targets (255,5)
+       R├®assignation de propri├®t├®┬á: $(GetCopyToOutputDirectoryItemsDependsOn)="
+             AssignTargetPaths;
+             
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           ;
+             _GetProjectReferenceTargetFrameworkProperties;
+             _PopulateCommonStateForGetCopyToOutputDirectoryItems
+           ;AddStaticWebAssetsManifest" (valeur pr├®c├®dente┬á: "
+             AssignTargetPaths;
+             
+             AssignProjectConfiguration;
+             _SplitProjectReferencesByFileExistence
+           ;
+             _GetProjectReferenceTargetFrameworkProperties;
+             _PopulateCommonStateForGetCopyToOutputDirectoryItems
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.targets (266,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           " (valeur pr├®c├®dente┬á: "Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Pack.targets (41,5)
+       R├®assignation de propri├®t├®┬á: $(IncludeStaticWebAssetsPackItemsDependsOn)="
+             Build;
+             ResolveStaticWebAssetsConfiguration;LoadStaticWebAssetsBuildManifest
+           ;
+           " (valeur pr├®c├®dente┬á: "
+             ResolveStaticWebAssetsConfiguration;LoadStaticWebAssetsBuildManifest
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Pack.targets (50,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         " (valeur pr├®c├®dente┬á: "UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (55,3)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedBuildStaticWebAssetsDependsOn)="
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (61,3)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           " (valeur pr├®c├®dente┬á: "
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForRunDependsOn)="
+             ;GenerateStaticWebAssetsManifest;GenerateComputedBuildStaticWebAssets;CopyStaticWebAssetsToOutputDirectory;
+             _GenerateBuildJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: ";GenerateStaticWebAssetsManifest;GenerateComputedBuildStaticWebAssets;CopyStaticWebAssetsToOutputDirectory") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (44,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForPublishDependsOn)="
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: ";ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (49,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           " (valeur pr├®c├®dente┬á: "
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (54,5)
+       R├®assignation de propri├®t├®┬á: $(ResolvePublishStaticWebAssetsDependsOn)="
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           " (valeur pr├®c├®dente┬á: "LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets (59,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedBuildStaticWebAssetsDependsOn)="
+             
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         ;
+             _CompressFiles;
+           " (valeur pr├®c├®dente┬á: "
+           ;
+           _ResolveBundlingConfiguration;
+           _GenerateScopedCssFiles;
+           BundleScopedCssFiles;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (35,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateComputedPublishStaticWebAssetsDependsOn)="
+             ;
+             _CompressFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (39,5)
+       R├®assignation de propri├®t├®┬á: $(StaticWebAssetsPrepareForPublishDependsOn)="
+             
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           ;
+             _CompressFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "
+             ;ResolveStaticWebAssetsConfiguration;GenerateStaticWebAssetsPublishManifest;GenerateComputedPublishStaticWebAssets;
+             _GeneratePublishJsModuleManifest;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (43,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveStaticWebAssetsInputsDependsOn)="
+             
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           ;
+             _ResolveCompressedFiles;
+           " (valeur pr├®c├®dente┬á: "
+             
+             
+           UpdateExistingPackageStaticWebAssets;ResolveProjectStaticWebAssets;ResolveEmbeddedProjectsStaticWebAssets;ResolveReferencedProjectsStaticWebAssets;;
+           UpdateLegacyPackageScopedCssBundles;
+           _AddScopedCssBundles;
+         ;
+             _AddJsModulesToStaticWebAssets;
+           ;
+             _AddBuildJsModuleManifest;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (47,5)
+       R├®assignation de propri├®t├®┬á: $(ResolvePublishStaticWebAssetsDependsOn)="
+             
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           ;
+             _ResolveCompressedFilesForPublish;
+           " (valeur pr├®c├®dente┬á: "
+             LoadStaticWebAssetsBuildManifest;ComputeReferencedProjectsEmbeddedPublishAssets;ComputeReferencedProjectsPublishAssets;;
+             _AddPublishJsModuleManifest
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets (51,5)
+       R├®assignation de propri├®t├®┬á: $(ResolveScopedCssOutputsDependsOn)="
+             
+           ;
+         ;
+             ResolveCssScopes;
+           " (valeur pr├®c├®dente┬á: "
+           ;
+         ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (188,5)
+       R├®assignation de propri├®t├®┬á: $(DebugSymbolsProjectOutputGroupDependsOn)="
+             ;
+             _RazorAddDebugSymbolsProjectOutputGroupOutput
+           " (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (193,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareForBuildDependsOn)="
+             ;GetFrameworkPaths;GetReferenceAssemblyPaths;AssignLinkMetadata;
+             ResolveRazorGenerateInputs
+           " (valeur pr├®c├®dente┬á: ";GetFrameworkPaths;GetReferenceAssemblyPaths;AssignLinkMetadata") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (198,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateNuspecDependsOn)="
+             ResolveRazorGenerateInputs;
+             
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           
+           " (valeur pr├®c├®dente┬á: "
+             IncludeStaticWebAssetsPackItems;
+             Build;_LoadPackInputItems; _GetTargetFrameworksOutput; _WalkEachTargetPerFramework; _GetPackageFiles; ;
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (203,5)
+       R├®assignation de propri├®t├®┬á: $(PrepareForRunDependsOn)="
+             _RazorPrepareForRun;
+             StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           
+           " (valeur pr├®c├®dente┬á: "StaticWebAssetsPrepareForRun;
+             CopyFilesToOutputDirectory
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (208,5)
+       R├®assignation de propri├®t├®┬á: $(UseRazorBuildServer)="true" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (299,5)
+       R├®assignation de propri├®t├®┬á: $(_RazorDebugSymbolsProduced)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (305,5)
+       R├®assignation de propri├®t├®┬á: $(GenerateRazorTargetAssemblyInfoDependsOn)="
+             _ResolveMvcAssemblyAttributes;
+             
+             GetRazorTargetAssemblyAttributes;
+             _CreateRazorTargetAssemblyInfoInputsCacheFile;
+             CoreGenerateRazorTargetAssemblyInfo
+           
+           " (valeur pr├®c├®dente┬á: "
+             GetRazorTargetAssemblyAttributes;
+             _CreateRazorTargetAssemblyInfoInputsCacheFile;
+             CoreGenerateRazorTargetAssemblyInfo
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (36,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCompileDependsOn)="
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           " (valeur pr├®c├®dente┬á: ";_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (181,5)
+       R├®assignation de propri├®t├®┬á: $(_GenerateRazorAssemblyInfoDependsOn)="
+             _ResolveMvcAssemblyAttributes;
+             RazorGetAssemblyAttributes;PrepareForBuild;_CoreGenerateRazorAssemblyInfo;
+           " (valeur pr├®c├®dente┬á: "RazorGetAssemblyAttributes;PrepareForBuild;_CoreGenerateRazorAssemblyInfo") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets (189,5)
+       R├®assignation de propri├®t├®┬á: $(CoreCompileDependsOn)="
+             _DiscoverMvcApplicationParts;
+             
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           ;
+           " (valeur pr├®c├®dente┬á: "
+             ;_ComputeNonExistentFileProperty;ResolveCodeAnalysisRuleSet;
+             _GenerateRazorAssemblyInfo
+           ") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.MvcApplicationPartsDiscovery.targets (22,5)
+       R├®assignation de propri├®t├®┬á: $(RazorDesignTimeTargets)="C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.DesignTime.targets" (valeur pr├®c├®dente┬á: "C:\Program Files\dotnet\sdk\8.0.419\\Microsoft\VisualStudio\Razor\Microsoft.NET.Sdk.Razor.DesignTime.targets") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Sdk.Razor.CurrentVersion.targets (779,5)
+       R├®assignation de propri├®t├®┬á: $(RunWorkingDirectory)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Web.ProjectSystem\targets\Microsoft.NET.Sdk.Web.ProjectSystem.targets (21,5)
+       R├®assignation de propri├®t├®┬á: $(PublishProfileImported)="true" (valeur pr├®c├®dente┬á: "false") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (60,5)
+       R├®assignation de propri├®t├®┬á: $(PublishConfiguration)="Debug" (valeur pr├®c├®dente┬á: "") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (81,5)
+       R├®assignation de propri├®t├®┬á: $(BaseIntermediateOutputPath)="C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\" (valeur pr├®c├®dente┬á: "obj\") ├á C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets (87,5)
+       Remplacement de la cible "ResolveFrameworkReferences" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "ResolveFrameworkReferences" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets".
+       Remplacement de la cible "Run" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "Run" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets".
+       Remplacement de la cible "GenerateSupportedTargetFrameworkAlias" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GenerateSupportedTargetFrameworkAlias" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets".
+       Remplacement de la cible "GetReferenceAssemblyPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetReferenceAssemblyPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DisableStandardFrameworkResolution.targets".
+       Remplacement de la cible "GetFrameworkPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetFrameworkPaths" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DisableStandardFrameworkResolution.targets".
+       Remplacement de la cible "DesignerRuntimeImplementationProjectOutputGroup" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "DesignerRuntimeImplementationProjectOutputGroup" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DesignerSupport.targets".
+       Remplacement de la cible "Publish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "Publish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "ResolveReadyToRunCompilers" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.CrossGen.targets" par la cible "ResolveReadyToRunCompilers" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "GetCopyToPublishDirectoryItems" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "GetCopyToPublishDirectoryItems" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets".
+       Remplacement de la cible "BeforePublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "BeforePublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets".
+       Remplacement de la cible "AfterPublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Microsoft.Common.CurrentVersion.targets" par la cible "AfterPublish" du projet "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets".
+       La cible "CollectUpToDateCheckInputDesignTime" r├®pertori├®e dans un attribut BeforeTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (156,5)" n'existe pas dans le projet et sera ignor├®e.
+       La cible "CollectUpToDateCheckBuiltDesignTime" r├®pertori├®e dans un attribut BeforeTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.StaticWebAssets\targets\Microsoft.NET.Sdk.StaticWebAssets.ScopedCss.targets (156,5)" n'existe pas dans le projet et sera ignor├®e.
+       La cible "RazorGenerateComponentDeclaration" r├®pertori├®e dans un attribut AfterTargets ├á "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk.Razor\targets\Microsoft.NET.Sdk.Razor.DesignTime.targets (55,53)" n'existe pas dans le projet et sera ignor├®e.
+     1>Le projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1) g├®n├¿re "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1:2) sur le n┼ôud 1 (_IsProjectRestoreSupported cible(s)).
+   1:2>Cible "_IsProjectRestoreSupported" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (point d'entr├®e)┬á:
+   1:2>G├®n├®ration de la cible "_IsProjectRestoreSupported" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:2>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (_IsProjectRestoreSupported cible(s)).
+     1>Ex├®cution de la t├óche "MSBuild" termin├®e.
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreUseSkipNonexistentTargets)' != 'true' ) a ├®t├® ├®valu├®e comme ( 'true' != 'true' ).
+       Assembly charg├® pendant TaskRun┬á: NuGet.Build.Tasks, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll, MVID : da6659e2-ab3c-4a1c-91d3-86fe81c4da96, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+       Assembly charg├® pendant TaskRun┬á: NuGet.Common, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Common.dll, MVID : 71662c50-4eea-46ea-82bf-b2edfd33a945, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+       Assembly charg├® pendant TaskRun┬á: NuGet.Commands, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Commands.dll, MVID : fd182425-a30a-445b-9628-b4c5f0ab1353, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+       Assembly charg├® pendant TaskRun┬á: NuGet.ProjectModel, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.ProjectModel.dll, MVID : de1018f8-9cea-4ea5-aafd-eccdf5a6f888, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+       Utilisation de la t├óche "WarnForInvalidProjectsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "WarnForInvalidProjectsTask"
+       Ex├®cution de la t├óche "WarnForInvalidProjectsTask" termin├®e.
+     1>G├®n├®ration de la cible "_FilterRestoreGraphProjectInputItems" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_FilterRestoreGraphProjectInputItems" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+     1>Cible "_GetAllRestoreProjectPathItems" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreGraph" en d├®pend)┬á:
+       Utilisation de la t├óche "NuGetMessageTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "NuGetMessageTask"
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.NuGetMessageTask)┬á: NuGet.Build.Tasks.resources, Version=6.11.1.2, Culture=fr, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL (emplacement : C:\Program Files\dotnet\sdk\8.0.419\fr\NuGet.Build.Tasks.resources.dll, MVID : c78f1780-696a-4982-bbc4-ee33420b5478, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Identification des projets ├á restaurer...
+       Ex├®cution de la t├óche "NuGetMessageTask" termin├®e.
+       T├óche "MSBuild"
+         Propri├®t├®s globales┬á:
+           ExcludeRestorePackageImports=true
+     1>Le projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1) g├®n├¿re "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1:3) sur le n┼ôud 1 (_GenerateRestoreProjectPathWalk cible(s)).
+   1:3>Cible "_GenerateRestoreProjectPathItemsAllFrameworks" ignor├®e en raison d'une fausse condition┬á; ( '$(TargetFrameworks)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+   1:3>Cible "_GenerateRestoreProjectPathItemsPerFramework" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreProjectPathItemsCurrentProject" en d├®pend)┬á:
+       Utilisation de la t├óche "ConvertToAbsolutePath" ├á partir de l'assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       T├óche "ConvertToAbsolutePath"
+       Ex├®cution de la t├óche "ConvertToAbsolutePath" termin├®e.
+   1:3>G├®n├®ration de la cible "_GenerateRestoreProjectPathItemsPerFramework" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:3>Cible "_GenerateRestoreProjectPathItemsCurrentProject" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreProjectPathItems" en d├®pend)┬á:
+   1:3>G├®n├®ration de la cible "_GenerateRestoreProjectPathItemsCurrentProject" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:3>Cible "_GenerateRestoreProjectPathItems" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreProjectPathWalk" en d├®pend)┬á:
+       T├óche "RemoveDuplicates"
+       Ex├®cution de la t├óche "RemoveDuplicates" termin├®e.
+   1:3>G├®n├®ration de la cible "_GenerateRestoreProjectPathItems" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:3>Cible "_GenerateRestoreProjectPathWalk" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (point d'entr├®e)┬á:
+       T├óche "MSBuild"
+       Ex├®cution de la t├óche "MSBuild" termin├®e.
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreUseSkipNonexistentTargets)' != 'true' ) a ├®t├® ├®valu├®e comme ( 'true' != 'true' ).
+       T├óche "RemoveDuplicates"
+       Ex├®cution de la t├óche "RemoveDuplicates" termin├®e.
+   1:3>G├®n├®ration de la cible "_GenerateRestoreProjectPathWalk" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:3>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (_GenerateRestoreProjectPathWalk cible(s)).
+     1>Ex├®cution de la t├óche "MSBuild" termin├®e.
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreUseSkipNonexistentTargets)' != 'true' ) a ├®t├® ├®valu├®e comme ( 'true' != 'true' ).
+       T├óche "RemoveDuplicates"
+       Ex├®cution de la t├óche "RemoveDuplicates" termin├®e.
+       T├óche "MSBuild"
+         Propri├®t├®s globales┬á:
+           ExcludeRestorePackageImports=true
+     1>Le projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1) g├®n├¿re "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1:4) sur le n┼ôud 1 (_IsProjectRestoreSupported cible(s)).
+   1:4>Cible "_IsProjectRestoreSupported" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+   1:4>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (_IsProjectRestoreSupported cible(s)).
+     1>Ex├®cution de la t├óche "MSBuild" termin├®e.
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreUseSkipNonexistentTargets)' != 'true' ) a ├®t├® ├®valu├®e comme ( 'true' != 'true' ).
+     1>G├®n├®ration de la cible "_GetAllRestoreProjectPathItems" termin├®e dans le projet "MedicalStockManager.csproj".
+     1>Cible "_GenerateRestoreGraph" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "Restore" en d├®pend)┬á:
+       Utilisation de la t├óche "Message" ├á partir de l'assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       T├óche "Message"
+         Generating dg file
+       Ex├®cution de la t├óche "Message" termin├®e.
+       T├óche "Message"
+         C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj
+       Ex├®cution de la t├óche "Message" termin├®e.
+       T├óche "MSBuild"
+         Propri├®t├®s globales┬á:
+           ExcludeRestorePackageImports=true
+     1>Le projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1) g├®n├¿re "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1:5) sur le n┼ôud 1 (_GenerateRestoreGraphProjectEntry cible(s)).
+   1:5>Cible "_GetProjectJsonPath" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreProjectStyle" en d├®pend)┬á:
+   1:5>T├óche "GetRestoreProjectJsonPathTask" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreProjectStyle)' == 'ProjectJson' OR '$(RestoreProjectStyle)' == '' ) a ├®t├® ├®valu├®e comme ( 'PackageReference' == 'ProjectJson' OR 'PackageReference' == '' ).
+   1:5>G├®n├®ration de la cible "_GetProjectJsonPath" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForUnsupportedTargetPlatformIdentifier" ignor├®e en raison d'une fausse condition┬á; ('$(TargetPlatformIdentifier)' != '' and '$(TargetFrameworkIdentifier)' == '.NETCoreApp' and $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), 5.0)) And ('$(DesignTimeBuild)' != 'true' Or '@(MissingWorkloadPack)' == '')) a ├®t├® ├®valu├®e comme ('' != '' and '.NETCoreApp' == '.NETCoreApp' and True And ('' != 'true' Or '' == '')).
+       Cible "_CheckForMissingWorkload" ignor├®e en raison d'une fausse condition┬á; ('@(MissingWorkloadPack)' != '' And '$(DesignTimeBuild)' != 'true') a ├®t├® ├®valu├®e comme ('' != '' And '' != 'true').
+   1:5>Cible "_CheckForUnsupportedNETCoreVersion" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(_TargetFrameworkVersionWithoutV)' > '$(NETCoreAppMaximumVersion)' and '$(DisplayVSMessage)' != 'true') a ├®t├® ├®valu├®e comme ('8.0' > '8.0' and '' != 'true').
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(DisplayVSMessage)' == 'true') a ├®t├® ├®valu├®e comme ('' == 'true').
+   1:5>G├®n├®ration de la cible "_CheckForUnsupportedNETCoreVersion" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForEolTargetFrameworks" ignor├®e en raison d'une fausse condition┬á; ('@(_EolNetCoreTargetFrameworkVersions->AnyHaveMetadataValue('Identity', '$(_TargetFrameworkVersionWithoutV)'))' and '$(TargetFrameworkIdentifier)' == '.NETCoreApp' and '$(CheckEolTargetFramework)' == 'true') a ├®t├® ├®valu├®e comme ('false' and '.NETCoreApp' == '.NETCoreApp' and 'true' == 'true').
+       Cible "_CheckForEolWorkloads" ignor├®e en raison d'une fausse condition┬á; ('@(EolWorkload)' != '' and '$(CheckEolWorkloads)' == 'true') a ├®t├® ├®valu├®e comme ('' != '' and 'true' == 'true').
+   1:5>Cible "_CheckForUnsupportedCppNETCoreVersion" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETCoreApp' and '$(_TargetFrameworkVersionWithoutV)' < '3.1' and ('$(Language)' == 'C++' and '$(_EnablePackageReferencesInVCProjects)' != 'true')) a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETCoreApp' and '8.0' < '3.1' and ('C#' == 'C++' and '' != 'true')).
+   1:5>G├®n├®ration de la cible "_CheckForUnsupportedCppNETCoreVersion" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForUnsupportedNETStandardVersion" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETStandard' And '$(NETStandardMaximumVersion)' != '') a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETStandard' And '' != '').
+       Cible "_CheckForUnsupportedTargetFrameworkAndFeatureCombination" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETFramework') a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETFramework').
+   1:5>Cible "UpdateAspNetToFrameworkReference" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.Shared.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "ApplyImplicitVersions" en d├®pend)┬á:
+       Utilisation de la t├óche "CheckIfPackageReferenceShouldBeFrameworkReference" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "CheckIfPackageReferenceShouldBeFrameworkReference"
+       Ex├®cution de la t├óche "CheckIfPackageReferenceShouldBeFrameworkReference" termin├®e.
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(_ShouldRemoveAspNetCoreAll)' == 'true') a ├®t├® ├®valu├®e comme ('False' == 'true').
+       T├óche "CheckIfPackageReferenceShouldBeFrameworkReference"
+       Ex├®cution de la t├óche "CheckIfPackageReferenceShouldBeFrameworkReference" termin├®e.
+       T├óche "NETSdkWarning" ignor├®e en raison d'une fausse condition┬á; ('$(_ShouldRemoveAspNetCoreApp)' == 'true') a ├®t├® ├®valu├®e comme ('False' == 'true').
+   1:5>G├®n├®ration de la cible "UpdateAspNetToFrameworkReference" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "IncludeTargetingPackReference" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkMoniker)' != '' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(AutomaticallyUseReferenceAssemblyPackages)' == 'true') a ├®t├® ├®valu├®e comme ('.NETCoreApp,Version=v8.0' != '' and '.NETCoreApp' == '.NETFramework' and 'true' == 'true').
+   1:5>Cible "CheckForImplicitPackageReferenceOverrides" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.Shared.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "ApplyImplicitVersions" en d├®pend)┬á:
+       Utilisation de la t├óche "CheckForImplicitPackageReferenceOverrides" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "CheckForImplicitPackageReferenceOverrides"
+       Ex├®cution de la t├óche "CheckForImplicitPackageReferenceOverrides" termin├®e.
+   1:5>G├®n├®ration de la cible "CheckForImplicitPackageReferenceOverrides" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "ApplyImplicitVersions" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.DefaultItems.Shared.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       Utilisation de la t├óche "ApplyImplicitVersions" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "ApplyImplicitVersions"
+       Ex├®cution de la t├óche "ApplyImplicitVersions" termin├®e.
+   1:5>G├®n├®ration de la cible "ApplyImplicitVersions" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "CheckForImplicitPackageReferenceOverrides" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+       Cible "AddWindowsSdkKnownFrameworkReferences" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(TargetPlatformIdentifier)' == 'Windows') a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETCoreApp' And '' == 'Windows').
+       Cible "_NormalizeTargetPlatformVersion" ignor├®e en raison d'une fausse condition┬á; ('$(TargetPlatformVersion)' != '' and '$(TargetFrameworkIdentifier)' == '.NETCoreApp' and $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), 5.0)) and ('$(Language)' != 'C++' or '$(_EnablePackageReferencesInVCProjects)' == 'true')) a ├®t├® ├®valu├®e comme ('' != '' and '.NETCoreApp' == '.NETCoreApp' and True and ('C#' != 'C++' or '' == 'true')).
+   1:5>Cible "_CheckForLanguageAndFeatureCombinationSupport" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.RuntimeIdentifierInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "ProcessFrameworkReferences" en d├®pend)┬á:
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; (('$(Language)' == 'C++' and '$(_EnablePackageReferencesInVCProjects)' != 'true') and $(OutputType) != 'library' and '$(TargetFrameworkIdentifier)' == '.NETCoreApp') a ├®t├® ├®valu├®e comme (('C#' == 'C++' and '' != 'true') and Exe != 'library' and '.NETCoreApp' == '.NETCoreApp').
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; (('$(Language)' == 'C++' and '$(_EnablePackageReferencesInVCProjects)' != 'true') and $(EnableComHosting) == 'true') a ├®t├® ├®valu├®e comme (('C#' == 'C++' and '' != 'true') and  == 'true').
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; (('$(Language)' == 'C++' and '$(_EnablePackageReferencesInVCProjects)' != 'true') and $(SelfContained) == 'true') a ├®t├® ├®valu├®e comme (('C#' == 'C++' and '' != 'true') and false == 'true').
+   1:5>G├®n├®ration de la cible "_CheckForLanguageAndFeatureCombinationSupport" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_ComputeToolPackInputsToProcessFrameworkReferences" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Publish.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "ProcessFrameworkReferences" en d├®pend)┬á:
+   1:5>G├®n├®ration de la cible "_ComputeToolPackInputsToProcessFrameworkReferences" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "ProcessFrameworkReferences" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       Utilisation de la t├óche "CheckForDuplicateFrameworkReferences" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "CheckForDuplicateFrameworkReferences"
+       Ex├®cution de la t├óche "CheckForDuplicateFrameworkReferences" termin├®e.
+       Utilisation de la t├óche "ProcessFrameworkReferences" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "ProcessFrameworkReferences"
+       Ex├®cution de la t├óche "ProcessFrameworkReferences" termin├®e.
+       Utilisation de la t├óche "ResolveAppHosts" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "ResolveAppHosts"
+       Ex├®cution de la t├óche "ResolveAppHosts" termin├®e.
+   1:5>G├®n├®ration de la cible "ProcessFrameworkReferences" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "IncludeTargetingPackReference" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkMoniker)' != '' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(AutomaticallyUseReferenceAssemblyPackages)' == 'true') a ├®t├® ├®valu├®e comme ('.NETCoreApp,Version=v8.0' != '' and '.NETCoreApp' == '.NETFramework' and 'true' == 'true').
+   1:5>Cible "_AddMicrosoftNetCompilerToolsetFrameworkPackage" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       T├óche "NETSdkWarning" ignor├®e en raison d'une fausse condition┬á; ('@(PackageReference->AnyHaveMetadataValue('Identity', 'Microsoft.Net.Compilers.Toolset.Framework'))' == 'true') a ├®t├® ├®valu├®e comme ('false' == 'true').
+   1:5>G├®n├®ration de la cible "_AddMicrosoftNetCompilerToolsetFrameworkPackage" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_CheckForObsoleteDotNetCliToolReferences" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.ObsoleteReferences.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "CollectPackageReferences" en d├®pend)┬á:
+       T├óche "NETSdkWarning" ignor├®e en raison d'une fausse condition┬á; ( '%(_ReferenceToObsoleteDotNetCliTool.Identity)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+   1:5>G├®n├®ration de la cible "_CheckForObsoleteDotNetCliToolReferences" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "CollectPackageReferences" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreProjectStyle" en d├®pend)┬á:
+       Utilisation de la t├óche "CheckForDuplicateNuGetItemsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "CheckForDuplicateNuGetItemsTask"
+       Ex├®cution de la t├óche "CheckForDuplicateNuGetItemsTask" termin├®e.
+   1:5>G├®n├®ration de la cible "CollectPackageReferences" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GetRestoreProjectStyle" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreSpecs" en d├®pend)┬á:
+       Utilisation de la t├óche "GetRestoreProjectStyleTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreProjectStyleTask"
+       Ex├®cution de la t├óche "GetRestoreProjectStyleTask" termin├®e.
+   1:5>G├®n├®ration de la cible "_GetRestoreProjectStyle" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GenerateRestoreSpecs" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreGraphProjectEntry" en d├®pend)┬á:
+       T├óche "Message"
+         Restore entry point C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj
+       Ex├®cution de la t├óche "Message" termin├®e.
+   1:5>G├®n├®ration de la cible "_GenerateRestoreSpecs" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GetRestoreSettingsOverrides" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreSettings" en d├®pend)┬á:
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestorePackagesPath)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreRepositoryPathOverride)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreSources)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+       T├óche "MSBuild" ignor├®e en raison d'une fausse condition┬á; ( '$(RestoreFallbackFolders)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+   1:5>G├®n├®ration de la cible "_GetRestoreSettingsOverrides" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GetRestoreSettingsPerFramework" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreSettingsCurrentProject" en d├®pend)┬á:
+   1:5>G├®n├®ration de la cible "_GetRestoreSettingsPerFramework" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GetRestoreSettingsCurrentProject" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreSettings" en d├®pend)┬á:
+   1:5>G├®n├®ration de la cible "_GetRestoreSettingsCurrentProject" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_GetRestoreSettingsAllFrameworks" ignor├®e en raison d'une fausse condition┬á; ( '$(TargetFrameworks)' != '' AND '$(PackageReferenceCompatibleProjectStyle)' == 'true' ) a ├®t├® ├®valu├®e comme ( '' != '' AND 'True' == 'true' ).
+   1:5>Cible "_GetRestoreSettings" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateDotnetCliToolReferenceSpecs" en d├®pend)┬á:
+       Utilisation de la t├óche "GetRestoreSettingsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreSettingsTask"
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.GetRestoreSettingsTask)┬á: NuGet.Configuration, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Configuration.dll, MVID : be7e3e57-42a2-4a9c-87cf-47833efa7f94, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+       Ex├®cution de la t├óche "GetRestoreSettingsTask" termin├®e.
+   1:5>G├®n├®ration de la cible "_GetRestoreSettings" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GenerateDotnetCliToolReferenceSpecs" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreGraphProjectEntry" en d├®pend)┬á:
+       Utilisation de la t├óche "GetRestoreDotnetCliToolsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreDotnetCliToolsTask"
+       Ex├®cution de la t├óche "GetRestoreDotnetCliToolsTask" termin├®e.
+   1:5>G├®n├®ration de la cible "_GenerateDotnetCliToolReferenceSpecs" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>Cible "_GenerateRestoreGraphProjectEntry" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (point d'entr├®e)┬á:
+   1:5>G├®n├®ration de la cible "_GenerateRestoreGraphProjectEntry" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:5>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (_GenerateRestoreGraphProjectEntry cible(s)).
+     1>Ex├®cution de la t├óche "MSBuild" termin├®e.
+       T├óche "MSBuild"
+         Propri├®t├®s globales┬á:
+           ExcludeRestorePackageImports=true
+     1>Le projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1) g├®n├¿re "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (1:6) sur le n┼ôud 1 (_GenerateProjectRestoreGraph cible(s)).
+   1:6>Cible "_GetRestoreProjectStyle" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+       Cible "_GetRestoreProjectStyle" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+       Cible "_GetRestoreProjectStyle" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+   1:6>Cible "_GetRestoreTargetFrameworkOverride" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GetRestoreTargetFrameworksOutput" en d├®pend)┬á:
+       T├óche "GetGlobalPropertyValueTask" ignor├®e en raison d'une fausse condition┬á; ( '$(TargetFrameworks)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+   1:6>G├®n├®ration de la cible "_GetRestoreTargetFrameworkOverride" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "_GetRestoreTargetFrameworksOutput" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreProjectSpec" en d├®pend)┬á:
+       Utilisation de la t├óche "GetProjectTargetFrameworksTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetProjectTargetFrameworksTask"
+       Ex├®cution de la t├óche "GetProjectTargetFrameworksTask" termin├®e.
+   1:6>G├®n├®ration de la cible "_GetRestoreTargetFrameworksOutput" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_GetRestoreSettings" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+   1:6>Cible "_GenerateRestoreProjectSpec" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateProjectRestoreGraph" en d├®pend)┬á:
+       T├óche "ConvertToAbsolutePath"
+       Ex├®cution de la t├óche "ConvertToAbsolutePath" termin├®e.
+   1:6>G├®n├®ration de la cible "_GenerateRestoreProjectSpec" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_GenerateProjectRestoreGraphAllFrameworks" ignor├®e en raison d'une fausse condition┬á; ( '$(TargetFrameworks)' != '' ) a ├®t├® ├®valu├®e comme ( '' != '' ).
+       Cible "_GetRestoreProjectStyle" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+       Cible "CollectPackageReferences" ignor├®e. Elle a ├®t├® g├®n├®r├®e.
+   1:6>Cible "CollectPackageDownloads" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_CollectRestoreInputs" en d├®pend)┬á:
+       T├óche "CheckForDuplicateNuGetItemsTask"
+       Ex├®cution de la t├óche "CheckForDuplicateNuGetItemsTask" termin├®e.
+   1:6>G├®n├®ration de la cible "CollectPackageDownloads" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "CollectFrameworkReferences" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_CollectRestoreInputs" en d├®pend)┬á:
+   1:6>G├®n├®ration de la cible "CollectFrameworkReferences" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "CollectCentralPackageVersions" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_CollectRestoreInputs" en d├®pend)┬á:
+       T├óche "CheckForDuplicateNuGetItemsTask"
+       Ex├®cution de la t├óche "CheckForDuplicateNuGetItemsTask" termin├®e.
+   1:6>G├®n├®ration de la cible "CollectCentralPackageVersions" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "CollectNuGetAuditSuppressions" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_CollectRestoreInputs" en d├®pend)┬á:
+       T├óche "CheckForDuplicateNuGetItemsTask"
+       Ex├®cution de la t├óche "CheckForDuplicateNuGetItemsTask" termin├®e.
+   1:6>G├®n├®ration de la cible "CollectNuGetAuditSuppressions" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "_CollectRestoreInputs" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateProjectRestoreGraphPerFramework" en d├®pend)┬á:
+   1:6>G├®n├®ration de la cible "_CollectRestoreInputs" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "PrepRestoreForStoreProjects" ignor├®e en raison d'une fausse condition┬á; ('$(StorePackageName)' != '') a ├®t├® ├®valu├®e comme ('' != '').
+   1:6>Cible "_GenerateProjectRestoreGraphPerFramework" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateProjectRestoreGraphCurrentProject" en d├®pend)┬á:
+       Utilisation de la t├óche "GetRestoreProjectReferencesTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreProjectReferencesTask"
+       Ex├®cution de la t├óche "GetRestoreProjectReferencesTask" termin├®e.
+       Utilisation de la t├óche "GetRestorePackageReferencesTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestorePackageReferencesTask"
+       Ex├®cution de la t├óche "GetRestorePackageReferencesTask" termin├®e.
+       T├óche "GetCentralPackageVersionsTask" ignor├®e en raison d'une fausse condition┬á; ( '$(PackageReferenceCompatibleProjectStyle)' == 'true' AND '$(_CentralPackageVersionsEnabled)' == 'true' ) a ├®t├® ├®valu├®e comme ( 'True' == 'true' AND '' == 'true' ).
+       Utilisation de la t├óche "GetRestorePackageDownloadsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestorePackageDownloadsTask"
+       Ex├®cution de la t├óche "GetRestorePackageDownloadsTask" termin├®e.
+       Utilisation de la t├óche "GetRestoreFrameworkReferencesTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreFrameworkReferencesTask"
+       Ex├®cution de la t├óche "GetRestoreFrameworkReferencesTask" termin├®e.
+       Utilisation de la t├óche "GetRestoreNuGetAuditSuppressionsTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "GetRestoreNuGetAuditSuppressionsTask"
+       Ex├®cution de la t├óche "GetRestoreNuGetAuditSuppressionsTask" termin├®e.
+   1:6>G├®n├®ration de la cible "_GenerateProjectRestoreGraphPerFramework" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "_GenerateProjectRestoreGraphCurrentProject" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateRestoreDependencies" en d├®pend)┬á:
+   1:6>G├®n├®ration de la cible "_GenerateProjectRestoreGraphCurrentProject" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "_GenerateRestoreDependencies" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "_GenerateProjectRestoreGraph" en d├®pend)┬á:
+   1:6>G├®n├®ration de la cible "_GenerateRestoreDependencies" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>Cible "_GenerateProjectRestoreGraph" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (point d'entr├®e)┬á:
+   1:6>G├®n├®ration de la cible "_GenerateProjectRestoreGraph" termin├®e dans le projet "MedicalStockManager.csproj".
+   1:6>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (_GenerateProjectRestoreGraph cible(s)).
+     1>Ex├®cution de la t├óche "MSBuild" termin├®e.
+     1>G├®n├®ration de la cible "_GenerateRestoreGraph" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForUnsupportedTargetFramework" ignor├®e en raison d'une fausse condition┬á; ('$(_UnsupportedTargetFrameworkError)' == 'true') a ├®t├® ├®valu├®e comme ('' == 'true').
+     1>Cible "_CollectTargetFrameworkForTelemetry" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "Restore" en d├®pend)┬á:
+       Utilisation de la t├óche "AllowEmptyTelemetry" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\..\tools\net8.0\Microsoft.NET.Build.Tasks.dll".
+       T├óche "AllowEmptyTelemetry"
+       Ex├®cution de la t├óche "AllowEmptyTelemetry" termin├®e.
+     1>G├®n├®ration de la cible "_CollectTargetFrameworkForTelemetry" termin├®e dans le projet "MedicalStockManager.csproj".
+     1>Cible "_CheckForUnsupportedNETCoreVersion" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "Restore" en d├®pend)┬á:
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(_TargetFrameworkVersionWithoutV)' > '$(NETCoreAppMaximumVersion)' and '$(DisplayVSMessage)' != 'true') a ├®t├® ├®valu├®e comme ('8.0' > '8.0' and '' != 'true').
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(DisplayVSMessage)' == 'true') a ├®t├® ├®valu├®e comme ('' == 'true').
+     1>G├®n├®ration de la cible "_CheckForUnsupportedNETCoreVersion" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForEolTargetFrameworks" ignor├®e en raison d'une fausse condition┬á; ('@(_EolNetCoreTargetFrameworkVersions->AnyHaveMetadataValue('Identity', '$(_TargetFrameworkVersionWithoutV)'))' and '$(TargetFrameworkIdentifier)' == '.NETCoreApp' and '$(CheckEolTargetFramework)' == 'true') a ├®t├® ├®valu├®e comme ('false' and '.NETCoreApp' == '.NETCoreApp' and 'true' == 'true').
+       Cible "_CheckForEolWorkloads" ignor├®e en raison d'une fausse condition┬á; ('@(EolWorkload)' != '' and '$(CheckEolWorkloads)' == 'true') a ├®t├® ├®valu├®e comme ('' != '' and 'true' == 'true').
+     1>Cible "_CheckForUnsupportedCppNETCoreVersion" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (la cible "Restore" en d├®pend)┬á:
+       T├óche "NETSdkError" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETCoreApp' and '$(_TargetFrameworkVersionWithoutV)' < '3.1' and ('$(Language)' == 'C++' and '$(_EnablePackageReferencesInVCProjects)' != 'true')) a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETCoreApp' and '8.0' < '3.1' and ('C#' == 'C++' and '' != 'true')).
+     1>G├®n├®ration de la cible "_CheckForUnsupportedCppNETCoreVersion" termin├®e dans le projet "MedicalStockManager.csproj".
+       Cible "_CheckForUnsupportedNETStandardVersion" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETStandard' And '$(NETStandardMaximumVersion)' != '') a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETStandard' And '' != '').
+       Cible "_CheckForUnsupportedTargetFrameworkAndFeatureCombination" ignor├®e en raison d'une fausse condition┬á; ('$(TargetFrameworkIdentifier)' == '.NETFramework') a ├®t├® ├®valu├®e comme ('.NETCoreApp' == '.NETFramework').
+     1>Cible "Restore" dans le fichier "C:\Program Files\dotnet\sdk\8.0.419\NuGet.targets" du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (point d'entr├®e)┬á:
+       T├óche "RemoveDuplicates"
+       Ex├®cution de la t├óche "RemoveDuplicates" termin├®e.
+       Utilisation de la t├óche "RestoreTask" ├á partir de l'assembly "C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll".
+       T├óche "RestoreTask"
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Packaging, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Packaging.dll, MVID : c3569465-2284-4cdc-80fa-53f23ad5a901, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.LibraryModel, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.LibraryModel.dll, MVID : 9c74e240-a36b-4261-ae2d-466984d97095, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Versioning, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Versioning.dll, MVID : 0ff30a8a-7983-4ede-bc2f-f9d2f526b309, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Frameworks, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Frameworks.dll, MVID : 36fa17a1-abb6-4cce-b85c-dd32a6dcc45f, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Protocol, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Protocol.dll, MVID : 65288774-e726-408e-8bb6-d22100f75eed, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Credentials, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.Credentials.dll, MVID : 07a91a3f-265a-4226-985e-876d1036d338, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Packaging.resources, Version=6.11.1.2, Culture=fr, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL (emplacement : C:\Program Files\dotnet\sdk\8.0.419\fr\NuGet.Packaging.resources.dll, MVID : 1d378994-39eb-49dd-9eba-e9e7b3127cf5, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         La validation de la cha├«ne de certificats X.509 utilisera le magasin de confiance par d├®faut s├®lectionn├® par .NET pour le code de signature.
+         La validation de la cha├«ne de certificats X.509 utilisera le magasin de confiance par d├®faut s├®lectionn├® par .NET pour le timestamp.
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.DependencyResolver.Core, Version=6.11.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35 (emplacement : C:\Program Files\dotnet\sdk\8.0.419\NuGet.DependencyResolver.Core.dll, MVID : 70f2641a-4895-4758-a37b-70be48187b22, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Commands.resources, Version=6.11.1.2, Culture=fr, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL (emplacement : C:\Program Files\dotnet\sdk\8.0.419\fr\NuGet.Commands.resources.dll, MVID : 337872b7-2515-4aa3-8580-a747a3ade963, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Ex├®cution d'une restauration avec 16┬átravaux simultan├®s.
+         Lecture du fichier projet C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj.
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed (emplacement : C:\Program Files\dotnet\sdk\8.0.419\Newtonsoft.Json.dll, MVID : 7e62198b-eab2-4380-bbac-29171862d1d8, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Runtime.Serialization.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Runtime.Serialization.Primitives.dll, MVID : 6e44f06f-0a71-4bac-9650-455cc84040bd, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Runtime.Numerics, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Runtime.Numerics.dll, MVID : a700b544-81fa-4718-b3e9-0702735db0ff, AssemblyLoadContext : Default)
+         Les entr├®es de restauration pour 'MedicalStockManager' ont chang├®. Poursuite de la restauration.
+         Restauration des packages pour C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj...
+         Restauration des packages pour .NETCoreApp,Version=v8.0...
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Security.Cryptography.Algorithms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Security.Cryptography.Algorithms.dll, MVID : 7721857f-c9a6-47c3-93f0-0baa05b0f5a0, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Security.Cryptography.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Security.Cryptography.Primitives.dll, MVID : c1f4195c-c296-45c1-979a-666a78f4dee9, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Protocol.resources, Version=6.11.1.2, Culture=fr, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL (emplacement : C:\Program Files\dotnet\sdk\8.0.419\fr\NuGet.Protocol.resources.dll, MVID : 5d15881f-c7c8-4052-8023-66cae6ae6db2, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Runtime.Serialization.Formatters, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Runtime.Serialization.Formatters.dll, MVID : db5819ae-d008-4208-8a5a-5a5103bc726d, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Diagnostics.TraceSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Diagnostics.TraceSource.dll, MVID : 2e39ccc9-f5de-4576-9233-fa881dc28394, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Data.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Data.Common.dll, MVID : a066dfea-0bd9-4ca3-916e-7d14f8b618f5, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.ComponentModel, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.ComponentModel.dll, MVID : 7ecf29bb-105d-40af-9566-880bc71e7aab, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: Anonymously Hosted DynamicMethods Assembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null (emplacement : , MVID : 8a8d56f2-6ef7-40d8-a7b3-b45e9b54e078, AssemblyLoadContext : Default)
+           CACHE https://api.nuget.org/v3-flatcontainer/uglytoad.pdfpig/index.json
+         R├®solution des conflits pour net8.0...
+     1>C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj : error NU1103: Package stable UglyToad.PdfPig avec la version (>= 0.1.9) introuvable
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj : error NU1103:   - Version(s) 2 trouv├®e(s) dans nuget.org [version la plus proche┬á: 1.7.0-custom-5]
+           CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51 (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Text.Encodings.Web.dll, MVID : e995ac33-6846-4e2a-9799-a4dbf8bf27d6, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Numerics.Vectors, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Numerics.Vectors.dll, MVID : 762b26a8-27ec-467d-9239-ead90cbda2e5, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Security.Principal.Windows, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Security.Principal.Windows.dll, MVID : 3133579b-1d15-4949-8f7d-7abaceac55f9, AssemblyLoadContext : Default)
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: System.Security.Claims, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a (emplacement : C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.25\System.Security.Claims.dll, MVID : 80d42183-96a5-41b2-bbfc-4ba311ef129b, AssemblyLoadContext : Default)
+           CACHE https://api.nuget.org/v3-vulnerabilities/2026.03.28.05.58.21/vulnerability.base.json
+           CACHE https://api.nuget.org/v3-vulnerabilities/2026.03.28.05.58.21/2026.04.01.17.58.44/vulnerability.update.json
+         Validation de la restauration...
+         Le fichier d'actifs n'a pas chang├®. ├ëcriture du fichier d'actifs ignor├®e. Chemin┬á: C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\project.assets.json
+         ├ëcriture du fichier cache sur le disque. Chemin┬á: C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\project.nuget.cache
+         Persisting dg to C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\obj\MedicalStockManager.csproj.nuget.dgspec.json
+         Assembly charg├® pendant TaskRun (NuGet.Build.Tasks.RestoreTask)┬á: NuGet.Common.resources, Version=6.11.1.2, Culture=fr, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL (emplacement : C:\Program Files\dotnet\sdk\8.0.419\fr\NuGet.Common.resources.dll, MVID : 4240e543-a5dd-464c-a96e-e41d820b4456, AssemblyLoadContext : MSBuild plugin C:\Program Files\dotnet\sdk\8.0.419\NuGet.Build.Tasks.dll)
+         ├ëchec de la restauration de C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj (en 341 ms).
+         
+         Fichiers de configuration NuGet utilis├®s┬á:
+             C:\Users\Chouf\AppData\Roaming\NuGet\NuGet.Config
+         
+         Flux utilis├®s┬á:
+             https://api.nuget.org/v3/index.json
+       Ex├®cution de la t├óche "RestoreTask" termin├®e -- ├ëCHEC.
+     1>G├®n├®ration de la cible "Restore" termin├®e dans le projet "MedicalStockManager.csproj" -- ├ëCHEC.
+     1>G├®n├®ration du projet "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" termin├®e (Restore cible(s)) -- ├ëCHEC.
+
+├ëCHEC de la build.
+
+       "C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj" (Restore cible) (1) ->
+       (Restore cible) -> 
+         C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj : error NU1103: Package stable UglyToad.PdfPig avec la version (>= 0.1.9) introuvable
+       C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj : error NU1103:   - Version(s) 2 trouv├®e(s) dans nuget.org [version la plus proche┬á: 1.7.0-custom-5]
+
+    0 Avertissement(s)
+    1 Erreur(s)
+
+Temps ├®coul├® 00:00:01.00
