@@ -1,0 +1,11 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(57,14): error CS1061: 'IQueryable<int>' ne contient pas de d├®finition pour 'ToHashSetAsync' et aucune m├®thode d'extension accessible 'ToHashSetAsync' acceptant un premier argument de type 'IQueryable<int>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+
+├ëCHEC de la build.
+
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(57,14): error CS1061: 'IQueryable<int>' ne contient pas de d├®finition pour 'ToHashSetAsync' et aucune m├®thode d'extension accessible 'ToHashSetAsync' acceptant un premier argument de type 'IQueryable<int>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+    0 Avertissement(s)
+    1 Erreur(s)
+
+Temps ├®coul├® 00:00:01.82

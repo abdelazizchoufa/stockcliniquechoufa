@@ -34,10 +34,13 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuditService, AuditService>();
 builder.Services.AddScoped<IStockService, StockService>();
 builder.Services.AddScoped<IPurchasingService, PurchasingService>();
+builder.Services.AddScoped<IMaterialRequestService, MaterialRequestService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IInventoryService, InventoryService>();
 builder.Services.AddScoped<IPurchaseRequestService, PurchaseRequestService>();
 builder.Services.AddScoped<IOcrService, OcrService>();
+
+builder.Services.AddHostedService<AutoReplenishmentService>();
 
 var app = builder.Build();
 

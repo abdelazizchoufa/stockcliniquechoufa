@@ -27,4 +27,14 @@ public class StockMovementInputModel
     [Display(Name = "Numero de lot")]
     [StringLength(80)]
     public string? BatchNumber { get; set; }
+
+    [Display(Name = "Emplacement")]
+    public int? LocationId { get; set; }
+
+    [Display(Name = "Destination (Transfert)")]
+    public int? DestinationLocationId { get; set; }
+
+    [DataType(DataType.Date)]
+    [Display(Name = "Date d'expiration")]
+    public DateTime? ExpirationDate { get; set; }
 }

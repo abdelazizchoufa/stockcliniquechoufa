@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Gestion des Commandes";
+    var pending = (IReadOnlyList<MedicalStockManager.Models.MaterialRequest>)ViewBag.Pending;
+    var completed = (IReadOnlyList<MedicalStockManager.Models.MaterialRequest>)ViewBag.Completed;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Administration / Logistique</p>
+        <h1 class="h2 mb-0">Demandes de matériel</h1>
+    </div>
+</div>
+
+<ul class="nav nav-tabs mb-4" id="requestTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="true">
+            À traiter @if(pending.Count > 0){ <span class="badge text-bg-primary ms-2">@pending.Count</span> }
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab" aria-controls="completed" aria-selected="false">
+            Historique
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="requestTabsContent">
+    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body p-0">
+                @if (!pending.Any())
+                {
+                    <div class="p-5 text-center text-muted">
+                        <i class="bi bi-check-circle fs-1 d-block mb-3"></i>
+                        <p>Aucune demande en attente.</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="ps-4">N° Demande</th>
+                                    <th>Date</th>
+                                    <th>Demandeur</th>
+                                    <th>Service</th>
+                                    <th class="text-end pe-4">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var req in pending)
+                                {
+                                    <tr>
+                                        <td class="ps-4 fw-bold">@req.RequestNumber</td>
+                                        <td>@req.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                                        <td>@req.RequestedByUsername</td>
+                                        <td>@req.RequestingService?.Name</td>
+                                        <td class="text-end pe-4">
+                                            <a asp-action="Details" asp-route-id="@req.Id" class="btn btn-sm btn-primary">Traiter</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body p-0">
+                 @if (!completed.Any())
+                {
+                    <div class="p-5 text-center text-muted">
+                        <p>Historique vide.</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="ps-4">N° Demande</th>
+                                    <th>Date</th>
+                                    <th>Demandeur</th>
+                                    <th>Service</th>
+                                    <th>Décision</th>
+                                    <th class="text-end pe-4">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var req in completed)
+                                {
+                                    <tr>
+                                        <td class="ps-4 fw-bold">@req.RequestNumber</td>
+                                        <td>@req.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                                        <td>@req.RequestedByUsername</td>
+                                        <td>@req.RequestingService?.Name</td>
+                                        <td>
+                                            @if(req.Status == MedicalStockManager.Models.RequestStatus.Livre) 
+                                            { <span class="badge text-bg-success">Livrée</span> }
+                                            else 
+                                            { <span class="badge text-bg-danger">Rejetée</span> }
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <a asp-action="Details" asp-route-id="@req.Id" class="btn btn-sm btn-outline-secondary">Détails</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ using System;
 using MedicalStockManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalStockManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260401230524_AddLocationsAndBatches")]
+    partial class AddLocationsAndBatches
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
@@ -178,84 +181,6 @@ namespace MedicalStockManager.Migrations
                         .IsUnique();
 
                     b.ToTable("Locations", (string)null);
-                });
-
-            modelBuilder.Entity("MedicalStockManager.Models.MaterialRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(300)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProcessedByUsername")
-                        .HasMaxLength(80)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RejectionReason")
-                        .HasMaxLength(300)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RequestNumber")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RequestedByUsername")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("RequestingServiceId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RequestNumber")
-                        .IsUnique();
-
-                    b.HasIndex("RequestingServiceId");
-
-                    b.ToTable("MaterialRequests", (string)null);
-                });
-
-            modelBuilder.Entity("MedicalStockManager.Models.MaterialRequestLine", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ApprovedQuantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MaterialRequestId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("RequestedQuantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StockItemId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaterialRequestId");
-
-                    b.HasIndex("StockItemId");
-
-                    b.ToTable("MaterialRequestLines", (string)null);
                 });
 
             modelBuilder.Entity("MedicalStockManager.Models.PurchaseOrder", b =>
@@ -606,36 +531,6 @@ namespace MedicalStockManager.Migrations
                     b.Navigation("StockItem");
                 });
 
-            modelBuilder.Entity("MedicalStockManager.Models.MaterialRequest", b =>
-                {
-                    b.HasOne("MedicalStockManager.Models.Service", "RequestingService")
-                        .WithMany()
-                        .HasForeignKey("RequestingServiceId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("RequestingService");
-                });
-
-            modelBuilder.Entity("MedicalStockManager.Models.MaterialRequestLine", b =>
-                {
-                    b.HasOne("MedicalStockManager.Models.MaterialRequest", "MaterialRequest")
-                        .WithMany("Lines")
-                        .HasForeignKey("MaterialRequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MedicalStockManager.Models.StockItem", "StockItem")
-                        .WithMany()
-                        .HasForeignKey("StockItemId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("MaterialRequest");
-
-                    b.Navigation("StockItem");
-                });
-
             modelBuilder.Entity("MedicalStockManager.Models.PurchaseOrder", b =>
                 {
                     b.HasOne("MedicalStockManager.Models.Supplier", "Supplier")
@@ -764,11 +659,6 @@ namespace MedicalStockManager.Migrations
             modelBuilder.Entity("MedicalStockManager.Models.Location", b =>
                 {
                     b.Navigation("Batches");
-                });
-
-            modelBuilder.Entity("MedicalStockManager.Models.MaterialRequest", b =>
-                {
-                    b.Navigation("Lines");
                 });
 
             modelBuilder.Entity("MedicalStockManager.Models.PurchaseOrder", b =>

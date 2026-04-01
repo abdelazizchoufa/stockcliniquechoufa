@@ -10,6 +10,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
     public DbSet<StockItem> StockItems => Set<StockItem>();
     public DbSet<StockMovement> StockMovements => Set<StockMovement>();
+    public DbSet<Location> Locations => Set<Location>();
+    public DbSet<StockBatch> StockBatches => Set<StockBatch>();
     public DbSet<Supplier> Suppliers => Set<Supplier>();
     public DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
     public DbSet<PurchaseOrderLine> PurchaseOrderLines => Set<PurchaseOrderLine>();
@@ -17,6 +19,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<InventoryLine> InventoryLines => Set<InventoryLine>();
     public DbSet<PurchaseRequest> PurchaseRequests => Set<PurchaseRequest>();
     public DbSet<PurchaseRequestLine> PurchaseRequestLines => Set<PurchaseRequestLine>();
+    public DbSet<MaterialRequest> MaterialRequests => Set<MaterialRequest>();
+    public DbSet<MaterialRequestLine> MaterialRequestLines => Set<MaterialRequestLine>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,6 +32,31 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.HasKey(s => s.Id);
             entity.Property(s => s.Name).HasMaxLength(100).IsRequired();
             entity.HasIndex(s => s.Name).IsUnique();
+        });
+
+        modelBuilder.Entity<Location>(entity =>
+        {
+            entity.ToTable("Locations");
+            entity.HasKey(l => l.Id);
+            entity.Property(l => l.Name).HasMaxLength(100).IsRequired();
+            entity.HasIndex(l => l.Name).IsUnique();
+        });
+
+        modelBuilder.Entity<StockBatch>(entity =>
+        {
+            entity.ToTable("StockBatches");
+            entity.HasKey(b => b.Id);
+            entity.Property(b => b.BatchNumber).HasMaxLength(80).IsRequired();
+
+            entity.HasOne(b => b.StockItem)
+                .WithMany()
+                .HasForeignKey(b => b.StockItemId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(b => b.Location)
+                .WithMany(l => l.Batches)
+                .HasForeignKey(b => b.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<StockItem>(entity =>
@@ -79,6 +108,21 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 .WithMany(item => item.Movements)
                 .HasForeignKey(movement => movement.StockItemId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(movement => movement.StockBatch)
+                .WithMany()
+                .HasForeignKey(movement => movement.StockBatchId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            entity.HasOne(movement => movement.SourceLocation)
+                .WithMany()
+                .HasForeignKey(movement => movement.SourceLocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(movement => movement.DestinationLocation)
+                .WithMany()
+                .HasForeignKey(movement => movement.DestinationLocationId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<Supplier>(entity =>
@@ -178,6 +222,36 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.HasOne(l => l.InventorySession)
                 .WithMany(s => s.Lines)
                 .HasForeignKey(l => l.InventorySessionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(l => l.StockItem)
+                .WithMany()
+                .HasForeignKey(l => l.StockItemId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<MaterialRequest>(entity =>
+        {
+            entity.ToTable("MaterialRequests");
+            entity.HasKey(r => r.Id);
+            entity.Property(r => r.RequestNumber).HasMaxLength(60).IsRequired();
+            entity.Property(r => r.RequestedByUsername).HasMaxLength(80).IsRequired();
+            entity.HasIndex(r => r.RequestNumber).IsUnique();
+
+            entity.HasOne(r => r.RequestingService)
+                .WithMany()
+                .HasForeignKey(r => r.RequestingServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<MaterialRequestLine>(entity =>
+        {
+            entity.ToTable("MaterialRequestLines");
+            entity.HasKey(l => l.Id);
+            
+            entity.HasOne(l => l.MaterialRequest)
+                .WithMany(r => r.Lines)
+                .HasForeignKey(l => l.MaterialRequestId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(l => l.StockItem)

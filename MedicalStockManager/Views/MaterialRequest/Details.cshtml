@@ -1,0 +1,143 @@
+@model MedicalStockManager.Models.MaterialRequest
+@{
+    ViewData["Title"] = "Détails de la demande";
+    bool isAdmin = User.IsInRole(MedicalStockManager.Models.AppRole.Administrateur) || User.IsInRole(MedicalStockManager.Models.AppRole.GestionnaireStock);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Commande n° @Model.RequestNumber</p>
+        <h1 class="h2 mb-0">Détails de la demande</h1>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Retour
+        </a>
+    </div>
+</div>
+
+<div class="row w-100">
+    <div class="col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card h-100">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4">Informations</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-5 text-muted">Statut</dt>
+                    <dd class="col-sm-7">
+                        @if(Model.Status == MedicalStockManager.Models.RequestStatus.Brouillon) { <span class="badge text-bg-secondary w-100">Brouillon</span> }
+                        else if(Model.Status == MedicalStockManager.Models.RequestStatus.Soumis) { <span class="badge text-bg-primary w-100">Soumise / En attente</span> }
+                        else if(Model.Status == MedicalStockManager.Models.RequestStatus.Livre) { <span class="badge text-bg-success w-100">Approuvée & Livrée</span> }
+                        else { <span class="badge text-bg-danger w-100">Rejetée</span> }
+                    </dd>
+
+                    <dt class="col-sm-5 text-muted mt-2">Demandeur</dt>
+                    <dd class="col-sm-7 mt-2">@Model.RequestedByUsername</dd>
+                    
+                    <dt class="col-sm-5 text-muted">Service cible</dt>
+                    <dd class="col-sm-7 fw-bold">@Model.RequestingService?.Name</dd>
+
+                    <dt class="col-sm-5 text-muted ms-0">Date</dt>
+                    <dd class="col-sm-7">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+                    
+                    @if (!string.IsNullOrWhiteSpace(Model.ProcessedByUsername))
+                    {
+                        <dt class="col-sm-5 text-muted mt-3 pt-3 border-top">Traité par</dt>
+                        <dd class="col-sm-7 mt-3 pt-3 border-top">@Model.ProcessedByUsername</dd>
+                    }
+                    
+                    @if (!string.IsNullOrWhiteSpace(Model.Notes))
+                    {
+                        <dt class="col-12 text-muted mt-3">Justification / Notes</dt>
+                        <dd class="col-12 mb-0 bg-light p-2 rounded">@Model.Notes</dd>
+                    }
+                    
+                    @if (Model.Status == MedicalStockManager.Models.RequestStatus.Rejete && !string.IsNullOrWhiteSpace(Model.RejectionReason))
+                    {
+                        <dt class="col-12 text-danger mt-3">Raison du rejet</dt>
+                        <dd class="col-12 mb-0 bg-danger text-white p-2 rounded">@Model.RejectionReason</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-8 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card h-100">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4">Articles demandés</h5>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Référence</th>
+                                <th>Article</th>
+                                <th class="text-center">Quantité demandée</th>
+                                @if (Model.Status == MedicalStockManager.Models.RequestStatus.Livre)
+                                {
+                                    <th class="text-center text-success">Quantité livrée</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var line in Model.Lines)
+                            {
+                                <tr>
+                                    <td><code>@line.StockItem?.Reference</code></td>
+                                    <td class="fw-bold">@line.StockItem?.Name</td>
+                                    <td class="text-center fs-5">
+                                        <span class="badge bg-light text-dark border">@line.RequestedQuantity @line.StockItem?.Unit</span>
+                                    </td>
+                                    @if (Model.Status == MedicalStockManager.Models.RequestStatus.Livre)
+                                    {
+                                        <td class="text-center fs-5">
+                                            <span class="badge text-bg-success">@line.ApprovedQuantity @line.StockItem?.Unit</span>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4 pt-4 border-top d-flex justify-content-end gap-2">
+                    
+                    @if (Model.Status == MedicalStockManager.Models.RequestStatus.Brouillon && Model.RequestedByUsername == User.Identity?.Name)
+                    {
+                        <form asp-action="Submit" asp-route-id="@Model.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Voulez-vous soumettre cette commande à la pharmacie centrale ?')">
+                                <i class="bi bi-send me-2"></i>Soumettre la demande
+                            </button>
+                        </form>
+                    }
+
+                    @if (Model.Status == MedicalStockManager.Models.RequestStatus.Soumis && isAdmin)
+                    {
+                        <form asp-action="Reject" asp-route-id="@Model.Id" method="post" class="d-inline" id="rejectForm">
+                            <input type="hidden" name="reason" id="rejectionReasonInput" />
+                            <button type="button" class="btn btn-outline-danger" onclick="promptReject()">
+                                <i class="bi bi-x-circle me-2"></i>Rejeter
+                            </button>
+                        </form>
+                        
+                        <form asp-action="Approve" asp-route-id="@Model.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-success" onclick="return confirm('ATTENTION : Validation de la commande. Les articles seront immédiatement déduits du stock central (Logique FEFO vers @Model.RequestingService?.Name). Continuer ?')">
+                                <i class="bi bi-check-circle me-2"></i>Valider et déclencher la livraison (FEFO)
+                            </button>
+                        </form>
+                        
+                        <script>
+                            function promptReject() {
+                                const reason = prompt("Raison du rejet de la commande :");
+                                if (reason !== null && reason.trim() !== "") {
+                                    document.getElementById("rejectionReasonInput").value = reason;
+                                    document.getElementById("rejectForm").submit();
+                                }
+                            }
+                        </script>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

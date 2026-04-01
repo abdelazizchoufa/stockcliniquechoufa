@@ -1,0 +1,63 @@
+@model IReadOnlyList<MedicalStockManager.Models.MaterialRequest>
+@{
+    ViewData["Title"] = "Mes commandes internes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Logistique</p>
+        <h1 class="h2 mb-0">Mes commandes internes</h1>
+    </div>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-2"></i>Nouvelle demande
+        </a>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm dashboard-card">
+    <div class="card-body p-0">
+        @if (!Model.Any())
+        {
+            <div class="p-5 text-center text-muted">
+                <i class="bi bi-inbox fs-1 d-block mb-3"></i>
+                <p>Aucune demande soumise.</p>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">N° Demande</th>
+                            <th>Date</th>
+                            <th>Service</th>
+                            <th>Statut</th>
+                            <th class="text-end pe-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var req in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold">@req.RequestNumber</td>
+                                <td>@req.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@req.RequestingService?.Name</td>
+                                <td>
+                                    @if(req.Status == RequestStatus.Brouillon) { <span class="badge text-bg-secondary">Brouillon</span> }
+                                    else if(req.Status == RequestStatus.Soumis) { <span class="badge text-bg-primary">En attente</span> }
+                                    else if(req.Status == RequestStatus.Rejete) { <span class="badge text-bg-danger">Rejetée</span> }
+                                    else { <span class="badge text-bg-success">Livrée</span> }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <a asp-action="Details" asp-route-id="@req.Id" class="btn btn-sm btn-outline-secondary">Détails</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

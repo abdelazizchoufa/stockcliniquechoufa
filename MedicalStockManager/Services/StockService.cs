@@ -71,6 +71,13 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
 
         if (item is null) return null;
 
+        var batches = dbContext.StockBatches
+            .AsNoTracking()
+            .Include(b => b.Location)
+            .Where(b => b.StockItemId == id && b.Quantity > 0)
+            .OrderBy(b => b.ExpirationDate)
+            .ToList();
+
         var movements = dbContext.StockMovements
             .AsNoTracking()
             .Where(movement => movement.StockItemId == id)
@@ -86,7 +93,9 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             {
                 StockItemId = id,
                 Date = DateTime.Today
-            }
+            },
+            Locations = GetLocationSelectList(),
+            Batches = batches
         };
     }
 
@@ -227,41 +236,145 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             return false;
         }
 
-        var signedQuantity = input.MovementType switch
-        {
-            MovementType.Entree => input.Quantity,
-            MovementType.Sortie => -input.Quantity,
-            MovementType.Ajustement => input.Quantity,
-            _ => 0
-        };
+        var locationId = input.LocationId ?? dbContext.Locations.FirstOrDefault(l => l.IsCentral)?.Id ?? 0;
 
-        if (input.MovementType == MovementType.Sortie && item.CurrentQuantity < input.Quantity)
+        if (input.MovementType == MovementType.Entree)
         {
-            errorMessage = "La quantite demandee depasse le stock disponible.";
+            var batchNum = input.BatchNumber ?? "LOT-" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var batch = dbContext.StockBatches.FirstOrDefault(b => b.StockItemId == item.Id && b.LocationId == locationId && b.BatchNumber == batchNum);
+            if (batch == null)
+            {
+                batch = new StockBatch
+                {
+                    StockItemId = item.Id,
+                    LocationId = locationId,
+                    BatchNumber = batchNum,
+                    ExpirationDate = input.ExpirationDate ?? DateTime.Today.AddYears(1),
+                    Quantity = 0
+                };
+                dbContext.StockBatches.Add(batch);
+            }
+
+            batch.Quantity += input.Quantity;
+            item.CurrentQuantity += input.Quantity;
+
+            var movement = new StockMovement
+            {
+                StockItemId = input.StockItemId,
+                StockBatch = batch,
+                MovementType = MovementType.Entree,
+                Quantity = input.Quantity,
+                Date = input.Date,
+                Notes = input.Notes,
+                BatchNumber = batch.BatchNumber,
+                DestinationLocationId = locationId
+            };
+            dbContext.StockMovements.Add(movement);
+        }
+        else if (input.MovementType == MovementType.Sortie)
+        {
+            var batches = dbContext.StockBatches
+                .Where(b => b.StockItemId == item.Id && b.LocationId == locationId && b.Quantity > 0)
+                .OrderBy(b => b.ExpirationDate)
+                .ToList();
+
+            var totalAvailable = batches.Sum(b => b.Quantity);
+            if (totalAvailable < input.Quantity)
+            {
+                errorMessage = $"Stock insuffisant dans cet emplacement. Disponible: {totalAvailable}";
+                return false;
+            }
+
+            var qtyToProcess = input.Quantity;
+            foreach (var batch in batches)
+            {
+                if (qtyToProcess <= 0) break;
+
+                var qtyToTake = Math.Min(batch.Quantity, qtyToProcess);
+                batch.Quantity -= qtyToTake;
+                qtyToProcess -= qtyToTake;
+                item.CurrentQuantity -= qtyToTake;
+
+                var movement = new StockMovement
+                {
+                    StockItemId = input.StockItemId,
+                    StockBatch = batch,
+                    MovementType = MovementType.Sortie,
+                    Quantity = qtyToTake,
+                    Date = input.Date,
+                    Notes = input.Notes,
+                    BatchNumber = batch.BatchNumber,
+                    SourceLocationId = locationId
+                };
+                dbContext.StockMovements.Add(movement);
+            }
+        }
+        else if (input.MovementType == MovementType.Transfert)
+        {
+            if (!input.DestinationLocationId.HasValue) 
+            { 
+                errorMessage = "Emplacement de destination requis."; 
+                return false; 
+            }
+            
+            var batches = dbContext.StockBatches
+                .Where(b => b.StockItemId == item.Id && b.LocationId == locationId && b.Quantity > 0)
+                .OrderBy(b => b.ExpirationDate)
+                .ToList();
+
+            var totalAvailable = batches.Sum(b => b.Quantity);
+            if (totalAvailable < input.Quantity)
+            {
+                errorMessage = $"Stock insuffisant pour le transfert. Disponible: {totalAvailable}";
+                return false;
+            }
+
+            var qtyToProcess = input.Quantity;
+            foreach (var batch in batches)
+            {
+                if (qtyToProcess <= 0) break;
+
+                var qtyToTake = Math.Min(batch.Quantity, qtyToProcess);
+                batch.Quantity -= qtyToTake;
+                qtyToProcess -= qtyToTake;
+                
+                var destBatch = dbContext.StockBatches.FirstOrDefault(b => b.StockItemId == item.Id && b.LocationId == input.DestinationLocationId.Value && b.BatchNumber == batch.BatchNumber);
+                if (destBatch == null)
+                {
+                    destBatch = new StockBatch
+                    {
+                        StockItemId = item.Id,
+                        LocationId = input.DestinationLocationId.Value,
+                        BatchNumber = batch.BatchNumber,
+                        ExpirationDate = batch.ExpirationDate,
+                        Quantity = 0
+                    };
+                    dbContext.StockBatches.Add(destBatch);
+                }
+                destBatch.Quantity += qtyToTake;
+
+                var movement = new StockMovement
+                {
+                    StockItemId = input.StockItemId,
+                    StockBatch = batch,
+                    MovementType = MovementType.Transfert,
+                    Quantity = qtyToTake,
+                    Date = input.Date,
+                    Notes = input.Notes,
+                    BatchNumber = batch.BatchNumber,
+                    SourceLocationId = locationId,
+                    DestinationLocationId = input.DestinationLocationId.Value
+                };
+                dbContext.StockMovements.Add(movement);
+            }
+        }
+        else 
+        {
+            errorMessage = "Ajustement non supporte via cette nouvelle interface de Lots FEFO.";
             return false;
         }
 
-        item.CurrentQuantity += signedQuantity;
-
-        if (item.CurrentQuantity < 0)
-        {
-            errorMessage = "Le stock ne peut pas devenir negatif.";
-            return false;
-        }
-
-        var movement = new StockMovement
-        {
-            StockItemId = input.StockItemId,
-            MovementType = input.MovementType,
-            Quantity = input.Quantity,
-            Date = input.Date,
-            Notes = input.Notes,
-            BatchNumber = input.BatchNumber
-        };
-
-        dbContext.StockMovements.Add(movement);
         dbContext.SaveChanges();
-
         errorMessage = null;
         return true;
     }
@@ -357,6 +470,13 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
         var item = dbContext.StockItems.AsNoTracking().Include(i => i.Service).FirstOrDefault(i => i.Id == id);
         if (item is null) return null;
 
+        var batches = dbContext.StockBatches
+            .AsNoTracking()
+            .Include(b => b.Location)
+            .Where(b => b.StockItemId == id && b.Quantity > 0)
+            .OrderBy(b => b.ExpirationDate)
+            .ToList();
+
         var query = dbContext.StockMovements.AsNoTracking().Where(m => m.StockItemId == id);
 
         if (filter.DateFrom.HasValue)
@@ -376,7 +496,9 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             Item = item,
             Movements = movements,
             NewMovement = new StockMovementInputModel { StockItemId = id, Date = DateTime.Today },
-            Filter = filter
+            Filter = filter,
+            Locations = GetLocationSelectList(),
+            Batches = batches
         };
     }
 
@@ -497,6 +619,15 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             .AsNoTracking()
             .OrderBy(s => s.Name)
             .Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name })
+            .ToList();
+    }
+    private IReadOnlyList<SelectListItem> GetLocationSelectList()
+    {
+        return dbContext.Locations
+            .AsNoTracking()
+            .OrderByDescending(l => l.IsCentral)
+            .ThenBy(l => l.Name)
+            .Select(l => new SelectListItem { Value = l.Id.ToString(), Text = l.Name })
             .ToList();
     }
 }

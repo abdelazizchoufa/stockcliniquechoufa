@@ -55,6 +55,55 @@
     </div>
 </section>
 
+@if (Model.Batches.Any())
+{
+    <section class="mb-4">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body p-4">
+                <div class="section-heading mb-3">
+                    <div>
+                        <p class="section-kicker">Localisation</p>
+                        <h2 class="h4 mb-0">Stock par Magasin et par Lot (FEFO)</h2>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Emplacement</th>
+                                <th>N° Lot</th>
+                                <th>Date d'expiration</th>
+                                <th>Quantité restante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var batch in Model.Batches)
+                            {
+                                var days = (batch.ExpirationDate - DateTime.Today).Days;
+                                var badgeClass = days < 0 ? "text-bg-dark" : days <= 30 ? "text-bg-danger" : days <= 90 ? "text-bg-warning" : "text-bg-success";
+                                
+                                <tr>
+                                    <td>
+                                        <span class="fw-bold">@batch.Location?.Name</span>
+                                    </td>
+                                    <td><code>@batch.BatchNumber</code></td>
+                                    <td>
+                                        @batch.ExpirationDate.ToString("dd/MM/yyyy")
+                                        <span class="badge @badgeClass ms-2">
+                                            @(days < 0 ? "Périmé" : $"{days} j")
+                                        </span>
+                                    </td>
+                                    <td><strong>@batch.Quantity @Model.Item.Unit</strong></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
 <section class="row g-4">
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm h-100 dashboard-card">
@@ -74,8 +123,23 @@
 
                         <div class="mb-3">
                             <label asp-for="NewMovement.MovementType" class="form-label"></label>
-                            <select asp-for="NewMovement.MovementType" asp-items="Html.GetEnumSelectList<MovementType>()" class="form-select"></select>
+                            <select asp-for="NewMovement.MovementType" asp-items="Html.GetEnumSelectList<MovementType>()" class="form-select" id="movementTypeSelect"></select>
                             <span asp-validation-for="NewMovement.MovementType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3" id="locationField">
+                            <label asp-for="NewMovement.LocationId" class="form-label"></label>
+                            <select asp-for="NewMovement.LocationId" asp-items="Model.Locations" class="form-select">
+                            </select>
+                            <span asp-validation-for="NewMovement.LocationId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 text-bg-light p-2 rounded" id="destinationField" style="display:none;">
+                            <label asp-for="NewMovement.DestinationLocationId" class="form-label"></label>
+                            <select asp-for="NewMovement.DestinationLocationId" asp-items="Model.Locations" class="form-select">
+                                <option value="">--- Selectionner ---</option>
+                            </select>
+                            <span asp-validation-for="NewMovement.DestinationLocationId" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
@@ -90,10 +154,17 @@
                             <span asp-validation-for="NewMovement.Date" class="text-danger"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="NewMovement.BatchNumber" class="form-label"></label>
-                            <input asp-for="NewMovement.BatchNumber" class="form-control" placeholder="Ex: LOT-2025-001" />
-                            <span asp-validation-for="NewMovement.BatchNumber" class="text-danger"></span>
+                        <div class="row" id="batchExpirationFields">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NewMovement.BatchNumber" class="form-label"></label>
+                                <input asp-for="NewMovement.BatchNumber" class="form-control" placeholder="Laisser vide = auto" />
+                                <span asp-validation-for="NewMovement.BatchNumber" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NewMovement.ExpirationDate" class="form-label"></label>
+                                <input asp-for="NewMovement.ExpirationDate" class="form-control" />
+                                <span asp-validation-for="NewMovement.ExpirationDate" class="text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -109,6 +180,38 @@
                 {
                     <p class="text-muted mb-0">Ton role permet la consultation de l'historique, mais pas l'ajout de mouvements.</p>
                 }
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const typeSelect = document.getElementById("movementTypeSelect");
+                        const destField = document.getElementById("destinationField");
+                        const batchExpFields = document.getElementById("batchExpirationFields");
+                        const locLabel = document.querySelector('label[for="NewMovement_LocationId"]');
+
+                        function updateForm() {
+                            const val = typeSelect.value;
+                            // 1=Entree, 2=Sortie, 3=Ajustement, 4=Transfert
+                            if (val === "1") {
+                                destField.style.display = "none";
+                                batchExpFields.style.display = "flex";
+                                locLabel.innerText = "Emplacement de reception";
+                            } else if (val === "4") {
+                                destField.style.display = "block";
+                                batchExpFields.style.display = "none";
+                                locLabel.innerText = "Emplacement source";
+                            } else {
+                                destField.style.display = "none";
+                                batchExpFields.style.display = "none";
+                                locLabel.innerText = "Emplacement concerné";
+                            }
+                        }
+
+                        if (typeSelect) {
+                            typeSelect.addEventListener("change", updateForm);
+                            updateForm();
+                        }
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -181,6 +284,10 @@
                                         else if (movement.MovementType == MovementType.Sortie)
                                         {
                                             <span class="badge text-bg-danger">Sortie</span>
+                                        }
+                                        else if (movement.MovementType == MovementType.Transfert)
+                                        {
+                                            <span class="badge text-bg-info">Transfert</span>
                                         }
                                         else
                                         {

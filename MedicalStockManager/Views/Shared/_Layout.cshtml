@@ -47,6 +47,11 @@
                 <i class="bi bi-clipboard2-check"></i>
                 <span>Inventaire</span>
             </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "MaterialRequest" ? "active" : "")"
+               asp-controller="MaterialRequest" asp-action="Index">
+                <i class="bi bi-cart3"></i>
+                <span>Commandes internes</span>
+            </a>
 
             <div class="sidebar-section-label mt-3">Referentiel</div>
             <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Stock" && ViewContext.RouteData.Values["action"]?.ToString() == "Articles" ? "active" : "")"

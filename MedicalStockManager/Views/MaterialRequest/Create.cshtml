@@ -1,0 +1,80 @@
+@model MedicalStockManager.Services.MaterialRequestFormViewModel
+@{
+    ViewData["Title"] = "Nouvelle demande";
+    var items = (IReadOnlyList<MedicalStockManager.Models.StockItem>)ViewBag.Items;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Logistique</p>
+        <h1 class="h2 mb-0">Demande de matériel</h1>
+    </div>
+</div>
+
+<div class="row w-100">
+    <div class="col-lg-8">
+        <form asp-action="Create" method="post" id="requestForm">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+            
+            <div class="card border-0 shadow-sm dashboard-card mb-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-4">1. Informations générales</h5>
+                    
+                    <div class="mb-3">
+                        <label asp-for="RequestingServiceId" class="form-label">Service demandeur de l'allocation</label>
+                        <select asp-for="RequestingServiceId" asp-items="@(((IEnumerable<MedicalStockManager.Models.Service>)ViewBag.Services).Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name }))" class="form-select">
+                            <option value="">Sélectionner votre service...</option>
+                        </select>
+                        <span asp-validation-for="RequestingServiceId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Notes" class="form-label">Justification de la commande (optionnel)</label>
+                        <textarea asp-for="Notes" class="form-control" rows="2" placeholder="Pour urgence, nom du patient, etc..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm dashboard-card mb-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-4">2. Articles ("Panier")</h5>
+                    <p class="text-muted small">Indiquez simplement la quantité pour chaque article voulu. Laissez à 0 ou vide les articles que vous ne voulez pas.</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Référence</th>
+                                    <th>Article</th>
+                                    <th style="width: 150px;">Quantité demandée</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < items.Count; i++)
+                                {
+                                    var item = items[i];
+                                    <tr>
+                                        <td><code>@item.Reference</code></td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <input type="hidden" name="Lines[@i].StockItemId" value="@item.Id" />
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" name="Lines[@i].RequestedQuantity" class="form-control text-center" min="0" value="0" />
+                                                <span class="input-group-text">@item.Unit</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <a asp-action="Index" class="btn btn-outline-secondary">Annuler</a>
+                <button type="submit" class="btn btn-primary">Créer le brouillon de commande</button>
+            </div>
+        </form>
+    </div>
+</div>

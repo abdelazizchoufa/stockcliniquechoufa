@@ -1,0 +1,432 @@
+2026-04-01 23:55:34.592 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-01 23:55:34.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-01 23:55:34.641 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-04-01 23:55:34.663 +01:00 [INF] No migrations were applied. The database is already up to date.
+2026-04-01 23:55:34.803 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AppUsers" AS "a")
+2026-04-01 23:55:34.808 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Services" AS "s")
+2026-04-01 23:55:34.811 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Suppliers" AS "s")
+2026-04-01 23:55:34.814 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StockItems" AS "s")
+2026-04-01 23:55:34.887 +01:00 [INF] User profile is available. Using 'C:\Users\Chouf\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-01 23:55:34.963 +01:00 [INF] Now listening on: https://localhost:7141
+2026-04-01 23:55:34.964 +01:00 [INF] Now listening on: http://localhost:5141
+2026-04-01 23:55:34.966 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-01 23:55:34.967 +01:00 [INF] Hosting environment: Development
+2026-04-01 23:55:34.968 +01:00 [INF] Content root path: C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager
+2026-04-01 23:56:59.084 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Reports/Consumption - null null
+2026-04-01 23:56:59.124 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-01 23:56:59.130 +01:00 [INF] AuthenticationScheme: Cookies was challenged.
+2026-04-01 23:56:59.132 +01:00 [INF] HTTP GET /Reports/Consumption responded 302 in 42.0191 ms
+2026-04-01 23:56:59.136 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Reports/Consumption - 302 0 null 53.7735ms
+2026-04-01 23:56:59.142 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Account/Login?ReturnUrl=%2FReports%2FConsumption - null null
+2026-04-01 23:56:59.147 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager)'
+2026-04-01 23:56:59.161 +01:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller MedicalStockManager.Controllers.AccountController (MedicalStockManager).
+2026-04-01 23:56:59.185 +01:00 [INF] Executing ViewResult, running view Login.
+2026-04-01 23:56:59.268 +01:00 [INF] Executed ViewResult - view Login executed in 85.4904ms.
+2026-04-01 23:56:59.270 +01:00 [INF] Executed action MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager) in 106.7728ms
+2026-04-01 23:56:59.272 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager)'
+2026-04-01 23:56:59.273 +01:00 [INF] HTTP GET /Account/Login responded 200 in 129.4995 ms
+2026-04-01 23:56:59.278 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Account/Login?ReturnUrl=%2FReports%2FConsumption - 200 null text/html; charset=utf-8 136.0017ms
+2026-04-01 23:56:59.416 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/css/site.css?v=HCcbxPumIUCXkwnwdeQo_RDU6ZQ6OZPtkmvomNfCDvc - null null
+2026-04-01 23:56:59.429 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\wwwroot\css\site.css'
+2026-04-01 23:56:59.430 +01:00 [INF] HTTP GET /css/site.css responded 200 in 11.4386 ms
+2026-04-01 23:56:59.432 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/css/site.css?v=HCcbxPumIUCXkwnwdeQo_RDU6ZQ6OZPtkmvomNfCDvc - 200 19575 text/css 15.7135ms
+2026-04-01 23:57:00.620 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/favicon.ico - null null
+2026-04-01 23:57:00.623 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 1.4763 ms
+2026-04-01 23:57:00.625 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/favicon.ico - 404 0 null 5.4623ms
+2026-04-01 23:57:00.627 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5141/favicon.ico, Response status code: 404
+2026-04-01 23:57:23.469 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5141/Account/Login - application/x-www-form-urlencoded 254
+2026-04-01 23:57:23.472 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager)'
+2026-04-01 23:57:23.479 +01:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(MedicalStockManager.Models.LoginViewModel) on controller MedicalStockManager.Controllers.AccountController (MedicalStockManager).
+2026-04-01 23:57:23.567 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUsername_0='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Email", "a"."FullName", "a"."IsActive", "a"."PasswordHash", "a"."Role", "a"."Username"
+FROM "AppUsers" AS "a"
+WHERE "a"."IsActive" AND lower("a"."Username") = @__normalizedUsername_0
+LIMIT 1
+2026-04-01 23:57:24.084 +01:00 [INF] AuthenticationScheme: Cookies signed in.
+2026-04-01 23:57:24.147 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 9), @p1='?' (Size = 19), @p2='?' (Size = 5), @p3='?' (Size = 7), @p4='?' (DbType = DateTime), @p5='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Action", "Details", "EntityId", "EntityType", "OccurredAt", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-04-01 23:57:24.162 +01:00 [INF] Executing RedirectResult, redirecting to /Reports/Consumption.
+2026-04-01 23:57:24.164 +01:00 [INF] Executed action MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager) in 684.115ms
+2026-04-01 23:57:24.165 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.AccountController.Login (MedicalStockManager)'
+2026-04-01 23:57:24.166 +01:00 [INF] HTTP POST /Account/Login responded 302 in 694.9410 ms
+2026-04-01 23:57:24.169 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5141/Account/Login - 302 0 null 699.5303ms
+2026-04-01 23:57:24.171 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Reports/Consumption - null null
+2026-04-01 23:57:24.176 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.ReportsController.Consumption (MedicalStockManager)'
+2026-04-01 23:57:24.178 +01:00 [INF] Route matched with {action = "Consumption", controller = "Reports"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Consumption(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller MedicalStockManager.Controllers.ReportsController (MedicalStockManager).
+2026-04-01 23:57:24.253 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__effectiveStartDate_0='?' (DbType = DateTime), @__effectiveEndDate_1='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."BatchNumber", "s"."Date", "s"."MovementType", "s"."Notes", "s"."Quantity", "s"."StockItemId", "s0"."Id", "s0"."AlertThreshold", "s0"."CurrentQuantity", "s0"."ExpirationDate", "s0"."Name", "s0"."Reference", "s0"."ServiceId", "s0"."Unit", "s1"."Id", "s1"."Name"
+FROM "StockMovements" AS "s"
+INNER JOIN "StockItems" AS "s0" ON "s"."StockItemId" = "s0"."Id"
+INNER JOIN "Services" AS "s1" ON "s0"."ServiceId" = "s1"."Id"
+WHERE "s"."MovementType" = 2 AND rtrim(rtrim(strftime('%Y-%m-%d %H:%M:%f', "s"."Date", 'start of day'), '0'), '.') >= @__effectiveStartDate_0 AND rtrim(rtrim(strftime('%Y-%m-%d %H:%M:%f', "s"."Date", 'start of day'), '0'), '.') <= @__effectiveEndDate_1
+2026-04-01 23:57:24.258 +01:00 [INF] Executing ViewResult, running view Consumption.
+2026-04-01 23:57:24.295 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:24.300 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:24.309 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:24.324 +01:00 [INF] Executed ViewResult - view Consumption executed in 66.9783ms.
+2026-04-01 23:57:24.326 +01:00 [INF] Executed action MedicalStockManager.Controllers.ReportsController.Consumption (MedicalStockManager) in 146.4322ms
+2026-04-01 23:57:24.327 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.ReportsController.Consumption (MedicalStockManager)'
+2026-04-01 23:57:24.328 +01:00 [INF] HTTP GET /Reports/Consumption responded 200 in 155.1545 ms
+2026-04-01 23:57:24.329 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Reports/Consumption - 200 null text/html; charset=utf-8 158.2437ms
+2026-04-01 23:57:29.682 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock/Services - null null
+2026-04-01 23:57:29.685 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:29.687 +01:00 [INF] Route matched with {action = "Services", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Services() on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:29.699 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name", (
+    SELECT COUNT(*)
+    FROM "StockItems" AS "s0"
+    WHERE "s0"."ServiceId" = "s"."Id") AS "ItemCount"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:29.701 +01:00 [INF] Executing ViewResult, running view Services.
+2026-04-01 23:57:29.710 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:29.712 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:29.715 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:29.719 +01:00 [INF] Executed ViewResult - view Services executed in 18.3888ms.
+2026-04-01 23:57:29.720 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Services (MedicalStockManager) in 31.8107ms
+2026-04-01 23:57:29.721 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:29.722 +01:00 [INF] HTTP GET /Stock/Services responded 200 in 37.9099 ms
+2026-04-01 23:57:29.723 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock/Services - 200 null text/html; charset=utf-8 41.2547ms
+2026-04-01 23:57:38.428 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5141/Stock/AddService - application/x-www-form-urlencoded 251
+2026-04-01 23:57:38.432 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.AddService (MedicalStockManager)'
+2026-04-01 23:57:38.434 +01:00 [INF] Route matched with {action = "AddService", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddService(MedicalStockManager.Models.ServiceCreateInputViewModel) on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:38.444 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Services" AS "s"
+    WHERE lower("s"."Name") = @__ToLower_0)
+2026-04-01 23:57:38.457 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Services" ("Name")
+VALUES (@p0)
+RETURNING "Id";
+2026-04-01 23:57:38.462 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8), @p1='?' (Size = 29), @p2='?' (Size = 9), @p3='?' (Size = 7), @p4='?' (DbType = DateTime), @p5='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Action", "Details", "EntityId", "EntityType", "OccurredAt", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-04-01 23:57:38.465 +01:00 [INF] Executing RedirectResult, redirecting to /Stock/Services.
+2026-04-01 23:57:38.468 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.AddService (MedicalStockManager) in 33.3041ms
+2026-04-01 23:57:38.469 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.AddService (MedicalStockManager)'
+2026-04-01 23:57:38.470 +01:00 [INF] HTTP POST /Stock/AddService responded 302 in 40.3313 ms
+2026-04-01 23:57:38.472 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5141/Stock/AddService - 302 0 null 43.9375ms
+2026-04-01 23:57:38.475 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock/Services - null null
+2026-04-01 23:57:38.477 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:38.478 +01:00 [INF] Route matched with {action = "Services", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Services() on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:38.482 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name", (
+    SELECT COUNT(*)
+    FROM "StockItems" AS "s0"
+    WHERE "s0"."ServiceId" = "s"."Id") AS "ItemCount"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:38.483 +01:00 [INF] Executing ViewResult, running view Services.
+2026-04-01 23:57:38.487 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:38.489 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:38.490 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:38.494 +01:00 [INF] Executed ViewResult - view Services executed in 10.5839ms.
+2026-04-01 23:57:38.495 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Services (MedicalStockManager) in 15.3917ms
+2026-04-01 23:57:38.496 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:38.497 +01:00 [INF] HTTP GET /Stock/Services responded 200 in 19.5514 ms
+2026-04-01 23:57:38.498 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock/Services - 200 null text/html; charset=utf-8 22.453ms
+2026-04-01 23:57:42.327 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5141/Stock/DeleteService - application/x-www-form-urlencoded 230
+2026-04-01 23:57:42.330 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.DeleteService (MedicalStockManager)'
+2026-04-01 23:57:42.331 +01:00 [INF] Route matched with {action = "DeleteService", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteService(Int32) on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:42.337 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name"
+FROM "Services" AS "s"
+WHERE "s"."Id" = @__id_0
+LIMIT 1
+2026-04-01 23:57:42.341 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StockItems" AS "s"
+    WHERE "s"."ServiceId" = @__id_0)
+2026-04-01 23:57:42.350 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Services"
+WHERE "Id" = @p0
+RETURNING 1;
+2026-04-01 23:57:42.354 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 11), @p1='?' (Size = 31), @p2='?' (Size = 1), @p3='?' (Size = 7), @p4='?' (DbType = DateTime), @p5='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Action", "Details", "EntityId", "EntityType", "OccurredAt", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-04-01 23:57:42.356 +01:00 [INF] Executing RedirectResult, redirecting to /Stock/Services.
+2026-04-01 23:57:42.357 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.DeleteService (MedicalStockManager) in 24.6218ms
+2026-04-01 23:57:42.358 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.DeleteService (MedicalStockManager)'
+2026-04-01 23:57:42.359 +01:00 [INF] HTTP POST /Stock/DeleteService responded 302 in 29.4037 ms
+2026-04-01 23:57:42.360 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5141/Stock/DeleteService - 302 0 null 32.9263ms
+2026-04-01 23:57:42.364 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock/Services - null null
+2026-04-01 23:57:42.366 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:42.366 +01:00 [INF] Route matched with {action = "Services", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Services() on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:42.368 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name", (
+    SELECT COUNT(*)
+    FROM "StockItems" AS "s0"
+    WHERE "s0"."ServiceId" = "s"."Id") AS "ItemCount"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:42.369 +01:00 [INF] Executing ViewResult, running view Services.
+2026-04-01 23:57:42.372 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:42.374 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:42.376 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:42.378 +01:00 [INF] Executed ViewResult - view Services executed in 8.2338ms.
+2026-04-01 23:57:42.379 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Services (MedicalStockManager) in 11.1807ms
+2026-04-01 23:57:42.380 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Services (MedicalStockManager)'
+2026-04-01 23:57:42.380 +01:00 [INF] HTTP GET /Stock/Services responded 200 in 15.0779 ms
+2026-04-01 23:57:42.382 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock/Services - 200 null text/html; charset=utf-8 18.1538ms
+2026-04-01 23:57:43.899 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock - null null
+2026-04-01 23:57:43.902 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Index (MedicalStockManager)'
+2026-04-01 23:57:43.905 +01:00 [INF] Route matched with {action = "Index", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(MedicalStockManager.Models.StockFilterViewModel) on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:43.911 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+2026-04-01 23:57:43.923 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."AlertThreshold", "s"."CurrentQuantity", "s"."ExpirationDate", "s"."Name", "s"."Reference", "s"."ServiceId", "s"."Unit", "s0"."Id", "s0"."Name"
+FROM "StockItems" AS "s"
+INNER JOIN "Services" AS "s0" ON "s"."ServiceId" = "s0"."Id"
+ORDER BY "s0"."Name", "s"."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2026-04-01 23:57:43.932 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CAST("s"."Id" AS TEXT) AS "Value", "s"."Name" AS "Text"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:43.934 +01:00 [INF] Executing ViewResult, running view Index.
+2026-04-01 23:57:43.951 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:43.953 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:43.954 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:43.956 +01:00 [INF] Executed ViewResult - view Index executed in 22.3136ms.
+2026-04-01 23:57:43.957 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Index (MedicalStockManager) in 50.9402ms
+2026-04-01 23:57:43.958 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Index (MedicalStockManager)'
+2026-04-01 23:57:43.959 +01:00 [INF] HTTP GET /Stock responded 200 in 57.5275 ms
+2026-04-01 23:57:43.960 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock - 200 null text/html; charset=utf-8 61.5195ms
+2026-04-01 23:57:46.400 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/ - null null
+2026-04-01 23:57:46.402 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager)'
+2026-04-01 23:57:46.403 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedicalStockManager.Controllers.HomeController (MedicalStockManager).
+2026-04-01 23:57:46.409 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."AlertThreshold", "s"."CurrentQuantity", "s"."ExpirationDate", "s"."Name", "s"."Reference", "s"."ServiceId", "s"."Unit", "s0"."Id", "s0"."Name"
+FROM "StockItems" AS "s"
+INNER JOIN "Services" AS "s0" ON "s"."ServiceId" = "s0"."Id"
+2026-04-01 23:57:46.419 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."BatchNumber", "t"."Date", "t"."MovementType", "t"."Notes", "t"."Quantity", "t"."StockItemId", "s0"."Id", "s0"."AlertThreshold", "s0"."CurrentQuantity", "s0"."ExpirationDate", "s0"."Name", "s0"."Reference", "s0"."ServiceId", "s0"."Unit", "s1"."Id", "s1"."Name"
+FROM (
+    SELECT "s"."Id", "s"."BatchNumber", "s"."Date", "s"."MovementType", "s"."Notes", "s"."Quantity", "s"."StockItemId"
+    FROM "StockMovements" AS "s"
+    ORDER BY "s"."Date" DESC, "s"."Id" DESC
+    LIMIT @__p_0
+) AS "t"
+INNER JOIN "StockItems" AS "s0" ON "t"."StockItemId" = "s0"."Id"
+INNER JOIN "Services" AS "s1" ON "s0"."ServiceId" = "s1"."Id"
+ORDER BY "t"."Date" DESC, "t"."Id" DESC
+2026-04-01 23:57:46.427 +01:00 [INF] Executing ViewResult, running view Index.
+2026-04-01 23:57:46.435 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:46.437 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:46.439 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:46.444 +01:00 [INF] Executed ViewResult - view Index executed in 17.2918ms.
+2026-04-01 23:57:46.445 +01:00 [INF] Executed action MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager) in 40.497ms
+2026-04-01 23:57:46.446 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager)'
+2026-04-01 23:57:46.447 +01:00 [INF] HTTP GET / responded 200 in 45.1029 ms
+2026-04-01 23:57:46.448 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/ - 200 null text/html; charset=utf-8 48.5296ms
+2026-04-01 23:57:50.973 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock - null null
+2026-04-01 23:57:50.975 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Index (MedicalStockManager)'
+2026-04-01 23:57:50.976 +01:00 [INF] Route matched with {action = "Index", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(MedicalStockManager.Models.StockFilterViewModel) on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:50.978 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+2026-04-01 23:57:50.980 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."AlertThreshold", "s"."CurrentQuantity", "s"."ExpirationDate", "s"."Name", "s"."Reference", "s"."ServiceId", "s"."Unit", "s0"."Id", "s0"."Name"
+FROM "StockItems" AS "s"
+INNER JOIN "Services" AS "s0" ON "s"."ServiceId" = "s0"."Id"
+ORDER BY "s0"."Name", "s"."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2026-04-01 23:57:50.982 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CAST("s"."Id" AS TEXT) AS "Value", "s"."Name" AS "Text"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:50.983 +01:00 [INF] Executing ViewResult, running view Index.
+2026-04-01 23:57:50.985 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:50.987 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:50.989 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:50.991 +01:00 [INF] Executed ViewResult - view Index executed in 7.4391ms.
+2026-04-01 23:57:50.992 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Index (MedicalStockManager) in 14.6406ms
+2026-04-01 23:57:50.993 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Index (MedicalStockManager)'
+2026-04-01 23:57:50.993 +01:00 [INF] HTTP GET /Stock responded 200 in 18.5403 ms
+2026-04-01 23:57:50.995 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock - 200 null text/html; charset=utf-8 21.767ms
+2026-04-01 23:57:51.544 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock/Expiration - null null
+2026-04-01 23:57:51.547 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Expiration (MedicalStockManager)'
+2026-04-01 23:57:51.549 +01:00 [INF] Route matched with {action = "Expiration", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Expiration() on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:51.554 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."AlertThreshold", "s"."CurrentQuantity", "s"."ExpirationDate", "s"."Name", "s"."Reference", "s"."ServiceId", "s"."Unit", "s0"."Id", "s0"."Name"
+FROM "StockItems" AS "s"
+INNER JOIN "Services" AS "s0" ON "s"."ServiceId" = "s0"."Id"
+WHERE "s"."ExpirationDate" IS NOT NULL
+ORDER BY "s"."ExpirationDate"
+2026-04-01 23:57:51.558 +01:00 [INF] Executing ViewResult, running view Expiration.
+2026-04-01 23:57:51.565 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:51.566 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:51.568 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:51.570 +01:00 [INF] Executed ViewResult - view Expiration executed in 12.1675ms.
+2026-04-01 23:57:51.570 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Expiration (MedicalStockManager) in 20.1965ms
+2026-04-01 23:57:51.571 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Expiration (MedicalStockManager)'
+2026-04-01 23:57:51.572 +01:00 [INF] HTTP GET /Stock/Expiration responded 200 in 25.5125 ms
+2026-04-01 23:57:51.574 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock/Expiration - 200 null text/html; charset=utf-8 29.2874ms
+2026-04-01 23:57:55.766 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Stock/Create - null null
+2026-04-01 23:57:55.768 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.StockController.Create (MedicalStockManager)'
+2026-04-01 23:57:55.770 +01:00 [INF] Route matched with {action = "Create", controller = "Stock"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller MedicalStockManager.Controllers.StockController (MedicalStockManager).
+2026-04-01 23:57:55.772 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CAST("s"."Id" AS TEXT) AS "Value", "s"."Name" AS "Text"
+FROM "Services" AS "s"
+ORDER BY "s"."Name"
+2026-04-01 23:57:55.773 +01:00 [INF] Executing ViewResult, running view Create.
+2026-04-01 23:57:55.792 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:55.794 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:55.795 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:55.798 +01:00 [INF] Executed ViewResult - view Create executed in 24.4555ms.
+2026-04-01 23:57:55.799 +01:00 [INF] Executed action MedicalStockManager.Controllers.StockController.Create (MedicalStockManager) in 27.7469ms
+2026-04-01 23:57:55.800 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.StockController.Create (MedicalStockManager)'
+2026-04-01 23:57:55.800 +01:00 [INF] HTTP GET /Stock/Create responded 200 in 32.3666 ms
+2026-04-01 23:57:55.802 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Stock/Create - 200 null text/html; charset=utf-8 35.5228ms
+2026-04-01 23:57:57.853 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/Purchasing/Ocr - null null
+2026-04-01 23:57:57.856 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager)'
+2026-04-01 23:57:57.857 +01:00 [INF] Route matched with {action = "Ocr", controller = "Purchasing"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Ocr() on controller MedicalStockManager.Controllers.PurchasingController (MedicalStockManager).
+2026-04-01 23:57:57.859 +01:00 [INF] Executing ViewResult, running view Ocr.
+2026-04-01 23:57:57.867 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:57:57.870 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:57:57.872 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:57:57.875 +01:00 [INF] Executed ViewResult - view Ocr executed in 15.6008ms.
+2026-04-01 23:57:57.876 +01:00 [INF] Executed action MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager) in 17.2004ms
+2026-04-01 23:57:57.877 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager)'
+2026-04-01 23:57:57.878 +01:00 [INF] HTTP GET /Purchasing/Ocr responded 200 in 22.2353 ms
+2026-04-01 23:57:57.879 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/Purchasing/Ocr - 200 null text/html; charset=utf-8 25.746ms
+2026-04-01 23:59:06.918 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5141/Purchasing/Ocr - multipart/form-data; boundary=----WebKitFormBoundaryc6OGanMwsZGnbCUD 160954
+2026-04-01 23:59:06.922 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager)'
+2026-04-01 23:59:06.929 +01:00 [INF] Route matched with {action = "Ocr", controller = "Purchasing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Ocr(MedicalStockManager.Models.OcrDocumentPageViewModel) on controller MedicalStockManager.Controllers.PurchasingController (MedicalStockManager).
+2026-04-01 23:59:08.236 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (Size = 25), @p2='?' (Size = 14), @p3='?' (Size = 8), @p4='?' (DbType = DateTime), @p5='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Action", "Details", "EntityId", "EntityType", "OccurredAt", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2026-04-01 23:59:08.240 +01:00 [INF] Executing ViewResult, running view Ocr.
+2026-04-01 23:59:08.244 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-01 23:59:08.246 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-01 23:59:08.248 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-01 23:59:08.250 +01:00 [INF] Executed ViewResult - view Ocr executed in 10.1372ms.
+2026-04-01 23:59:08.251 +01:00 [INF] Executed action MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager) in 1321.1417ms
+2026-04-01 23:59:08.252 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.PurchasingController.Ocr (MedicalStockManager)'
+2026-04-01 23:59:08.254 +01:00 [INF] HTTP POST /Purchasing/Ocr responded 200 in 1333.5627 ms
+2026-04-01 23:59:08.255 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5141/Purchasing/Ocr - 200 null text/html; charset=utf-8 1337.217ms

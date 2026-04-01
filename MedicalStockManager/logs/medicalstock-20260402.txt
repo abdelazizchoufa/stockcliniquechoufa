@@ -1,0 +1,234 @@
+2026-04-02 00:01:52.024 +01:00 [INF] Application is shutting down...
+2026-04-02 00:05:29.493 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:05:29.528 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:05:29.536 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-04-02 00:05:29.548 +01:00 [INF] Applying migration '20260401230524_AddLocationsAndBatches'.
+2026-04-02 00:05:29.615 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "StockMovements" ADD "DestinationLocationId" INTEGER NULL;
+2026-04-02 00:05:29.617 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "StockMovements" ADD "SourceLocationId" INTEGER NULL;
+2026-04-02 00:05:29.619 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "StockMovements" ADD "StockBatchId" INTEGER NULL;
+2026-04-02 00:05:29.621 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Locations" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Locations" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL,
+    "IsCentral" INTEGER NOT NULL
+);
+2026-04-02 00:05:29.622 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "StockBatches" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_StockBatches" PRIMARY KEY AUTOINCREMENT,
+    "StockItemId" INTEGER NOT NULL,
+    "LocationId" INTEGER NOT NULL,
+    "BatchNumber" TEXT NOT NULL,
+    "ExpirationDate" TEXT NOT NULL,
+    "Quantity" INTEGER NOT NULL,
+    CONSTRAINT "FK_StockBatches_Locations_LocationId" FOREIGN KEY ("LocationId") REFERENCES "Locations" ("Id") ON DELETE RESTRICT,
+    CONSTRAINT "FK_StockBatches_StockItems_StockItemId" FOREIGN KEY ("StockItemId") REFERENCES "StockItems" ("Id") ON DELETE RESTRICT
+);
+2026-04-02 00:05:29.624 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_DestinationLocationId" ON "StockMovements" ("DestinationLocationId");
+2026-04-02 00:05:29.626 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_SourceLocationId" ON "StockMovements" ("SourceLocationId");
+2026-04-02 00:05:29.627 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_StockBatchId" ON "StockMovements" ("StockBatchId");
+2026-04-02 00:05:29.628 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Locations_Name" ON "Locations" ("Name");
+2026-04-02 00:05:29.630 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockBatches_LocationId" ON "StockBatches" ("LocationId");
+2026-04-02 00:05:29.631 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockBatches_StockItemId" ON "StockBatches" ("StockItemId");
+2026-04-02 00:05:29.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ef_temp_StockMovements" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_StockMovements" PRIMARY KEY AUTOINCREMENT,
+    "BatchNumber" TEXT NULL,
+    "Date" TEXT NOT NULL,
+    "DestinationLocationId" INTEGER NULL,
+    "MovementType" INTEGER NOT NULL,
+    "Notes" TEXT NULL,
+    "Quantity" INTEGER NOT NULL,
+    "SourceLocationId" INTEGER NULL,
+    "StockBatchId" INTEGER NULL,
+    "StockItemId" INTEGER NOT NULL,
+    CONSTRAINT "FK_StockMovements_Locations_DestinationLocationId" FOREIGN KEY ("DestinationLocationId") REFERENCES "Locations" ("Id") ON DELETE RESTRICT,
+    CONSTRAINT "FK_StockMovements_Locations_SourceLocationId" FOREIGN KEY ("SourceLocationId") REFERENCES "Locations" ("Id") ON DELETE RESTRICT,
+    CONSTRAINT "FK_StockMovements_StockBatches_StockBatchId" FOREIGN KEY ("StockBatchId") REFERENCES "StockBatches" ("Id") ON DELETE SET NULL,
+    CONSTRAINT "FK_StockMovements_StockItems_StockItemId" FOREIGN KEY ("StockItemId") REFERENCES "StockItems" ("Id") ON DELETE CASCADE
+);
+2026-04-02 00:05:29.634 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ef_temp_StockMovements" ("Id", "BatchNumber", "Date", "DestinationLocationId", "MovementType", "Notes", "Quantity", "SourceLocationId", "StockBatchId", "StockItemId")
+SELECT "Id", "BatchNumber", "Date", "DestinationLocationId", "MovementType", "Notes", "Quantity", "SourceLocationId", "StockBatchId", "StockItemId"
+FROM "StockMovements";
+2026-04-02 00:05:29.640 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys = 0;
+2026-04-02 00:05:29.642 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE "StockMovements";
+2026-04-02 00:05:29.645 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ef_temp_StockMovements" RENAME TO "StockMovements";
+2026-04-02 00:05:29.647 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys = 1;
+2026-04-02 00:05:29.648 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_DestinationLocationId" ON "StockMovements" ("DestinationLocationId");
+2026-04-02 00:05:29.649 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_SourceLocationId" ON "StockMovements" ("SourceLocationId");
+2026-04-02 00:05:29.651 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_StockBatchId" ON "StockMovements" ("StockBatchId");
+2026-04-02 00:05:29.652 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_StockMovements_StockItemId" ON "StockMovements" ("StockItemId");
+2026-04-02 00:05:29.653 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20260401230524_AddLocationsAndBatches', '8.0.11');
+2026-04-02 00:26:16.028 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:26:16.063 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:26:16.074 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-04-02 00:26:16.090 +01:00 [INF] No migrations were applied. The database is already up to date.
+2026-04-02 00:26:16.212 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AppUsers" AS "a")
+2026-04-02 00:26:16.217 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Services" AS "s")
+2026-04-02 00:26:16.220 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Suppliers" AS "s")
+2026-04-02 00:26:16.264 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name"
+FROM "Services" AS "s"
+WHERE "s"."Name" = 'Imagerie'
+LIMIT 1
+2026-04-02 00:26:16.292 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name"
+FROM "Services" AS "s"
+WHERE "s"."Name" = 'Laboratoire Analyses'
+LIMIT 1
+2026-04-02 00:26:16.296 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name"
+FROM "Services" AS "s"
+WHERE "s"."Name" = 'Consultations'
+LIMIT 1
+2026-04-02 00:26:16.299 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."Name"
+FROM "Services" AS "s"
+WHERE "s"."Name" = 'Hopital du Jour'
+LIMIT 1
+2026-04-02 00:26:16.302 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Locations" AS "l")
+2026-04-02 00:26:16.404 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Boolean), @p1='?' (Size = 18)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Locations" ("IsCentral", "Name")
+VALUES (@p0, @p1)
+RETURNING "Id";
+2026-04-02 00:26:16.424 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "l"."Id", "l"."IsCentral", "l"."Name"
+FROM "Locations" AS "l"
+WHERE "l"."IsCentral"
+LIMIT 1
+2026-04-02 00:26:16.428 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StockItems" AS "s")
+2026-04-02 00:26:16.502 +01:00 [INF] User profile is available. Using 'C:\Users\Chouf\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-02 00:26:16.570 +01:00 [INF] Now listening on: https://localhost:7141
+2026-04-02 00:26:16.571 +01:00 [INF] Now listening on: http://localhost:5141
+2026-04-02 00:26:16.574 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-02 00:26:16.575 +01:00 [INF] Hosting environment: Development
+2026-04-02 00:26:16.576 +01:00 [INF] Content root path: C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager
+2026-04-02 00:26:22.399 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/ - null null
+2026-04-02 00:26:22.435 +01:00 [INF] Executing endpoint 'MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager)'
+2026-04-02 00:26:22.446 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedicalStockManager.Controllers.HomeController (MedicalStockManager).
+2026-04-02 00:26:22.490 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."AlertThreshold", "s"."CurrentQuantity", "s"."ExpirationDate", "s"."Name", "s"."Reference", "s"."ServiceId", "s"."Unit", "s0"."Id", "s0"."Name"
+FROM "StockItems" AS "s"
+INNER JOIN "Services" AS "s0" ON "s"."ServiceId" = "s0"."Id"
+2026-04-02 00:26:22.521 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."BatchNumber", "t"."Date", "t"."DestinationLocationId", "t"."MovementType", "t"."Notes", "t"."Quantity", "t"."SourceLocationId", "t"."StockBatchId", "t"."StockItemId", "s0"."Id", "s0"."AlertThreshold", "s0"."CurrentQuantity", "s0"."ExpirationDate", "s0"."Name", "s0"."Reference", "s0"."ServiceId", "s0"."Unit", "s1"."Id", "s1"."Name"
+FROM (
+    SELECT "s"."Id", "s"."BatchNumber", "s"."Date", "s"."DestinationLocationId", "s"."MovementType", "s"."Notes", "s"."Quantity", "s"."SourceLocationId", "s"."StockBatchId", "s"."StockItemId"
+    FROM "StockMovements" AS "s"
+    ORDER BY "s"."Date" DESC, "s"."Id" DESC
+    LIMIT @__p_0
+) AS "t"
+INNER JOIN "StockItems" AS "s0" ON "t"."StockItemId" = "s0"."Id"
+INNER JOIN "Services" AS "s1" ON "s0"."ServiceId" = "s1"."Id"
+ORDER BY "t"."Date" DESC, "t"."Id" DESC
+2026-04-02 00:26:22.541 +01:00 [INF] Executing ViewResult, running view Index.
+2026-04-02 00:26:22.615 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."CurrentQuantity" <= "s"."AlertThreshold"
+2026-04-02 00:26:22.624 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__expiringLimit_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "StockItems" AS "s"
+WHERE "s"."ExpirationDate" IS NOT NULL AND "s"."ExpirationDate" <= @__expiringLimit_0
+2026-04-02 00:26:22.635 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "PurchaseRequests" AS "p"
+WHERE "p"."Status" = 1
+2026-04-02 00:26:22.655 +01:00 [INF] Executed ViewResult - view Index executed in 115.0233ms.
+2026-04-02 00:26:22.658 +01:00 [INF] Executed action MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager) in 210.425ms
+2026-04-02 00:26:22.660 +01:00 [INF] Executed endpoint 'MedicalStockManager.Controllers.HomeController.Index (MedicalStockManager)'
+2026-04-02 00:26:22.663 +01:00 [INF] HTTP GET / responded 200 in 259.1046 ms
+2026-04-02 00:26:22.670 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/ - 200 null text/html; charset=utf-8 272.6001ms
+2026-04-02 00:26:22.792 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5141/css/site.css?v=HCcbxPumIUCXkwnwdeQo_RDU6ZQ6OZPtkmvomNfCDvc - null null
+2026-04-02 00:26:22.798 +01:00 [INF] The file /css/site.css was not modified
+2026-04-02 00:26:22.800 +01:00 [INF] HTTP GET /css/site.css responded 304 in 4.6991 ms
+2026-04-02 00:26:22.801 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5141/css/site.css?v=HCcbxPumIUCXkwnwdeQo_RDU6ZQ6OZPtkmvomNfCDvc - 304 null text/css 8.8771ms
+2026-04-02 00:27:10.652 +01:00 [INF] Application is shutting down...
+2026-04-02 00:30:38.285 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:30:38.322 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-04-02 00:30:38.331 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-04-02 00:30:38.344 +01:00 [INF] Applying migration '20260401233033_AddMaterialRequests'.
+2026-04-02 00:30:38.389 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "MaterialRequests" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_MaterialRequests" PRIMARY KEY AUTOINCREMENT,
+    "RequestNumber" TEXT NOT NULL,
+    "RequestingServiceId" INTEGER NOT NULL,
+    "RequestedByUsername" TEXT NOT NULL,
+    "CreatedAt" TEXT NOT NULL,
+    "Status" INTEGER NOT NULL,
+    "Notes" TEXT NULL,
+    "ProcessedByUsername" TEXT NULL,
+    "RejectionReason" TEXT NULL,
+    CONSTRAINT "FK_MaterialRequests_Services_RequestingServiceId" FOREIGN KEY ("RequestingServiceId") REFERENCES "Services" ("Id") ON DELETE RESTRICT
+);
+2026-04-02 00:30:38.392 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "MaterialRequestLines" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_MaterialRequestLines" PRIMARY KEY AUTOINCREMENT,
+    "MaterialRequestId" INTEGER NOT NULL,
+    "StockItemId" INTEGER NOT NULL,
+    "RequestedQuantity" INTEGER NOT NULL,
+    "ApprovedQuantity" INTEGER NOT NULL,
+    "Notes" TEXT NULL,
+    CONSTRAINT "FK_MaterialRequestLines_MaterialRequests_MaterialRequestId" FOREIGN KEY ("MaterialRequestId") REFERENCES "MaterialRequests" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_MaterialRequestLines_StockItems_StockItemId" FOREIGN KEY ("StockItemId") REFERENCES "StockItems" ("Id") ON DELETE RESTRICT
+);
+2026-04-02 00:30:38.393 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MaterialRequestLines_MaterialRequestId" ON "MaterialRequestLines" ("MaterialRequestId");
+2026-04-02 00:30:38.395 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MaterialRequestLines_StockItemId" ON "MaterialRequestLines" ("StockItemId");
+2026-04-02 00:30:38.396 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MaterialRequests_RequestingServiceId" ON "MaterialRequests" ("RequestingServiceId");
+2026-04-02 00:30:38.398 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_MaterialRequests_RequestNumber" ON "MaterialRequests" ("RequestNumber");
+2026-04-02 00:30:38.400 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20260401233033_AddMaterialRequests', '8.0.11');

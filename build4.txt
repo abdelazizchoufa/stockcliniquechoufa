@@ -1,0 +1,11 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,131): error CS0117: 'PurchaseOrderStatus' ne contient pas de d├®finition pour 'Envoyee' [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+
+├ëCHEC de la build.
+
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,131): error CS0117: 'PurchaseOrderStatus' ne contient pas de d├®finition pour 'Envoyee' [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+    0 Avertissement(s)
+    1 Erreur(s)
+
+Temps ├®coul├® 00:00:01.89

@@ -1,0 +1,9 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+  MedicalStockManager -> C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\bin\Debug\net8.0\MedicalStockManager.dll
+
+La g├®n├®ration a r├®ussi.
+    0 Avertissement(s)
+    0 Erreur(s)
+
+Temps ├®coul├® 00:00:02.09

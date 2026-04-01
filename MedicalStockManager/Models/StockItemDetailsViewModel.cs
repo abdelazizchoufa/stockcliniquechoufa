@@ -14,4 +14,6 @@ public class StockItemDetailsViewModel
     public StockMovementInputModel NewMovement { get; set; } = new();
     public bool CanEdit { get; set; }
     public MovementFilterViewModel Filter { get; set; } = new();
+    public IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Locations { get; set; } = Array.Empty<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
+    public IReadOnlyList<StockBatch> Batches { get; set; } = Array.Empty<StockBatch>();
 }

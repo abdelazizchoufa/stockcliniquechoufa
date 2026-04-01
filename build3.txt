@@ -1,0 +1,17 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,52): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,103): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(72,22): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(84,17): error CS0117: 'PurchaseOrderLine' ne contient pas de d├®finition pour 'Quantity' [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+
+├ëCHEC de la build.
+
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,52): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(55,103): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(72,22): error CS0103: Le nom 'OrderStatus' n'existe pas dans le contexte actuel [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\Services\AutoReplenishmentService.cs(84,17): error CS0117: 'PurchaseOrderLine' ne contient pas de d├®finition pour 'Quantity' [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\MedicalStockManager.csproj]
+    0 Avertissement(s)
+    4 Erreur(s)
+
+Temps ├®coul├® 00:00:01.75

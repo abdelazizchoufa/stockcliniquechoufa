@@ -26,5 +26,14 @@ public class StockMovement
     [MaxLength(80)]
     public string? BatchNumber { get; set; }
 
+    public int? StockBatchId { get; set; }
+    public StockBatch? StockBatch { get; set; }
+
+    public int? SourceLocationId { get; set; }
+    public Location? SourceLocation { get; set; }
+
+    public int? DestinationLocationId { get; set; }
+    public Location? DestinationLocation { get; set; }
+
     public StockItem? StockItem { get; set; }
 }

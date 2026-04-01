@@ -1,132 +1,55 @@
-using MedicalStockManager.Data;
 using MedicalStockManager.Models;
-using Microsoft.AspNetCore.Authorization;
+using MedicalStockManager.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedicalStockManager.Controllers;
 
+[Route("api/scan")]
 [ApiController]
-[Route("api/[controller]")]
-[Authorize]
-public class StockApiController(ApplicationDbContext dbContext) : ControllerBase
+// Pour un vrai cas PWA, activer [Authorize(AuthenticationSchemes = "Bearer")] avec JWT.
+// Ici, en MVC par defaut, on permet l'appel des endpoints ou on ajoute une authentification basee sur des cles API.
+public class StockApiController(IStockService stockService) : ControllerBase
 {
-    [HttpGet("items")]
-    public IActionResult GetItems([FromQuery] string? search, [FromQuery] int? serviceId, [FromQuery] bool lowStockOnly = false)
+    public class ScanOutDto
     {
-        var query = dbContext.StockItems.AsNoTracking().Include(i => i.Service).AsQueryable();
+        public string Reference { get; set; } = string.Empty;
+        public int Quantity { get; set; }
+        public int? DestinationLocationId { get; set; }
+        public string? Notes { get; set; }
+    }
 
-        if (!string.IsNullOrWhiteSpace(search))
+    [HttpPost("out")]
+    public IActionResult ScanOut([FromBody] ScanOutDto dto)
+    {
+        if (string.IsNullOrWhiteSpace(dto.Reference) || dto.Quantity <= 0)
         {
-            var s = search.ToLower();
-            query = query.Where(i => i.Name.ToLower().Contains(s) || i.Reference.ToLower().Contains(s));
+            return BadRequest(new { Error = "Reference et Quantité superieure a 0 obligatoires." });
         }
-        if (serviceId.HasValue)
-            query = query.Where(i => i.ServiceId == serviceId.Value);
-        if (lowStockOnly)
-            query = query.Where(i => i.CurrentQuantity <= i.AlertThreshold);
 
-        var items = query.OrderBy(i => i.Name).Select(i => new
+        // Trouver le StockItemId grace a la reference
+        var filter = new StockFilterViewModel { SearchTerm = dto.Reference };
+        var index = stockService.GetStockIndex(filter);
+        var item = index.Items.FirstOrDefault(i => i.Reference == dto.Reference);
+
+        if (item == null)
+            return NotFound(new { Error = "Article introuvable." });
+
+        var input = new StockMovementInputModel
         {
-            i.Id,
-            i.Name,
-            i.Reference,
-            ServiceName = i.Service != null ? i.Service.Name : string.Empty,
-            i.CurrentQuantity,
-            i.AlertThreshold,
-            i.Unit,
-            ExpirationDate = i.ExpirationDate.HasValue ? i.ExpirationDate.Value.ToString("yyyy-MM-dd") : null,
-            IsLowStock = i.CurrentQuantity <= i.AlertThreshold
-        }).ToList();
+            StockItemId = item.Id,
+            Quantity = dto.Quantity,
+            Date = DateTime.Today,
+            Notes = dto.Notes ?? "Scan Mobile",
+            // Si pas de destination -> Sortie (consommation directe). Si destination -> Transfert FEFO
+            MovementType = dto.DestinationLocationId.HasValue ? MovementType.Transfert : MovementType.Sortie,
+            DestinationLocationId = dto.DestinationLocationId
+        };
 
-        return Ok(items);
-    }
-
-    [HttpGet("items/{id}")]
-    public IActionResult GetItem(int id)
-    {
-        var item = dbContext.StockItems.AsNoTracking().Include(i => i.Service).FirstOrDefault(i => i.Id == id);
-        if (item is null) return NotFound();
-
-        var movements = dbContext.StockMovements.AsNoTracking()
-            .Where(m => m.StockItemId == id)
-            .OrderByDescending(m => m.Date)
-            .Take(20)
-            .Select(m => new
-            {
-                m.Id,
-                Type = m.MovementType.ToString(),
-                m.Quantity,
-                Date = m.Date.ToString("yyyy-MM-dd"),
-                m.Notes,
-                m.BatchNumber
-            }).ToList();
-
-        return Ok(new
+        if (stockService.AddMovement(input, out var errorMessage))
         {
-            item.Id, item.Name, item.Reference,
-            ServiceName = item.Service?.Name ?? string.Empty,
-            item.CurrentQuantity, item.AlertThreshold, item.Unit,
-            ExpirationDate = item.ExpirationDate?.ToString("yyyy-MM-dd"),
-            IsLowStock = item.CurrentQuantity <= item.AlertThreshold,
-            RecentMovements = movements
-        });
-    }
+            return Ok(new { Message = "Mouvement valide avec succes (Algorithme FEFO applique).", ItemName = item.Name });
+        }
 
-    [HttpGet("alerts")]
-    public IActionResult GetAlerts()
-    {
-        var today = DateTime.Today;
-        var expiringLimit = today.AddDays(30);
-
-        var lowStock = dbContext.StockItems.AsNoTracking()
-            .Where(i => i.CurrentQuantity <= i.AlertThreshold)
-            .Select(i => new { i.Id, i.Name, i.Reference, Type = "LowStock", Message = $"Stock {i.CurrentQuantity}/{i.AlertThreshold}" })
-            .ToList();
-
-        var expiring = dbContext.StockItems.AsNoTracking()
-            .Where(i => i.ExpirationDate.HasValue && i.ExpirationDate.Value <= expiringLimit)
-            .Select(i => new { i.Id, i.Name, i.Reference, Type = "Expiration", Message = $"Expire le {i.ExpirationDate!.Value:dd/MM/yyyy}" })
-            .ToList();
-
-        return Ok(new { LowStock = lowStock, Expiring = expiring, TotalAlerts = lowStock.Count + expiring.Count });
-    }
-
-    [HttpGet("movements")]
-    public IActionResult GetMovements([FromQuery] DateTime? from, [FromQuery] DateTime? to, [FromQuery] int? itemId)
-    {
-        var query = dbContext.StockMovements.AsNoTracking().AsQueryable();
-
-        if (from.HasValue) query = query.Where(m => m.Date >= from.Value);
-        if (to.HasValue) query = query.Where(m => m.Date <= to.Value.AddDays(1));
-        if (itemId.HasValue) query = query.Where(m => m.StockItemId == itemId.Value);
-
-        var movements = query.OrderByDescending(m => m.Date).Take(100)
-            .Select(m => new
-            {
-                m.Id, m.StockItemId,
-                Type = m.MovementType.ToString(),
-                m.Quantity,
-                Date = m.Date.ToString("yyyy-MM-dd"),
-                m.Notes,
-                m.BatchNumber
-            }).ToList();
-
-        return Ok(movements);
-    }
-
-    [HttpGet("stats")]
-    public IActionResult GetStats()
-    {
-        var today = DateTime.Today;
-        return Ok(new
-        {
-            TotalItems = dbContext.StockItems.Count(),
-            LowStockItems = dbContext.StockItems.Count(i => i.CurrentQuantity <= i.AlertThreshold),
-            ExpiringIn30Days = dbContext.StockItems.Count(i => i.ExpirationDate.HasValue && i.ExpirationDate.Value <= today.AddDays(30)),
-            TotalMovementsThisMonth = dbContext.StockMovements.Count(m => m.Date.Year == today.Year && m.Date.Month == today.Month),
-            TotalSuppliers = dbContext.Suppliers.Count(),
-            OpenOrders = dbContext.PurchaseOrders.Count(o => o.Status == PurchaseOrderStatus.Commandee)
-        });
+        return BadRequest(new { Error = errorMessage });
     }
 }
