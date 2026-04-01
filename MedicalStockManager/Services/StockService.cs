@@ -35,9 +35,13 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
             query = query.Where(item => item.ExpirationDate.HasValue && item.ExpirationDate <= expiringLimit);
         }
 
+        var totalCount = query.Count();
+
         var items = query
             .OrderBy(item => item.Service != null ? item.Service.Name : "")
             .ThenBy(item => item.Name)
+            .Skip((filter.PageNumber - 1) * filter.PageSize)
+            .Take(filter.PageSize)
             .ToList();
 
         filter.Services = GetServiceSelectList();
@@ -45,7 +49,8 @@ public class StockService(ApplicationDbContext dbContext) : IStockService
         return new StockIndexViewModel
         {
             Filter = filter,
-            Items = items
+            Items = items,
+            TotalCount = totalCount
         };
     }
 

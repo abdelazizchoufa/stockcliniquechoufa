@@ -24,6 +24,7 @@
             </div>
         </div>
         <form method="get" class="row g-3 align-items-end">
+            <input type="hidden" asp-for="Filter.PageNumber" name="PageNumber" id="currentPageNumber" />
             <div class="col-lg-4">
                 <label asp-for="Filter.SearchTerm" class="form-label"></label>
                 <input asp-for="Filter.SearchTerm" name="SearchTerm" class="form-control" />
@@ -119,5 +120,42 @@
         {
             <p class="text-muted mb-0">Aucun article ne correspond aux filtres selectionnes.</p>
         }
+        else if (Model.TotalPages > 1)
+        {
+            <nav aria-label="Pagination de l'inventaire" class="mt-4">
+                <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item @(Model.Filter.PageNumber <= 1 ? "disabled" : "")">
+                        <button type="button" class="page-link" onclick="document.getElementById('currentPageNumber').value = @(Model.Filter.PageNumber - 1); this.form?.submit();" @(Model.Filter.PageNumber <= 1 ? "disabled" : "")>Precedent</button>
+                    </li>
+                    
+                    @for (var i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.Filter.PageNumber ? "active" : "")">
+                            <button type="button" class="page-link" onclick="document.getElementById('currentPageNumber').value = @i; this.form?.submit();">@i</button>
+                        </li>
+                    }
+                    
+                    <li class="page-item @(Model.Filter.PageNumber >= Model.TotalPages ? "disabled" : "")">
+                        <button type="button" class="page-link" onclick="document.getElementById('currentPageNumber').value = @(Model.Filter.PageNumber + 1); this.form?.submit();" @(Model.Filter.PageNumber >= Model.TotalPages ? "disabled" : "")>Suivant</button>
+                    </li>
+                </ul>
+            </nav>
+        }
+        
+        <script>
+            // Reset page number on filter changes
+            document.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(el => {
+                el.addEventListener('change', () => {
+                    document.getElementById('currentPageNumber').value = 1;
+                });
+            });
+            // Attach form submission to pagination buttons
+            document.querySelectorAll('.page-link').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.hasAttribute('disabled')) return;
+                    document.querySelector('form').submit();
+                });
+            });
+        </script>
     </div>
 </div>

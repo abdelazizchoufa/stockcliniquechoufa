@@ -5,11 +5,15 @@ namespace MedicalStockManager.Data;
 
 public static class SeedData
 {
-    public static void Initialize(ApplicationDbContext context)
+    public static void Initialize(ApplicationDbContext context, IConfiguration configuration)
     {
         if (!context.AppUsers.Any())
         {
             var authService = new AuthService(context);
+            
+            var adminPassword = configuration["SeedPasswords:AdminPassword"] ?? "Admin123!";
+            var stockPassword = configuration["SeedPasswords:StockPassword"] ?? "Stock123!";
+            var lecturePassword = configuration["SeedPasswords:LecturePassword"] ?? "Lecture123!";
 
             context.AppUsers.AddRange(
                 new AppUser
@@ -17,7 +21,7 @@ public static class SeedData
                     Username = "admin",
                     FullName = "Administrateur General",
                     Email = "admin@centre-diagnostic.local",
-                    PasswordHash = authService.HashPassword("Admin123!"),
+                    PasswordHash = authService.HashPassword(adminPassword),
                     Role = AppRole.Administrateur,
                     IsActive = true
                 },
@@ -26,7 +30,7 @@ public static class SeedData
                     Username = "stock",
                     FullName = "Gestionnaire Stock",
                     Email = "stock@centre-diagnostic.local",
-                    PasswordHash = authService.HashPassword("Stock123!"),
+                    PasswordHash = authService.HashPassword(stockPassword),
                     Role = AppRole.GestionnaireStock,
                     IsActive = true
                 },
@@ -35,7 +39,7 @@ public static class SeedData
                     Username = "lecture",
                     FullName = "Utilisateur Lecture",
                     Email = "lecture@centre-diagnostic.local",
-                    PasswordHash = authService.HashPassword("Lecture123!"),
+                    PasswordHash = authService.HashPassword(lecturePassword),
                     Role = AppRole.Lecture,
                     IsActive = true
                 });
