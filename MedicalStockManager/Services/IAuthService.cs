@@ -4,6 +4,6 @@ namespace MedicalStockManager.Services;
 
 public interface IAuthService
 {
-    AppUser? ValidateUser(string username, string password);
+    Task<AppUser?> ValidateUserAsync(string username, string password);
     string HashPassword(string password);
 }

@@ -1,27 +1,26 @@
-using System.Security.Cryptography;
-using System.Text;
 using MedicalStockManager.Data;
 using MedicalStockManager.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalStockManager.Services;
 
 public class AuthService(ApplicationDbContext dbContext) : IAuthService
 {
-    public AppUser? ValidateUser(string username, string password)
+    public async Task<AppUser?> ValidateUserAsync(string username, string password)
     {
         var normalizedUsername = username.Trim().ToLowerInvariant();
-        var passwordHash = HashPassword(password);
 
-        return dbContext.AppUsers.FirstOrDefault(user =>
-            user.IsActive &&
-            user.Username.ToLower() == normalizedUsername &&
-            user.PasswordHash == passwordHash);
+        // Récupérer l'utilisateur par nom uniquement, puis vérifier le mot de passe côté C#
+        // (BCrypt inclut le sel dans le hash — impossible de comparer en SQL)
+        var user = await dbContext.AppUsers.FirstOrDefaultAsync(u =>
+            u.IsActive &&
+            u.Username.ToLower() == normalizedUsername);
+
+        if (user is null) return null;
+
+        return BCrypt.Net.BCrypt.Verify(password, user.PasswordHash) ? user : null;
     }
 
     public string HashPassword(string password)
-    {
-        var bytes = Encoding.UTF8.GetBytes(password);
-        var hash = SHA256.HashData(bytes);
-        return Convert.ToHexString(hash);
-    }
+        => BCrypt.Net.BCrypt.HashPassword(password, workFactor: 12);
 }

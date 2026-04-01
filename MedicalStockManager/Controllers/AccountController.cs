@@ -32,7 +32,7 @@ public class AccountController(IAuthService authService, IAuditService auditServ
             return View(input);
         }
 
-        var user = authService.ValidateUser(input.Username, input.Password);
+        var user = await authService.ValidateUserAsync(input.Username, input.Password);
 
         if (user is null)
         {
