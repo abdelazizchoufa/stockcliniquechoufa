@@ -23,6 +23,9 @@ builder.Services.AddScoped<IAuditService, AuditService>();
 builder.Services.AddScoped<IStockService, StockService>();
 builder.Services.AddScoped<IPurchasingService, PurchasingService>();
 builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+builder.Services.AddScoped<IPurchaseRequestService, PurchaseRequestService>();
+builder.Services.AddScoped<IOcrService, OcrService>();
 
 var app = builder.Build();
 
@@ -30,6 +33,7 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     dbContext.Database.EnsureCreated();
+    LegacySchemaMigrator.Apply(dbContext);
     SeedData.Initialize(dbContext);
 }
 

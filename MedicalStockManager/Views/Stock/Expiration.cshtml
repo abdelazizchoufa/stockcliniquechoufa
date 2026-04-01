@@ -1,0 +1,133 @@
+@model ExpirationReportViewModel
+@{
+    ViewData["Title"] = "Suivi des peremptions";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Surveillance</p>
+        <h1 class="h2 mb-0">Dates de peremption</h1>
+    </div>
+    <a class="btn btn-outline-secondary" asp-controller="Stock" asp-action="Index">Retour au stock</a>
+</div>
+
+@if (Model.ExpiredItems.Any())
+{
+    <div class="card border-danger border-0 shadow-sm mb-4">
+        <div class="card-header bg-danger text-white fw-semibold">
+            Articles expires (@Model.ExpiredItems.Count)
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead><tr><th>Article</th><th>Service</th><th>Expiration</th><th>Jours</th><th>Stock</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var item in Model.ExpiredItems)
+                    {
+                        <tr class="table-danger">
+                            <td><strong>@item.Name</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                            <td><span class="badge text-bg-danger">@item.DaysRemaining j</span></td>
+                            <td>@item.CurrentQuantity @item.Unit</td>
+                            <td><a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Detail</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.ExpiringIn7Days.Any())
+{
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-danger text-white fw-semibold">
+            Expiration dans 7 jours (@Model.ExpiringIn7Days.Count)
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead><tr><th>Article</th><th>Service</th><th>Expiration</th><th>Jours restants</th><th>Stock</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var item in Model.ExpiringIn7Days)
+                    {
+                        <tr>
+                            <td><strong>@item.Name</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                            <td><span class="badge text-bg-danger">@item.DaysRemaining j</span></td>
+                            <td>@item.CurrentQuantity @item.Unit</td>
+                            <td><a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Detail</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.ExpiringIn30Days.Any())
+{
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-warning text-dark fw-semibold">
+            Expiration dans 30 jours (@Model.ExpiringIn30Days.Count)
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead><tr><th>Article</th><th>Service</th><th>Expiration</th><th>Jours restants</th><th>Stock</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var item in Model.ExpiringIn30Days)
+                    {
+                        <tr>
+                            <td><strong>@item.Name</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                            <td><span class="badge text-bg-warning text-dark">@item.DaysRemaining j</span></td>
+                            <td>@item.CurrentQuantity @item.Unit</td>
+                            <td><a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Detail</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.ExpiringIn90Days.Any())
+{
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-info text-dark fw-semibold">
+            Expiration dans 90 jours (@Model.ExpiringIn90Days.Count)
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead><tr><th>Article</th><th>Service</th><th>Expiration</th><th>Jours restants</th><th>Stock</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var item in Model.ExpiringIn90Days)
+                    {
+                        <tr>
+                            <td><strong>@item.Name</strong><br/><span class="text-muted small">@item.Reference</span></td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                            <td><span class="badge text-bg-info text-dark">@item.DaysRemaining j</span></td>
+                            <td>@item.CurrentQuantity @item.Unit</td>
+                            <td><a class="btn btn-sm btn-outline-primary" asp-controller="Stock" asp-action="Details" asp-route-id="@item.Id">Detail</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!Model.ExpiredItems.Any() && !Model.ExpiringIn7Days.Any() && !Model.ExpiringIn30Days.Any() && !Model.ExpiringIn90Days.Any())
+{
+    <div class="alert alert-success">Aucun article n'a de date de peremption proche ou depassee.</div>
+}

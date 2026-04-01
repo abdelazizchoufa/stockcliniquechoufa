@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MedicalStockManager.Models;
 
@@ -15,8 +16,11 @@ public class StockItemFormViewModel
     public string Reference { get; set; } = string.Empty;
 
     [Required]
+    [Range(1, int.MaxValue, ErrorMessage = "Veuillez selectionner un service.")]
     [Display(Name = "Service")]
-    public Department Department { get; set; }
+    public int ServiceId { get; set; }
+
+    public IReadOnlyList<SelectListItem> Services { get; set; } = Array.Empty<SelectListItem>();
 
     [Range(0, int.MaxValue)]
     [Display(Name = "Quantite en stock")]

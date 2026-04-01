@@ -16,6 +16,62 @@ public class StockController(IStockService stockService, IAuditService auditServ
     }
 
     [HttpGet]
+    public IActionResult Articles(string? search)
+    {
+        var filter = new StockFilterViewModel { SearchTerm = search };
+        var model = stockService.GetStockIndex(filter);
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult Services()
+    {
+        var model = stockService.GetServiceDirectory();
+        return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = $"{AppRole.Administrateur},{AppRole.GestionnaireStock}")]
+    public IActionResult AddService([Bind(Prefix = "NewService")] ServiceCreateInputViewModel input)
+    {
+        if (!ModelState.IsValid)
+        {
+            var invalidModel = stockService.GetServiceDirectory();
+            invalidModel.NewService = input;
+            return View("Services", invalidModel);
+        }
+
+        if (!stockService.AddService(input, out var errorMessage))
+        {
+            ModelState.AddModelError(string.Empty, errorMessage ?? "Impossible d'ajouter le service.");
+            var failedModel = stockService.GetServiceDirectory();
+            failedModel.NewService = input;
+            return View("Services", failedModel);
+        }
+
+        auditService.Log("Creation", "Service", input.Name, "Service ajoute au referentiel");
+        TempData["SuccessMessage"] = "Le service a ete ajoute.";
+        return RedirectToAction(nameof(Services));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = $"{AppRole.Administrateur},{AppRole.GestionnaireStock}")]
+    public IActionResult DeleteService(int id)
+    {
+        if (!stockService.DeleteService(id, out var errorMessage))
+        {
+            TempData["ErrorMessage"] = errorMessage ?? "Impossible de supprimer le service.";
+            return RedirectToAction(nameof(Services));
+        }
+
+        auditService.Log("Suppression", "Service", id.ToString(), "Service supprime du referentiel");
+        TempData["SuccessMessage"] = "Le service a ete supprime.";
+        return RedirectToAction(nameof(Services));
+    }
+
+    [HttpGet]
     [Authorize(Roles = $"{AppRole.Administrateur},{AppRole.GestionnaireStock}")]
     public IActionResult Create()
     {
@@ -29,12 +85,14 @@ public class StockController(IStockService stockService, IAuditService auditServ
     {
         if (!ModelState.IsValid)
         {
+            item.Services = stockService.GetCreateModel().Services;
             return View(item);
         }
 
         if (!stockService.AddItem(item, out var errorMessage))
         {
             ModelState.AddModelError(string.Empty, errorMessage ?? "Impossible de creer l'article.");
+            item.Services = stockService.GetCreateModel().Services;
             return View(item);
         }
 
@@ -64,12 +122,14 @@ public class StockController(IStockService stockService, IAuditService auditServ
     {
         if (!ModelState.IsValid)
         {
+            item.Services = stockService.GetCreateModel().Services;
             return View(item);
         }
 
         if (!stockService.UpdateItem(item, out var errorMessage))
         {
             ModelState.AddModelError(string.Empty, errorMessage ?? "Impossible de modifier l'article.");
+            item.Services = stockService.GetCreateModel().Services;
             return View(item);
         }
 
@@ -116,16 +176,28 @@ public class StockController(IStockService stockService, IAuditService auditServ
     }
 
     [HttpGet]
-    public IActionResult Details(int id)
+    public IActionResult Details(int id, [FromQuery] MovementFilterViewModel? filter)
     {
-        var model = stockService.GetItemDetails(id);
-
-        if (model is null)
+        StockItemDetailsViewModel? model;
+        if (filter is not null && (filter.DateFrom.HasValue || filter.DateTo.HasValue || filter.MovementType.HasValue))
         {
-            return NotFound();
+            model = stockService.GetItemDetailsFiltered(id, filter);
+        }
+        else
+        {
+            model = stockService.GetItemDetails(id);
         }
 
+        if (model is null) return NotFound();
+
         model.CanEdit = User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock);
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult Expiration()
+    {
+        var model = stockService.GetExpirationReport();
         return View(model);
     }
 

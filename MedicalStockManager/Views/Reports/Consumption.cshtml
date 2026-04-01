@@ -86,7 +86,7 @@
                             @foreach (var summary in Model.DepartmentSummaries)
                             {
                                 <tr>
-                                    <td><span class="department-badge">@summary.Department</span></td>
+                                    <td><span class="department-badge">@summary.ServiceName</span></td>
                                     <td>@summary.TotalQuantityOut</td>
                                     <td>@summary.DistinctItems</td>
                                 </tr>
@@ -133,7 +133,7 @@
                                         <strong>@item.ItemName</strong><br />
                                         <span class="text-muted small">@item.Reference</span>
                                     </td>
-                                    <td><span class="department-badge">@item.Department</span></td>
+                                    <td><span class="department-badge">@item.ServiceName</span></td>
                                     <td>@item.TotalQuantityOut</td>
                                     <td>@item.MovementCount</td>
                                 </tr>

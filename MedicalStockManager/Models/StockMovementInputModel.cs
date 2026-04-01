@@ -23,4 +23,8 @@ public class StockMovementInputModel
     [Display(Name = "Observation")]
     [StringLength(300)]
     public string? Notes { get; set; }
+
+    [Display(Name = "Numero de lot")]
+    [StringLength(80)]
+    public string? BatchNumber { get; set; }
 }

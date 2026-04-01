@@ -79,7 +79,7 @@
                         @foreach (var summary in Model.DepartmentSummaries)
                         {
                             <tr>
-                                <td>@summary.Department</td>
+                                <td>@summary.ServiceName</td>
                                 <td>@summary.ItemCount</td>
                                 <td>@summary.LowStockCount</td>
                                 <td>@summary.TotalQuantity</td>
@@ -114,7 +114,7 @@
                                 <div class="d-flex justify-content-between gap-3">
                                     <div>
                                         <strong>@movement.ItemName</strong> <span class="text-muted small">@movement.Reference</span><br />
-                                        <span class="small">@movement.Department</span>
+                                        <span class="small">@movement.ServiceName</span>
                                         @if (!string.IsNullOrWhiteSpace(movement.Notes))
                                         {
                                             <span class="text-muted small"> - @movement.Notes</span>
@@ -158,7 +158,7 @@
                         {
                             <a class="list-group-item list-group-item-action px-0" asp-controller="Stock" asp-action="Details" asp-route-id="@alert.StockItemId">
                                 <strong>@alert.ItemName</strong> <span class="text-muted small">@alert.Reference</span><br />
-                                <span class="small">@alert.Department</span><br />
+                                <span class="small">@alert.ServiceName</span><br />
                                 <span class="text-warning small">@alert.Message</span>
                             </a>
                         }
@@ -188,12 +188,33 @@
                         {
                             <a class="list-group-item list-group-item-action px-0" asp-controller="Stock" asp-action="Details" asp-route-id="@alert.StockItemId">
                                 <strong>@alert.ItemName</strong> <span class="text-muted small">@alert.Reference</span><br />
-                                <span class="small">@alert.Department</span><br />
+                                <span class="small">@alert.ServiceName</span><br />
                                 <span class="text-danger small">@alert.Message</span>
                             </a>
                         }
                     </div>
                 }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm dashboard-card h-100">
+            <div class="card-body p-4">
+                <p class="section-kicker mb-1">Repartition</p>
+                <h2 class="h4 mb-3">Stock par service</h2>
+                <canvas id="chartByDept" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm dashboard-card h-100">
+            <div class="card-body p-4">
+                <p class="section-kicker mb-1">Etat</p>
+                <h2 class="h4 mb-3">Articles par statut</h2>
+                <canvas id="chartStatus" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -234,7 +255,7 @@
                             <strong>@item.Name</strong><br />
                             <span class="text-muted small">@item.Reference</span>
                         </td>
-                        <td>@item.Department</td>
+                        <td>@(item.Service?.Name ?? "-")</td>
                         <td>@item.CurrentQuantity @item.Unit</td>
                         <td>@item.AlertThreshold @item.Unit</td>
                         <td>@(item.ExpirationDate?.ToString("dd/MM/yyyy") ?? "-")</td>
@@ -262,3 +283,32 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+    const deptLabels = [@Html.Raw(string.Join(",", Model.DepartmentSummaries.Select(d => $"\"{d.ServiceName}\"")))];
+    const deptQty    = [@Html.Raw(string.Join(",", Model.DepartmentSummaries.Select(d => d.TotalQuantity)))];
+    const deptLow    = [@Html.Raw(string.Join(",", Model.DepartmentSummaries.Select(d => d.LowStockCount)))];
+    new Chart(document.getElementById('chartByDept'), {
+        type: 'bar',
+        data: { labels: deptLabels, datasets: [
+            { label: 'Quantite totale', data: deptQty, backgroundColor: 'rgba(99,102,241,0.7)', borderRadius: 6 },
+            { label: 'Stock bas',       data: deptLow, backgroundColor: 'rgba(251,146,60,0.8)',  borderRadius: 6 }
+        ]},
+        options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } }
+    });
+    const ok  = @(Model.TotalItems - Model.LowStockItems - Model.ExpiringSoonItems);
+    const low = @Model.LowStockItems;
+    const exp = @Model.ExpiringSoonItems;
+    new Chart(document.getElementById('chartStatus'), {
+        type: 'doughnut',
+        data: { labels: ['Correct','Stock bas','Expiration proche'], datasets: [{
+            data: [ok < 0 ? 0 : ok, low, exp],
+            backgroundColor: ['rgba(34,197,94,0.8)','rgba(251,146,60,0.8)','rgba(239,68,68,0.8)'],
+            borderWidth: 2
+        }]},
+        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    });
+</script>
+}

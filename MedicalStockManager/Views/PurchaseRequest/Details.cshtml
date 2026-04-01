@@ -1,0 +1,184 @@
+@model PurchaseRequestDetailsViewModel
+@{
+    ViewData["Title"] = $"Demande {Model.Request.RequestNumber}";
+    var statusColor = Model.Request.Status switch {
+        PurchaseRequestStatus.EnAttente => "warning",
+        PurchaseRequestStatus.Approuvee or PurchaseRequestStatus.ConvertieEnCommande => "success",
+        PurchaseRequestStatus.Rejetee => "danger",
+        _ => "secondary"
+    };
+    var statusLabel = Model.Request.Status switch {
+        PurchaseRequestStatus.EnAttente => "En attente",
+        PurchaseRequestStatus.Approuvee => "Approuvee",
+        PurchaseRequestStatus.ConvertieEnCommande => "Commande creee",
+        PurchaseRequestStatus.Rejetee => "Rejetee",
+        _ => "-"
+    };
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <p class="eyebrow mb-1">Demande d'achat</p>
+        <h1 class="h2 mb-1">@Model.Request.RequestNumber</h1>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            <span class="badge text-bg-@statusColor fs-6 px-3 py-2">@statusLabel</span>
+            <span class="text-muted small">Soumise le @Model.Request.RequestDate.ToString("dd/MM/yyyy") par <strong>@Model.Request.RequestedBy</strong></span>
+        </div>
+    </div>
+    <a class="btn btn-outline-secondary" asp-action="Index">
+        <i class="bi bi-arrow-left me-1"></i> Retour
+    </a>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-lg-8">
+
+        @if (!string.IsNullOrWhiteSpace(Model.Request.Justification))
+        {
+            <div class="note-panel mb-4">
+                <p class="section-kicker mb-1">Justification</p>
+                <p class="mb-0">@Model.Request.Justification</p>
+            </div>
+        }
+
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header fw-semibold">Articles demandes</div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Designation</th>
+                            <th>Article lie</th>
+                            <th>Qte</th>
+                            <th>Unite</th>
+                            <th>Prix estime</th>
+                            <th>Total</th>
+                            <th>Justification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var line in Model.Request.Lines)
+                    {
+                        <tr>
+                            <td><strong>@line.ItemLabel</strong></td>
+                            <td>
+                                @if (line.StockItem is not null)
+                                {
+                                    <a asp-controller="Stock" asp-action="Details" asp-route-id="@line.StockItemId"
+                                       class="badge text-bg-primary text-decoration-none">@line.StockItem.Reference</a>
+                                }
+                                else { <span class="text-muted small">Nouveau</span> }
+                            </td>
+                            <td>@line.RequestedQuantity</td>
+                            <td>@line.Unit</td>
+                            <td>@line.EstimatedUnitPrice.ToString("N0") DA</td>
+                            <td><strong>@line.EstimatedTotal.ToString("N0") DA</strong></td>
+                            <td class="text-muted small">@(line.Notes ?? "-")</td>
+                        </tr>
+                    }
+                    </tbody>
+                    <tfoot>
+                        <tr class="fw-bold">
+                            <td colspan="5" class="text-end">Total estime :</td>
+                            <td>@Model.TotalEstimated.ToString("N0") DA</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        @if (Model.Request.Status == PurchaseRequestStatus.Rejetee)
+        {
+            <div class="alert alert-danger d-flex gap-2">
+                <i class="bi bi-x-circle-fill fs-5"></i>
+                <div>
+                    <strong>Demande rejetee</strong> par @Model.Request.ProcessedBy
+                    le @Model.Request.ProcessedAt?.ToString("dd/MM/yyyy HH:mm")<br/>
+                    <span>Motif : @Model.Request.RejectionReason</span>
+                </div>
+            </div>
+        }
+
+        @if (Model.Request.Status == PurchaseRequestStatus.ConvertieEnCommande && Model.Request.LinkedOrder is not null)
+        {
+            <div class="alert alert-success d-flex gap-2">
+                <i class="bi bi-check-circle-fill fs-5"></i>
+                <div>
+                    <strong>Approuvee et convertie en commande</strong> par @Model.Request.ProcessedBy
+                    le @Model.Request.ProcessedAt?.ToString("dd/MM/yyyy HH:mm")<br/>
+                    <a asp-controller="Purchasing" asp-action="Details" asp-route-id="@Model.Request.LinkedOrderId"
+                       class="btn btn-sm btn-outline-success mt-1">
+                        <i class="bi bi-box-arrow-up-right me-1"></i> Voir le bon de commande @Model.Request.LinkedOrder.OrderNumber
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.CanApprove)
+    {
+        <div class="col-lg-4">
+            <!-- Approve form -->
+            <div class="card border-0 shadow-sm mb-3 border-success border-opacity-25">
+                <div class="card-header bg-success bg-opacity-10 text-success fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i> Approuver la demande
+                </div>
+                <div class="card-body">
+                    <form asp-action="Approve" method="post">
+                        <input type="hidden" name="RequestId" value="@Model.Request.Id" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Fournisseur</label>
+                            <select name="SupplierId" class="form-select" required>
+                                <option value="">Selectionnez un fournisseur</option>
+                                @foreach (var s in Model.Suppliers)
+                                {
+                                    <option value="@s.Value">@s.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Livraison prevue</label>
+                            <input type="date" name="ExpectedDeliveryDate"
+                                   value="@DateTime.Today.AddDays(14).ToString("yyyy-MM-dd")"
+                                   class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Note (optionnel)</label>
+                            <input type="text" name="Notes" class="form-control" placeholder="Note sur la commande..." />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100"
+                                onclick="return confirm('Approuver et creer le bon de commande ?')">
+                            <i class="bi bi-check-lg me-1"></i> Approuver & Commander
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Reject form -->
+            <div class="card border-0 shadow-sm border-danger border-opacity-25">
+                <div class="card-header bg-danger bg-opacity-10 text-danger fw-semibold">
+                    <i class="bi bi-x-circle me-1"></i> Rejeter la demande
+                </div>
+                <div class="card-body">
+                    <form asp-action="Reject" method="post">
+                        <input type="hidden" name="RequestId" value="@Model.Request.Id" />
+                        <div class="mb-3">
+                            <label class="form-label">Motif du rejet <span class="text-danger">*</span></label>
+                            <textarea name="RejectionReason" class="form-control" rows="3"
+                                      placeholder="Expliquez pourquoi cette demande est rejetee..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100"
+                                onclick="return confirm('Confirmer le rejet ?')">
+                            <i class="bi bi-x-lg me-1"></i> Rejeter
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

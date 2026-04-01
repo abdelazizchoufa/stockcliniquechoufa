@@ -8,59 +8,177 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <header class="main-header shadow-sm">
-        <nav class="navbar navbar-expand-lg navbar-dark container">
-            <a class="navbar-brand fw-semibold" asp-controller="Home" asp-action="Index">Centre Diagnostique</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Afficher la navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNavigation">
-                <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                @if (User.Identity?.IsAuthenticated == true)
-                {
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">Tableau de bord</a>
-                    <a class="nav-link" asp-controller="Stock" asp-action="Index">Stock</a>
-                    <a class="nav-link" asp-controller="Purchasing" asp-action="Index">Approvisionnement</a>
-                    <a class="nav-link" asp-controller="Reports" asp-action="Consumption">Rapports</a>
-                    @if (User.IsInRole(AppRole.Administrateur))
-                    {
-                        <a class="nav-link" asp-controller="Audit" asp-action="Index">Audit</a>
-                    }
-                    @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
-                    {
-                        <a class="nav-link" asp-controller="Stock" asp-action="Create">Nouvel article</a>
-                    }
-                    <span class="navbar-text text-white-50 small">@User.FindFirst("FullName")?.Value (@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value)</span>
-                    <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-sm btn-outline-light">Deconnexion</button>
-                    </form>
-                }
-                else
-                {
-                    <a class="nav-link" asp-controller="Account" asp-action="Login">Connexion</a>
-                }
-                </div>
-            </div>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a asp-controller="Home" asp-action="Index" class="sidebar-brand">
+                <span class="sidebar-brand-icon"><i class="bi bi-heart-pulse-fill"></i></span>
+                <span class="sidebar-brand-text">Centre Diagnostique</span>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Principal</div>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")"
+               asp-controller="Home" asp-action="Index">
+                <i class="bi bi-speedometer2"></i>
+                <span>Tableau de bord</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Stock" && ViewContext.RouteData.Values["action"]?.ToString() != "Expiration" ? "active" : "")"
+               asp-controller="Stock" asp-action="Index">
+                <i class="bi bi-boxes"></i>
+                <span>Stock</span>
+                @await Component.InvokeAsync("AlertBadge")
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Expiration" ? "active" : "")"
+               asp-controller="Stock" asp-action="Expiration">
+                <i class="bi bi-calendar-x"></i>
+                <span>Peremptions</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Inventory" ? "active" : "")"
+               asp-controller="Inventory" asp-action="Index">
+                <i class="bi bi-clipboard2-check"></i>
+                <span>Inventaire</span>
+            </a>
+
+            <div class="sidebar-section-label mt-3">Referentiel</div>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Stock" && ViewContext.RouteData.Values["action"]?.ToString() == "Articles" ? "active" : "")"
+               asp-controller="Stock" asp-action="Articles">
+                <i class="bi bi-capsule"></i>
+                <span>Articles</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Purchasing" && ViewContext.RouteData.Values["action"]?.ToString() == "Suppliers" ? "active" : "")"
+               asp-controller="Purchasing" asp-action="Suppliers">
+                <i class="bi bi-building"></i>
+                <span>Fournisseurs</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Stock" && ViewContext.RouteData.Values["action"]?.ToString() == "Services" ? "active" : "")"
+               asp-controller="Stock" asp-action="Services">
+                <i class="bi bi-diagram-3"></i>
+                <span>Services</span>
+            </a>
+
+            <div class="sidebar-section-label mt-3">Achats</div>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "PurchaseRequest" ? "active" : "")"
+               asp-controller="PurchaseRequest" asp-action="Index">
+                <i class="bi bi-cart-plus"></i>
+                <span>Demandes d'achat</span>
+                @await Component.InvokeAsync("PendingRequestBadge")
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Purchasing" ? "active" : "")"
+               asp-controller="Purchasing" asp-action="Index">
+                <i class="bi bi-truck"></i>
+                <span>Approvisionnement</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Purchasing" && ViewContext.RouteData.Values["action"]?.ToString() == "Ocr" ? "active" : "")"
+               asp-controller="Purchasing" asp-action="Ocr">
+                <i class="bi bi-file-earmark-text"></i>
+                <span>OCR Facture/BL</span>
+            </a>
+
+            <div class="sidebar-section-label mt-3">Analyse</div>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Reports" && ViewContext.RouteData.Values["action"]?.ToString() == "Consumption" ? "active" : "")"
+               asp-controller="Reports" asp-action="Consumption">
+                <i class="bi bi-bar-chart-line"></i>
+                <span>Rapports</span>
+            </a>
+            <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Reports" && ViewContext.RouteData.Values["action"]?.ToString() == "Analytics" ? "active" : "")"
+               asp-controller="Reports" asp-action="Analytics">
+                <i class="bi bi-graph-up-arrow"></i>
+                <span>Analytique</span>
+            </a>
+            @if (User.IsInRole(AppRole.Administrateur))
+            {
+                <div class="sidebar-section-label mt-3">Administration</div>
+                <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Audit" ? "active" : "")"
+                   asp-controller="Audit" asp-action="Index">
+                    <i class="bi bi-shield-check"></i>
+                    <span>Audit</span>
+                </a>
+            }
+
+            @if (User.IsInRole(AppRole.Administrateur) || User.IsInRole(AppRole.GestionnaireStock))
+            {
+                <div class="sidebar-section-label mt-3">Creation rapide</div>
+                <a class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Stock" && ViewContext.RouteData.Values["action"]?.ToString() == "Create" ? "active" : "")"
+                   asp-controller="Stock" asp-action="Create">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>Nouvel article</span>
+                </a>
+            }
         </nav>
-    </header>
 
-    <main class="container py-4 app-shell">
-        @if (TempData["SuccessMessage"] is string message)
-        {
-            <div class="alert alert-success" role="alert">@message</div>
-        }
-        @if (TempData["ErrorMessage"] is string errorMessage)
-        {
-            <div class="alert alert-danger" role="alert">@errorMessage</div>
-        }
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">
+                    @(User.FindFirst("FullName")?.Value?.Substring(0, 1).ToUpper() ?? "?")
+                </div>
+                <div class="sidebar-user-info">
+                    <span class="sidebar-user-name">@User.FindFirst("FullName")?.Value</span>
+                    <span class="sidebar-user-role">@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value</span>
+                </div>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline ms-auto">
+                    <button type="submit" class="sidebar-logout" title="Deconnexion">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </aside>
 
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Main layout -->
+    <div class="main-wrapper">
+        <!-- Topbar (mobile only) -->
+        <div class="topbar d-lg-none">
+            <button class="topbar-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <span class="topbar-title">@(ViewData["Title"] ?? "Gestion de stock")</span>
+        </div>
+
+        <main class="main-content">
+            @if (TempData["SuccessMessage"] is string message)
+            {
+                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
+                    <i class="bi bi-check-circle-fill"></i> @message
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] is string errorMessage)
+            {
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i> @errorMessage
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+}
+else
+{
+    <main class="container py-4">
         @RenderBody()
     </main>
+}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('visible');
+}
+</script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

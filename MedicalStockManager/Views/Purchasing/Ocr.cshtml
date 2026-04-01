@@ -1,0 +1,147 @@
+@model OcrDocumentPageViewModel
+@{
+    ViewData["Title"] = "OCR Facture / BL";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="eyebrow mb-1">Achats</p>
+        <h1 class="h2 mb-0">OCR Facture / Bon de Livraison</h1>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header fw-semibold">Importer un document</div>
+            <div class="card-body">
+                <form asp-action="Ocr" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="mb-3">
+                        <label asp-for="Input.File" class="form-label"></label>
+                        <input asp-for="Input.File" type="file" class="form-control" accept=".jpg,.jpeg,.png,.bmp,.tif,.tiff,.webp,.pdf" />
+                        <span asp-validation-for="Input.File" class="text-danger"></span>
+                        <small class="text-muted d-block mt-2">
+                            Formats: JPG, PNG, WEBP, TIFF, BMP, PDF.
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-search me-1"></i> Lancer l'OCR
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header fw-semibold">Resultat</div>
+            <div class="card-body">
+                @if (Model.Result is null)
+                {
+                    <p class="text-muted mb-0">Aucun document traite pour le moment.</p>
+                }
+                else
+                {
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Fichier</span>
+                                <strong class="mini-stat-value fs-6">@Model.Result.FileName</strong>
+                                <span class="mini-stat-meta">@Model.Result.MimeType</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Numero document</span>
+                                <strong class="mini-stat-value fs-6">@(Model.Result.DocumentNumber ?? "-")</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Fournisseur</span>
+                                <strong class="mini-stat-value fs-6">@(Model.Result.SupplierName ?? "-")</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Date</span>
+                                <strong class="mini-stat-value fs-6">@(Model.Result.DocumentDate?.ToString("dd/MM/yyyy") ?? "-")</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Total</span>
+                                <strong class="mini-stat-value fs-6">@(Model.Result.TotalAmount?.ToString("N2") ?? "-")</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Model.Result.Warnings.Any())
+                    {
+                        <div class="alert alert-warning">
+                            @foreach (var warning in Model.Result.Warnings)
+                            {
+                                <div>@warning</div>
+                            }
+                        </div>
+                    }
+
+                    @if (Model.Result.LedgerEntries.Any())
+                    {
+                        <div class="table-responsive mb-4">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>N° BL</th>
+                                        <th>N° Facture</th>
+                                        <th>Reglement</th>
+                                        <th>Montant</th>
+                                        <th>Solde</th>
+                                        <th>Articles</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var entry in Model.Result.LedgerEntries)
+                                {
+                                    <tr>
+                                        <td>@(entry.Date?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                        <td>@(entry.BlNumber ?? "-")</td>
+                                        <td>@(entry.FactureNumber ?? "-")</td>
+                                        <td>@entry.PaymentMethod</td>
+                                        <td>@(entry.Amount?.ToString("N2") ?? "-")</td>
+                                        <td>@(entry.Balance?.ToString("N2") ?? "-")</td>
+                                        <td>
+                                            @if (entry.ArticleLines.Any())
+                                            {
+                                                <div class="small">
+                                                    @foreach (var article in entry.ArticleLines)
+                                                    {
+                                                        <div>@article</div>
+                                                    }
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">-</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    <label class="form-label fw-semibold">Texte extrait</label>
+                    <textarea class="form-control" rows="14" readonly>@Model.Result.RawText</textarea>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

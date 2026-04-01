@@ -36,7 +36,7 @@ public class ReportsController(IReportService reportService, IAuditService audit
 
         foreach (var item in model.TopItems)
         {
-            builder.AppendLine($"{item.Department},\"{item.ItemName}\",{item.Reference},{item.TotalQuantityOut},{item.MovementCount}");
+            builder.AppendLine($"{item.ServiceName},\"{item.ItemName}\",{item.Reference},{item.TotalQuantityOut},{item.MovementCount}");
         }
 
         auditService.Log(
@@ -48,5 +48,12 @@ public class ReportsController(IReportService reportService, IAuditService audit
         var bytes = Encoding.UTF8.GetBytes(builder.ToString());
         var fileName = $"rapport-consommation-{model.Filter.StartDate:yyyyMMdd}-{model.Filter.EndDate:yyyyMMdd}.csv";
         return File(bytes, "text/csv", fileName);
+    }
+
+    [HttpGet]
+    public IActionResult Analytics()
+    {
+        var model = reportService.GetAnalytics();
+        return View(model);
     }
 }

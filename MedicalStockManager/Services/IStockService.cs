@@ -15,4 +15,9 @@ public interface IStockService
     bool DeleteItem(int id, out string? errorMessage);
     bool AddMovement(StockMovementInputModel input, out string? errorMessage);
     DashboardViewModel GetDashboard();
+    StockItemDetailsViewModel? GetItemDetailsFiltered(int id, MovementFilterViewModel filter);
+    ExpirationReportViewModel GetExpirationReport();
+    ServiceDirectoryViewModel GetServiceDirectory();
+    bool AddService(ServiceCreateInputViewModel input, out string? errorMessage);
+    bool DeleteService(int id, out string? errorMessage);
 }
