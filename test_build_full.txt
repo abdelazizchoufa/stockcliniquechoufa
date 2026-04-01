@@ -1,0 +1,14 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+  MedicalStockManager -> C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager\bin\Debug\net8.0\MedicalStockManager.dll
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\AuthServiceTests.cs(14,14): error CS1061: 'DbContextOptionsBuilder<ApplicationDbContext>' ne contient pas de d├®finition pour 'UseInMemoryDatabase' et aucune m├®thode d'extension accessible 'UseInMemoryDatabase' acceptant un premier argument de type 'DbContextOptionsBuilder<ApplicationDbContext>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\MedicalStockManager.Tests.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\StockServiceTests.cs(14,14): error CS1061: 'DbContextOptionsBuilder<ApplicationDbContext>' ne contient pas de d├®finition pour 'UseInMemoryDatabase' et aucune m├®thode d'extension accessible 'UseInMemoryDatabase' acceptant un premier argument de type 'DbContextOptionsBuilder<ApplicationDbContext>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\MedicalStockManager.Tests.csproj]
+
+├ëCHEC de la build.
+
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\AuthServiceTests.cs(14,14): error CS1061: 'DbContextOptionsBuilder<ApplicationDbContext>' ne contient pas de d├®finition pour 'UseInMemoryDatabase' et aucune m├®thode d'extension accessible 'UseInMemoryDatabase' acceptant un premier argument de type 'DbContextOptionsBuilder<ApplicationDbContext>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\MedicalStockManager.Tests.csproj]
+C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\StockServiceTests.cs(14,14): error CS1061: 'DbContextOptionsBuilder<ApplicationDbContext>' ne contient pas de d├®finition pour 'UseInMemoryDatabase' et aucune m├®thode d'extension accessible 'UseInMemoryDatabase' acceptant un premier argument de type 'DbContextOptionsBuilder<ApplicationDbContext>' n'a ├®t├® trouv├®e (une directive using ou une r├®f├®rence d'assembly est-elle manquante┬á?) [C:\Users\Chouf\.gemini\antigravity\scratch\stockcliniquechoufa\MedicalStockManager.Tests\MedicalStockManager.Tests.csproj]
+    0 Avertissement(s)
+    2 Erreur(s)
+
+Temps ├®coul├® 00:00:01.48
